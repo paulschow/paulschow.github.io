@@ -1,0 +1,50 @@
+---
+title: 'Raspberry Pi Visual Ping Indicator / Roommate Tracker'
+date: 2013-12-28T14:14:00.001-07:00
+draft: false
+url: /2013/12/raspberry-pi-visual-ping-indicator.html
+---
+
+[![](https://3.bp.blogspot.com/-hzDS13uQ-7E/Ur0U5flcE_I/AAAAAAAART0/-ERBoSKxSnU/s400/IMAG1142.png)](http://3.bp.blogspot.com/-hzDS13uQ-7E/Ur0U5flcE_I/AAAAAAAART0/-ERBoSKxSnU/s1600/IMAG1142.png)
+
+  
+
+A frequent problem in my apartment is the lack of a consistent sleep schedule among my roommates. It's hard to tell when someone is asleep in their room, and when someone is gone and their door is closed. One of my roommates made a joke that I should build a device to track who is actually present in the apartment. So I did.  
+  
+  
+  
+
+  
+
+I was already using a form of this, where I would ping local phone IP addresses to tell who was there. If there was a response, their phone was connected to the wifi and the person was probably there. I just made this into a neat setup using a raspberry pi and 4 LEDs.
+
+  
+
+To start, I needed a way to ping people from python. Some quick searching led me to [ping.py (python-ping)](http://www.g-loaded.eu/2009/10/30/python-ping/). This code implements an ICMP ping that python can use. From there, it's simple to import RPi.GPIO to control LED's and make them change depending on the ping status.
+
+  
+
+Most of the change is in verbose\_ping. Before, it just printed the output of the ping with three possible states: error, timeout, or response with a time. I modified it so the first two states turn the LED off, and the last one turns it on.  
+  
+
+Python function verbose\_ping
+
+  
+It gets pin from a line in the main loop, which allows it to work with multiple LEDs and IPs. I had four people to track, so mine looks like this.  
+
+Main loop that assigns IPs to LEDs
+
+  
+Each IP has a GPIO pin assigned to it, which is connected to an LED. Every 10 seconds all the IPs are pinged, and the LEDs status is changed based on the result of the ping.  
+  
+Now it is simple to tell who is in my apartment by looking at the LEDs. If their light is on, they are there. If their light is off, they are not there.  
+  
+It worked well for it's purpose, with a few problems. iPhones only connect to wifi when the screen in on, so it only shows when iPhone users are using their phone. For androids it works as intended. It also doesn't work if the person leaves their phone at the apartment, or never turns on wifi.  
+  
+Notes:  
+  
+
+*   My code has logging in it, but it's only for debugging.
+*   This could be used to test a ping to any IP, not just local ones. Someone could build an alarm if their server goes down.
+*   The [complete code is on Bitbucket.](https://bitbucket.org/pschow/rpi-led-iptracker/overview)
+*   The script needs to be run as sudo for the ping and GPIO access.

@@ -1,0 +1,551 @@
+---
+title: 'Epaper Business Card'
+date: 2016-08-17T10:00:00.000-06:00
+draft: false
+url: /2016/08/epaper-business-card.html
+---
+
+[![](https://2.bp.blogspot.com/--l5oVQOoKeM/V6tomm76cYI/AAAAAAABEZ8/iS4Rnq0XCicGzZyEh6Su0oWX31UjJbMnACPcB/s640/P1010829.JPG)](https://2.bp.blogspot.com/--l5oVQOoKeM/V6tomm76cYI/AAAAAAABEZ8/iS4Rnq0XCicGzZyEh6Su0oWX31UjJbMnACPcB/s1600/P1010829.JPG)
+
+  
+Recently, after graduating with a EE degree from the University of Colorado Colorado Springs and working at X-IO for a few months, I found myself [out of a job](http://www.theregister.co.uk/2016/05/05/xio_lays_off_c85_staff/). This gave me plenty of time to work on projects! (_Update: I have a full-time position now!_)  
+  
+I realized that it might be nice to have business cards. The problem with normal (paper) business cards is that once I got hired they would all be obsolete. The solution: use epaper to have a business card you can program with new information at any time!  
+  
+  
+  
+  
+Obviously this isn't actually a very practical solution. However, I am a big fan of ["usefulness optional"](https://hackaday.com/2016/05/19/25-satellite-tracker-boasts-usefulness-optional/) projects. Even if the end result is too expensive to actually hand out to anyone, it's still a neat learning exercise for fit-to-envelope and ultra-low-power design.  
+  
+I decided on a few things that I wanted my design to have:  
+  
+
+*   Epaper display
+*   Size of a business card
+*   No on/off switch
+*   Components only on the back of the board
+*   All surface mount components
+*   Powered by a thin coin cell battery
+*   Press button to switch between two images
+
+  
+
+Component Selection
+-------------------
+
+  
+
+At my previous job I had messed around with the possibility of using epaper for a front-panel display that would keep information when the power went out. That never went into the product, but I did have some time to mess around with [Pervasive Displays](http://www.pervasivedisplays.com/) ePaper and discovered they have extensive open documentation, software, and hardware at their [RePaper](http://repaper.org/) website.  
+  
+More specifically, they have [examples](https://github.com/repaper/gratis/tree/master/Sketches) for the [TI Energia Launchpad](http://energia.nu/) platform. This platform is great because you can use almost Arduino code with the TI MSP430 line of microcontrollers. I had previously used the [TI MSP430G2553 Lauchpad](https://www.ti.com/ww/en/launchpad/launchpads-msp430-msp-exp430g2.html) in school to do a variety of tasks. The major advantages of using the MSP430 over an ATmega328 in this project is that the MSP430 has a built-in oscillator, lower price, and has ultra-low power modes.  
+  
+
+[![](https://1.bp.blogspot.com/-x5l7h4D8OE8/V5_BOIu4XyI/AAAAAAABDeQ/JN1mZXHOHDskvht8gbOBrDFNLXRT_wbRQCLcB/s640/lpm4_1_2.PNG)](https://1.bp.blogspot.com/-x5l7h4D8OE8/V5_BOIu4XyI/AAAAAAABDeQ/JN1mZXHOHDskvht8gbOBrDFNLXRT_wbRQCLcB/s1600/lpm4_1_2.PNG)
+
+MSP430 low-power modes
+
+  
+  
+Ultra-low power is very important here. In Low-power mode four (LPM4), the MSP430G2553 uses only 0.1 μA (100 nA). With a CR2032 battery that has 220 mAh, that's an estimated battery life of 251 years!  
+  
+
+[![](https://4.bp.blogspot.com/-aN7wlQiu3WE/V5-6Pch4PnI/AAAAAAABDeA/Bk0UtEmFL9gsbBKnKu-H_TB6_XqIcEbawCLcB/s1600/Screenshot%2Bfrom%2B2016-08-01%2B15-07-59.png)](https://4.bp.blogspot.com/-aN7wlQiu3WE/V5-6Pch4PnI/AAAAAAABDeA/Bk0UtEmFL9gsbBKnKu-H_TB6_XqIcEbawCLcB/s1600/Screenshot%2Bfrom%2B2016-08-01%2B15-07-59.png)
+
+Thanks, [WolframAlpha](http://www.wolframalpha.com/input/?i=220+mA+hours+%2F+0.1uA)
+
+  
+  
+Now, a CR2032 battery won't actually have a lifespan of 251 years, but it's still pretty good.  
+  
+If you are interested in epaper projects with Arduino, check out [Wyolum's BADGEr](http://wyolum.com/projects/badger/), it's a very cool conference badge with a 2.71" display, Arduino, and an sd card.  
+  
+I also chose the [2" epaper display](https://www.digikey.com/product-search/en?keywords=E1200CS021-ND) because a [2.71" display](http://www.pervasivedisplays.com/products/271) will fit on a business card, but the RePaper example code can't fit two 2.71" images on the MSP430G2553. Also, the 2" display is $15 while the 2.71" is $25.  
+  
+That's all the major component selection. Otherwise it's mostly passives, which I just used cheapest and thinnest 0805 components I could find. There's a bill of materials at the end of this post.  
+  
+Component summary:  
+  
+
+*   TI MSP430G2553
+*   2" epaper display
+*   CR2032 battery
+
+  
+Version 1
+------------
+
+  
+
+The first version of this design actually had two purposes. First, to do the whole epaper business card thing. Second, to see how fast I could design the board. 
+
+  
+
+To start, I looked at the [reference circuit](http://repaper.org/reference.html) for the epaper demo boards.
+
+  
+
+[![](https://4.bp.blogspot.com/-1eXJAz84_8s/V5_CWxcFViI/AAAAAAABDeY/FM6zrlj4jwQVBSYiswP07h4nnfxHF2GYwCLcB/s640/Screenshot%2Bfrom%2B2016-08-01%2B15-41-39.png)](https://4.bp.blogspot.com/-1eXJAz84_8s/V5_CWxcFViI/AAAAAAABDeY/FM6zrlj4jwQVBSYiswP07h4nnfxHF2GYwCLcB/s1600/Screenshot%2Bfrom%2B2016-08-01%2B15-41-39.png)
+
+Epaper reference circuit
+
+  
+
+The first step is to decide what I can get rid of. All of the level shifters can go, because the MSP430 and the display are both 3.3v logic. Also, the serial flash and the temperature sensor can both go, along with the voltage regulator.
+
+  
+
+[![](https://4.bp.blogspot.com/-s_A_2bIgcMc/V5_C-3QP7JI/AAAAAAABDeg/2pP0FVcLfrswUWEpDFGSWzLVHSTUCf5OwCLcB/s640/Screenshot%2Bfrom%2B2016-08-01%2B15-41-39_redx.png)](https://4.bp.blogspot.com/-s_A_2bIgcMc/V5_C-3QP7JI/AAAAAAABDeg/2pP0FVcLfrswUWEpDFGSWzLVHSTUCf5OwCLcB/s1600/Screenshot%2Bfrom%2B2016-08-01%2B15-41-39_redx.png)
+
+  
+
+This leaves the circuit at basically nothing, which is just how I want it. All that's left is power control circuitry, the 40-pin connector, and a bunch of capacitors and resistors. The only other circuits are a LED and a pushbutton connected to the MSP430. 
+
+  
+
+I'm not going to show a screenshot of the schematic at this point, because I had to make some changes later. 
+
+  
+
+Although I had most recently used Mentor Graphics Xpedition and EagleCAD for schematic capture and PCB layout, I decided to go with KiCad for this project. KiCad recently released a new stable version and it had been a few years since I had used it at all, so I was excited to see the changes. [KiCad](http://kicad-pcb.org/) version 4 is great, and the OpenGL interactive router is amazing.
+
+  
+
+[![](https://4.bp.blogspot.com/-xh17ZYKtJv8/V5_EfqhmdDI/AAAAAAABDes/JAeuH8Fqq_k79eofW7m4t3HkLLOxpaiIwCLcB/s640/Screenshot%2Bfrom%2B2016-05-13%2B00-24-44_c.png)](https://4.bp.blogspot.com/-xh17ZYKtJv8/V5_EfqhmdDI/AAAAAAABDes/JAeuH8Fqq_k79eofW7m4t3HkLLOxpaiIwCLcB/s1600/Screenshot%2Bfrom%2B2016-05-13%2B00-24-44_c.png)
+
+KiCad 3D preview of version 1
+
+  
+
+I ended up putting in two battery holders because I had room. The programming header is rendered as a through-hole pin header, but I wasn't actually going to populate pins. 
+
+  
+
+Keep in mind I made this whole board in a few hours around midnight, and checked it the next morning. Looked good enough to me though, so I ordered it!
+
+  
+
+[![](https://2.bp.blogspot.com/-s5IL2HY_NvY/V5_FZ8Osn1I/AAAAAAABDe0/a3T3s6UixrQ3PxNFf9LKq3x7HF8H0A-iQCLcB/s640/Screenshot%2Bfrom%2B2016-05-13%2B13-53-30_c.png)](https://2.bp.blogspot.com/-s5IL2HY_NvY/V5_FZ8Osn1I/AAAAAAABDe0/a3T3s6UixrQ3PxNFf9LKq3x7HF8H0A-iQCLcB/s1600/Screenshot%2Bfrom%2B2016-05-13%2B13-53-30_c.png)
+
+[OSH Park](https://oshpark.com/) is great as always
+
+  
+
+[![](https://1.bp.blogspot.com/-jXEz2d8vAuI/V5_GBuVakdI/AAAAAAABDfE/1Eb7jDgxKLAkDVjrSVcwB8iMuDcfuBT9QCKgB/s640/IMAG0991.jpg)](https://1.bp.blogspot.com/-jXEz2d8vAuI/V5_GBuVakdI/AAAAAAABDfE/1Eb7jDgxKLAkDVjrSVcwB8iMuDcfuBT9QCKgB/s1600/IMAG0991.jpg)
+
+Nice purple and gold boards
+
+  
+
+[![](https://2.bp.blogspot.com/-DIK3Y6j7Stk/V5_GX6tdpuI/AAAAAAABDfU/dV8VNM8GOqwRE2quGydGjCaJzpamE7pCQCKgB/s640/IMAG0993.jpg)](https://2.bp.blogspot.com/-DIK3Y6j7Stk/V5_GX6tdpuI/AAAAAAABDfU/dV8VNM8GOqwRE2quGydGjCaJzpamE7pCQCKgB/s1600/IMAG0993.jpg)
+
+It works! Well, kinda...
+
+  
+
+The basic verification worked. I put on an MSP430 and and LED, and I made the LED blink! Not exactly a challenging task, but it's always exciting. My programming header worked too. It's easy enough to program using the [MSP430 Launchpad](https://www.ti.com/ww/en/launchpad/launchpads-msp430-msp-exp430g2.html) with some jumper wires on the programming pins.
+
+  
+
+However, I learned my lesson in rushed circuit boards. I got the 40-pin epaper connector totally backwards. I based my pin assignments on the connector, which on the [development board](https://www.adafruit.com/products/1316) has an arrow pointing to pin 40 instead of pin 1. This isn't the only [misleading connector](https://github.com/repaper/gratis/issues/2) on the board, but a few minutes with a multimeter would have saved my first prototype. 
+
+  
+
+I also made some silly silkscreen mistakes (two capacitors, one labeled 100nF and one labeled 0.1uF). Also, that 40-pin connector is a huge pain to solder without a microscope. On to version two. 
+
+  
+
+### Programming
+
+  
+
+Somehow I ended up with three of the [MSP430 Launchpads](https://www.ti.com/ww/en/launchpad/launchpads-msp430-msp-exp430g2.html), so I designed this board to be programmed by just taking the programming headers off one of those. Any [Spy-Bi-Wire](https://en.wikipedia.org/wiki/Spy-Bi-Wire) programmer should work though.
+
+  
+
+[![](https://2.bp.blogspot.com/-abciSWlMYXw/V6YiLjaEb7I/AAAAAAABDtI/QeQzMFA-rKcrSWQNjKevyxl4nDzeb5ORACLcB/s640/P1010764.JPG)](https://2.bp.blogspot.com/-abciSWlMYXw/V6YiLjaEb7I/AAAAAAABDtI/QeQzMFA-rKcrSWQNjKevyxl4nDzeb5ORACLcB/s1600/P1010764.JPG)
+
+  
+
+  
+
+The only pins needed are VCC, TEST, RST, and GND. RX and TX are used for serial connection, but I never actually used them. 
+
+  
+
+Holding the programming pins in the board works well, but if I was going to be making a bunch of these I would build a Sparkfun-style [PogoBed](https://www.sparkfun.com/tutorials/138) programmer.
+
+  
+Version 2
+------------
+
+  
+
+All I need to do is reverse the 40-pin connector. Easy, right?
+
+  
+
+[![](https://4.bp.blogspot.com/-MDR7ZGW5FSs/V5_IAyHFF6I/AAAAAAABDfk/tfUy37r3f6M4lbdyYiLJ_mPnWlz-_OMWwCLcB/s640/Screenshot%2Bfrom%2B2016-05-31%2B13-36-55_c.png)](https://4.bp.blogspot.com/-MDR7ZGW5FSs/V5_IAyHFF6I/AAAAAAABDfk/tfUy37r3f6M4lbdyYiLJ_mPnWlz-_OMWwCLcB/s1600/Screenshot%2Bfrom%2B2016-05-31%2B13-36-55_c.png)
+
+Welp
+
+  
+
+Okay, this took a bit of time to fix. I also spent even more time making it symmetrical. 
+
+  
+
+[![](https://3.bp.blogspot.com/-CY7qtfx8ppc/V5_JKRdAh2I/AAAAAAABDfs/ikKr64THgb4n5Z3uVNhgO0yVX3DRa72jACLcB/s640/Screenshot%2Bfrom%2B2016-05-31%2B15-07-59_c.png)](https://3.bp.blogspot.com/-CY7qtfx8ppc/V5_JKRdAh2I/AAAAAAABDfs/ikKr64THgb4n5Z3uVNhgO0yVX3DRa72jACLcB/s1600/Screenshot%2Bfrom%2B2016-05-31%2B15-07-59_c.png)
+
+That's better
+
+  
+
+Other than that, I fixed some silk mistakes, moved the programming header, and a bunch more aesthetic changes. 
+
+  
+
+[![](https://3.bp.blogspot.com/-jBA86WqtUug/V5_N_HqdklI/AAAAAAABDf8/fIOknSd0V8YnkmvOlHq4ZVlujV0Q-EttgCLcB/s640/P1010650.JPG)](https://3.bp.blogspot.com/-jBA86WqtUug/V5_N_HqdklI/AAAAAAABDf8/fIOknSd0V8YnkmvOlHq4ZVlujV0Q-EttgCLcB/s1600/P1010650.JPG)
+
+Old on top, new on bottom
+
+  
+
+I also found out that [TinkerMill - The Longmont Makerspace](http://www.tinkermill.org/) has a microscope!
+
+  
+
+[![](https://1.bp.blogspot.com/-mOCh2Kaf-Tk/V5_OmAWAroI/AAAAAAABDgE/FJdu0ETOX3AUB6TF1tBD3cH7v9oAwLu6ACKgB/s640/IMAG1014.jpg)](https://1.bp.blogspot.com/-mOCh2Kaf-Tk/V5_OmAWAroI/AAAAAAABDgE/FJdu0ETOX3AUB6TF1tBD3cH7v9oAwLu6ACKgB/s1600/IMAG1014.jpg)
+
+Covered microscope at Tinkermill
+
+  
+
+I'm not saying you have to use a microscope to solder on that 40-pin connector, but after using them at work and at school, it's a lot easier for me to.
+
+  
+
+[![](https://3.bp.blogspot.com/-81kXDD4ag9I/V2N2eiEK-VI/AAAAAAABAnY/1ZoeLCoboGgfq-pK5UGTCUBy9jZ1jbYegCPcB/s640/P1010658.JPG)](https://3.bp.blogspot.com/-81kXDD4ag9I/V2N2eiEK-VI/AAAAAAABAnY/1ZoeLCoboGgfq-pK5UGTCUBy9jZ1jbYegCPcB/s1600/P1010658.JPG)
+
+Working!
+
+  
+
+[![](https://3.bp.blogspot.com/-zRO6Wv-tw_4/V2N3ps5-U_I/AAAAAAABAog/xpkXWdqfKK4XqbdBExC5i0vANcQTjUiYgCPcB/s640/P1010663.JPG)](https://3.bp.blogspot.com/-zRO6Wv-tw_4/V2N3ps5-U_I/AAAAAAABAog/xpkXWdqfKK4XqbdBExC5i0vANcQTjUiYgCPcB/s1600/P1010663.JPG)
+
+Fully working! 
+
+  
+
+Even better, this time everything worked! The demo program from RePaper ran great, and the display switched images just like it should. It also ran off a single CR2032 battery.
+
+  
+
+  
+
+[View on Youtube](https://www.youtube.com/watch?v=5LxsfYvR0Rg) 
+
+  
+
+  
+
+I picked up some cheap generic double-sided tape to use to attach the display, but I'm sure there's something better I should be using. 
+
+  
+
+### Firmware
+
+  
+
+Now I had to take a closer look at the software. 
+
+  
+
+The included [RePaper demo.ino code](https://github.com/repaper/gratis/blob/master/Sketches/demo/demo.ino) was my starting point. This code loads in two images in the .xbm format, and switches between them every five seconds. I "just" needed to modify the code to only switch when the button was pressed, and be in low-power mode (LPM4) the rest of the time. 
+
+  
+
+Much like the schematic example above, I started by taking out everything I didn't need. This included all the code for the temperature sensor, eeprom, and serial output. Technically you should change the update rate of the epaper display depending on the ambient temperature (to update slower at lower temperatures) and the MSP430G2553 does have a built-in temperature sensor, but I just set it to always be 40° C for the fastest update rate. 
+
+  
+
+LMP4 is actually pretty simple in Energia. I originally started using the basic C and setting all the power and interrupt registers, but that's not even necessary. 
+
+  
+
+All you really need to do in Energia is:
+
+1.  Attach the interrupt to a button
+2.  Put suspend() when you want LPM4
+3.  Make an interrupt service routine (ISR) that wakes it up
+
+It's really that simple. My code looks something like this:
+
+  
+  
+  
+
+  
+
+Of course, this took me a few days to figure out. Hopefully someone else doing this will find my post helpful. The [complete source code](https://github.com/paulschow/epapercard/blob/master/firmware/paul_demo_200_isr/paul_demo_200_isr.ino) is on my Github.  
+  
+
+When I tested the standby current consumption, it came out to 0.1 uA! However, that's the lowest current my meter can even measure. 
+
+  
+
+[![](https://4.bp.blogspot.com/-sDzrsaKx5F8/V6TWCLx_F-I/AAAAAAABDoo/K07h0Vw-Jwgk2nq0CQ-PeSgnLcXjrktqwCLcB/s640/IMAG1049.jpg)](https://4.bp.blogspot.com/-sDzrsaKx5F8/V6TWCLx_F-I/AAAAAAABDoo/K07h0Vw-Jwgk2nq0CQ-PeSgnLcXjrktqwCLcB/s1600/IMAG1049.jpg)
+
+  
+
+The other big problem I ran into was when I tried to upgrade displays. The [2" E1200CS021-ND](https://www.digikey.com/product-search/en?keywords=E1200CS021-ND) display on digikey is a newer version, so it uses the EPD\_V231\_G2.h library. When I ran this, I was getting a weird problem where after the image had been displayed, the display would dim. To solve this, I spent a while comparing the libraries.  
+  
+
+[![](https://3.bp.blogspot.com/-y-tfAhiy5Z0/V6TTNliQggI/AAAAAAABDoU/-Rk-syxdLrUbHB5P8280KMb3ze2aJLXxgCLcB/s640/P1010676.JPG)](https://3.bp.blogspot.com/-y-tfAhiy5Z0/V6TTNliQggI/AAAAAAABDoU/-Rk-syxdLrUbHB5P8280KMb3ze2aJLXxgCLcB/s1600/P1010676.JPG)
+
+Comparison of displays. Notice how the bottom (new) display looks faded. This was fixed in software, and the new display looks much better when fixed.
+
+  
+  
+Eventually I noticed that the EPD\_V110\_G1 library (for the older display) included some extra SPI commands to discharge the display at the end.  
+  
+  
+I added those commands to EPD\_V231\_G2.cpp and it worked! I'm not sure if this is a problem that all displays will have, being that I only tested it on the single display I have. Also, I think that this dimming problem might only occur at voltages below 3.3V.  
+  
+My modified libraries are on github:  
+[https://github.com/paulschow/epapercard/tree/master/libraries](https://github.com/paulschow/epapercard/tree/master/libraries)  
+  
+
+[View on Youtube](https://www.youtube.com/watch?v=qxlly0CFBko)
+
+  
+The libraries come with one picture of saturn, but I added two more. [Gimp](https://www.gimp.org/) can easily convert a 200x96 image to the [.xbm format](https://en.wikipedia.org/wiki/X_BitMap) required.  In the "real" business card application I might put resume or portfolio information on the display.  
+
+  
+Version 3
+------------
+
+  
+Now that the proof of concept was done, I wanted to finish everything up with a final version. Version 3 is basically the same as version 2, but with some changes.  
+  
+I changed the battery from a CR2032 (20mm diameter by 3.2mm tall) to a CR2016 (20mm diameter by 1.6mm tall). The CR2016 is the thinnest coin cell battery sold on digikey, which works for me. This does lower the standby battery life.  
+  
+
+[![](https://4.bp.blogspot.com/-P-Hup5zm6Ms/V6TWaWuszOI/AAAAAAABDos/Dto3MbFTrs0h2P1h_u036GdC0E3xfhlLwCLcB/s1600/Screenshot%2Bfrom%2B2016-08-05%2B12-05-10.png)](https://4.bp.blogspot.com/-P-Hup5zm6Ms/V6TWaWuszOI/AAAAAAABDos/Dto3MbFTrs0h2P1h_u036GdC0E3xfhlLwCLcB/s1600/Screenshot%2Bfrom%2B2016-08-05%2B12-05-10.png)
+
+via [WolframAlpha](http://www.wolframalpha.com/input/?i=75+mA+h+%2F+0.1uA)
+
+  
+
+85.6 years standby battery life is still far over the estimated life of the battery, so I think it'll be fine. 
+
+  
+I decided to add pads for a [tabbed solder-on CR2016](https://www.digikey.com/product-detail/en/panasonic-bsg/CR-2016-F2N/P222-ND/509863), which is even thinner than a CR2016 in a battery holder.  
+  
+While trying to fix the dimming display problem, I figured out that the epaper displays will only run down to about 2.6 V. CR2016 batteries will die around 2 V, and the MSP430 will run down to 1.8 V. To prevent possible problems with battery voltage, I decided to put in a boost converter. I picked the [TLV61225DCKR](https://www.digikey.com/product-detail/en/texas-instruments/TLV61225DCKR/296-36756-1-ND/4341458), which will boost to 3.3 V from as low as 0.7 V. The idea is that the MSP430 will activate the boost converter before changing the image, to make sure the screen always gets 3.3 V.  
+  
+The boost converter is entirely optional, and the TLV61225 has the Vin and Vout pads right next to each other, so if it's not populated it's easy to just connect the screen directly to the battery voltage.  
+  
+Since this was the final "production" run, I wanted to go all out. For the first two versions I ordered my boards from [OSH Park](https://oshpark.com/), which is great. However, their boards are 1.6mm thick. They also offer a 0.8mm thick run, with a longer wait time.  
+  
+Someone at [The Amp Hour](http://www.theamphour.com/) Denver meetup had shown me their boards from [Elecrow](http://www.elecrow.com/10pcs-2-layer-pcb-p-1175.html). Elecrow has a variety of board thicknesses and silkscreen colors, exactly what I wanted. I ended up ordering 10 of the 0.6mm thick boards, with black silk on white board.  
+  
+Elecrow charges per set sizes. A standard business card is 3.5" by 2", which is 88.9mm by 50.8mm. I ended up taking 0.8mm off the height of the size to fit it in the 100mm by 50mm Elecrow size.  
+  
+
+[![](https://1.bp.blogspot.com/-GEIMIfKtkGY/V6T1Gxix6lI/AAAAAAABDo8/Q3QrYuGxyTggZtH8mVCDGha4zBBzJtr5wCLcB/s640/P1010743.JPG)](https://1.bp.blogspot.com/-GEIMIfKtkGY/V6T1Gxix6lI/AAAAAAABDo8/Q3QrYuGxyTggZtH8mVCDGha4zBBzJtr5wCLcB/s1600/P1010743.JPG)
+
+  
+  
+Elecrow sent me 15 boards! The price with shipping was $19.24, so that's $1.28 per board. At that price, it's almost practical to hand out the blank boards as "normal" business cards.  
+  
+
+[![](https://2.bp.blogspot.com/-gUwHV7v3czg/V6T1wb2g6dI/AAAAAAABDpA/-hmxMRJbDXEOxZfe7twCE0jvAmKDfSZ1ACLcB/s640/P1010745.JPG)](https://2.bp.blogspot.com/-gUwHV7v3czg/V6T1wb2g6dI/AAAAAAABDpA/-hmxMRJbDXEOxZfe7twCE0jvAmKDfSZ1ACLcB/s1600/P1010745.JPG)
+
+  
+I headed back to Tinkermill to solder these up. To no one's surprise, I made another small mistake. I reversed pin 4 and 6 on the boost regulator. Luckily I planned for that and just bypassed the boost regulator completely.  
+  
+
+[![](https://4.bp.blogspot.com/-SEg19Qcgc0c/V6T2ejsA-zI/AAAAAAABDpI/PE6hb3kPrW42CX0x6dPZEqvtPdd5STTBgCLcB/s640/P1010749.JPG)](https://4.bp.blogspot.com/-SEg19Qcgc0c/V6T2ejsA-zI/AAAAAAABDpI/PE6hb3kPrW42CX0x6dPZEqvtPdd5STTBgCLcB/s1600/P1010749.JPG)
+
+  
+Apart from the nonworking boost regulator, everything else worked!  
+  
+
+  
+
+View on [Youtube](https://www.youtube.com/watch?v=LT6xRcEfyrc)
+
+  
+
+I put the [Hackaday](https://hackaday.com/) jolly wrencher on the card for extra [blog cred](https://xkcd.com/730/).  
+  
+
+[![](https://4.bp.blogspot.com/-rL7De3IatXg/V6tlzN53NwI/AAAAAAABEMM/r_o1J2i8Nn4tJZu2TcJMlbmSj3-JjsgbwCPcB/s640/P1010821.JPG)](https://4.bp.blogspot.com/-rL7De3IatXg/V6tlzN53NwI/AAAAAAABEMM/r_o1J2i8Nn4tJZu2TcJMlbmSj3-JjsgbwCPcB/s1600/P1010821.JPG)
+
+  
+
+[![](https://1.bp.blogspot.com/-OtjX2PAsTKI/V6tm-AYX6iI/AAAAAAABENI/WuEXg36ukmMPHV30ob-yk1o0E2I5CmqdACPcB/s640/P1010823.JPG)](https://1.bp.blogspot.com/-OtjX2PAsTKI/V6tm-AYX6iI/AAAAAAABENI/WuEXg36ukmMPHV30ob-yk1o0E2I5CmqdACPcB/s1600/P1010823.JPG)
+
+  
+
+The thickest part on there is still the CR2016 battery holder, but using the CR2016 with tabs would make it even thinner.
+
+  
+A [right-angle blue LED](https://www.digikey.com/product-detail/en/bivar-inc/SMS1105BWC/492-1272-1-ND/2407194) makes it so there's a blue light on the surface when the image is being changed, and looks pretty cool.  
+  
+
+[![](https://1.bp.blogspot.com/-ORts32ewVk8/V6pXjuQ-NaI/AAAAAAABEJY/tFJNPSYaJF88tj1bQR0hRikc1QnvFCbRwCPcB/s640/P1010815.JPG)](https://1.bp.blogspot.com/-ORts32ewVk8/V6pXjuQ-NaI/AAAAAAABEJY/tFJNPSYaJF88tj1bQR0hRikc1QnvFCbRwCPcB/s1600/P1010815.JPG)
+
+  
+
+[![](https://2.bp.blogspot.com/-3H7D6fUWo9c/V7DbI2-g8-I/AAAAAAABEbs/KmhKx-ic0yE7Nx8wHUVOM_FWXKDRG7gqgCPcB/s640/P1010855.JPG)](https://2.bp.blogspot.com/-3H7D6fUWo9c/V7DbI2-g8-I/AAAAAAABEbs/KmhKx-ic0yE7Nx8wHUVOM_FWXKDRG7gqgCPcB/s1600/P1010855.JPG)
+
+  
+  
+
+Layout and Schematic
+--------------------
+
+  
+For the complete files, see [my Github](https://github.com/paulschow/epapercard). I did fix the problem with the boost regulator.  
+  
+
+[![](https://4.bp.blogspot.com/-4gsfWM6Ebbg/V7D14Rz-4jI/AAAAAAABEcw/zvVaL_z4O1w3Jxvw4UCwJyIP_qLQzJkGACLcB/s640/Screenshot%2Bfrom%2B2016-08-14%2B16-46-29.png)](https://4.bp.blogspot.com/-4gsfWM6Ebbg/V7D14Rz-4jI/AAAAAAABEcw/zvVaL_z4O1w3Jxvw4UCwJyIP_qLQzJkGACLcB/s1600/Screenshot%2Bfrom%2B2016-08-14%2B16-46-29.png)
+
+  
+
+[![](https://2.bp.blogspot.com/-usz1DLsmmAw/V7D1tlO2JXI/AAAAAAABEco/3GeHOs1E2scKqCN2Q_HZ88MZ-kGW8F-qwCLcB/s640/Brd_back_Aug14.png)](https://2.bp.blogspot.com/-usz1DLsmmAw/V7D1tlO2JXI/AAAAAAABEco/3GeHOs1E2scKqCN2Q_HZ88MZ-kGW8F-qwCLcB/s1600/Brd_back_Aug14.png)
+
+  
+
+[![](https://3.bp.blogspot.com/-GU5O52S23PQ/V7D1ypO8UmI/AAAAAAABEcs/zlDuY7s6tMQFJHLp_SHEC62d4g6B3Ne8QCLcB/s640/Brd_front_Aug14.png)](https://3.bp.blogspot.com/-GU5O52S23PQ/V7D1ypO8UmI/AAAAAAABEcs/zlDuY7s6tMQFJHLp_SHEC62d4g6B3Ne8QCLcB/s1600/Brd_front_Aug14.png)
+
+  
+
+  
+
+Budget
+------
+
+  
+After posting my ["$25" Satellite Tracker](http://www.paulschow.com/2016/05/25-satellite-tracker.html), I got a lot of (fair) comments that it wasn't really $25, because I didn't include the costs of things I already had.  
+  
+For this, I'll do a real budget breakdown. If you actually wanted to use these as business cards, how much would it actually cost to get a bunch of these made?  
+  
+I was surprised that Digikey ran out of the [display connectors](https://www.digikey.com/product-detail/en/te-connectivity-amp-connectors/4-1775333-0/A120699CT-ND/5021797) I used. I picked a [replacement](https://www.digikey.com/product-search/en?keywords=732-6012-1-ND) but I haven't actually tested it.  
+  
+For the complete BOM check [github](https://github.com/paulschow/epapercard), but here's the simplified breakdown:  
+  
+  
+
+*   Passives: $6.18
+*   IC's: $6.23
+*   Connectors: $4.15
+*   Screen: $15.00
+*   PCB: $1.28
+
+  
+
+  
+
+[![](https://3.bp.blogspot.com/-BdBR5IIdpy4/V7DsZAUKDhI/AAAAAAABEcM/Q0KAHvq3kzMb6pn3e_Fzq90w1o37yMBggCLcB/s640/image.png)](https://3.bp.blogspot.com/-BdBR5IIdpy4/V7DsZAUKDhI/AAAAAAABEcM/Q0KAHvq3kzMb6pn3e_Fzq90w1o37yMBggCLcB/s1600/image.png)
+
+  
+
+  
+
+I haven't looked at all the bulk pricing on digi-key, so those are the prices for one board, with the PCB from Elecrow. Digikey prices do not include shipping, but they will make you ship UPS/FedEx if you order the batteries through them.
+
+  
+
+That makes the **total $31.59 for one card**. 
+
+  
+
+Let's compare that to some alternatives. 
+
+  
+
+FedEx sells a [variety of business cards](http://www.fedex.com/us/office/designprint/). The cheapest is "1-2 Color", $14.99 for 250, around **$0.06 per card**. The most expensive are "Luxury Weight", $44.99 for 250, **$0.18 per card**. Even the most expensive paper business card costs 0.57% of my epaper business card.
+
+  
+
+Keeping the original design intent in mind, let's say you switch jobs so often that you constantly find yourself ordering new business cards. Also, you only buy luxury weight cards. You would have to switch jobs **176 times** to break even with one epaper card. I think by the time you got to your 177th job, you might have bigger things to worry about. 
+
+  
+
+Are my cards the most impractical? Of course not. [Pure Metal Cards](https://www.puremetalcards.com/pricing/) makes cards out of gold and other metals. The cheapest stainless steel cards are $600 for 200 (0.3mm), which is $3 per card. Not bad, now you only need to switch jobs **11 times** to break even.
+
+  
+
+Their most expensive cards are pure gold, of course.
+
+  
+
+[![](https://2.bp.blogspot.com/-k6PzvJHYltE/V7DwcLiRAYI/AAAAAAABEcY/wf0u3dadRP4lxUqU_MlZieSCv-4xnEjnACLcB/s640/gold-card.png)](https://2.bp.blogspot.com/-k6PzvJHYltE/V7DwcLiRAYI/AAAAAAABEcY/wf0u3dadRP4lxUqU_MlZieSCv-4xnEjnACLcB/s1600/gold-card.png)
+
+  
+
+Now we're talking. The cheapest gold business card is $1,200. My epaper card costs just **2.63%** of their cheapest gold card, and only **0.96%** of their most expensive one! If you're in the market for gold business cards, feel free to contact me instead. 
+
+  
+FAQ
+------
+
+1.  How much for a color screen?
+
+*   Although Pervasive Displays announced [three-color screens](http://www.pervasivedisplays.com/announcements/e-ink-launches-spectra-the-world-s-first-true-three-pigment-electronic-paper-display) (black, white, and red), I can't actually find them for sale anywhere. RGB screens don't exist commercially.
+
+3.  How about an Arduino design? How about an SD card?
+
+*   [WyoLum's BADGEr](http://wyolum.com/projects/badger/) is such a good Arduino design with SD card, if I was going to do that I would just fork it and make it a bit smaller. 
+
+5.  Internal timing displays?
+
+*   Pervasive Displays does make a different line of displays with [internal timing controllers](http://www.pervasivedisplays.com/announcements/epd-with-iTC-simplify-design-and-offer-cost-savings), like [the E2215CS062](https://www.digikey.com/product-detail/en/pervasive-displays/E2215CS062/E2215CS062-ND/5975949). These do have a simpler schematic, and only a 26-pin connector. If I were starting over, I would probably switch to one of those displays. 
+
+7.  I want to mess around with epaper, what should I buy?
+
+*   I haven't tried it, but the [PaPiRus Zero](https://www.pi-supply.com/product/papirus-zero-epaper-screen-phat-pi-zero/) is a very cheap epaper hat for the raspberry pi. 
+*   Pervasive Displays also has a page of [kits on their website.](http://www.pervasivedisplays.com/kits)
+
+9.  Bigger displays?
+
+*   I tried to modify the libraries to make room for the 2.71" display images on the MSP430G2553. I managed to get it down to just 400 bytes too big for the G2553. 
+*   It's easy to buy [$14 6" displays on AliExpress](http://www.aliexpress.com/item/100-Original-ED060SC4-ED060SC4-LF-6-e-ink-LCD-screen-for-Pocketbook-301-603-611/32477063406.html), but interfacing with them is harder because of poor documentation. Would be cool to get working though.
+
+11.  I want to make my own!
+
+*   You can [order the most recent version of the board from OSH Park](https://oshpark.com/shared_projects/mzJqv2Ml), and find the [rest of the files on Github.](https://github.com/paulschow/epapercard) Although I suspect you may want to download [KiCad](http://kicad-pcb.org/) so you can change the name on the front.
+*   If you just want a PCB with a blank front, I've created [another project on OSH Park.](https://oshpark.com/shared_projects/x4nYYCIm)
+
+13.  You're looking for work?
+
+*   Not anymore, thanks!
+
+15.  I'm rich and want to buy 10,000 of these.
+
+*   (I'll be honest, this isn't a frequently asked question.) 
+*   Please contact me! Or just make your own, this is open source hardware and software. It would be cool if you let me know though.
+---
+### Comments:
+#### Nice work, and a great reference!
+[Unknown](https://www.blogger.com/profile/09347021484017564071 "noreply@blogger.com") - <time datetime="2016-08-18T02:15:39.226-06:00">Aug 4, 2016</time>
+
+Nice work, and a great reference!
+<hr />
+#### Very nice design. Has me wondering if it could be ...
+[Galane](https://www.blogger.com/profile/08348363368939269094 "noreply@blogger.com") - <time datetime="2016-08-23T21:58:02.294-06:00">Aug 2, 2016</time>
+
+Very nice design. Has me wondering if it could be made thinner by using vias to put the display connector on the front side and cut a hole through the board to set the battery into, with a strip of metal across the front for one of the power contacts. Since it'd have to be two sided to put the display connector on the front, may as well use the front copper for other things such as a power connection and an LED.
+<hr />
+#### hmm, there's gotta be a way to market this. ma...
+[Jamie L. Bartlett](https://www.blogger.com/profile/01072260479548031566 "noreply@blogger.com") - <time datetime="2016-08-23T22:37:18.957-06:00">Aug 2, 2016</time>
+
+hmm, there's gotta be a way to market this. maybe a kit?
+<hr />
+#### I was looking into the battery strip style. This E...
+[Paul Schow](https://www.blogger.com/profile/02139879554145337777 "noreply@blogger.com") - <time datetime="2016-08-31T14:18:28.370-06:00">Aug 3, 2016</time>
+
+I was looking into the battery strip style. This EKG business card does it very well http://mobilecg.hu/blog.html
+<hr />

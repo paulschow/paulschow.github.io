@@ -1,0 +1,222 @@
+---
+title: 'QFH Antenna for Receiving Satellite Images Using RTL-SDR'
+date: 2015-03-25T18:06:00.001-06:00
+draft: false
+url: /2015/03/qfh-antenna-for-receiving-satellite.html
+---
+
+[![](http://3.bp.blogspot.com/-asBMrHy9qU4/VRI0HV8qNLI/AAAAAAAAoJk/EqeCMUNIR_I/s1600/03242234hvct_c.jpg)](http://3.bp.blogspot.com/-asBMrHy9qU4/VRI0HV8qNLI/AAAAAAAAoJk/EqeCMUNIR_I/s1600/03242234hvct_c.jpg)
+
+  
+There is an incredibly popular low-cost software defined radio, known as the [RTL-SDR](http://www.rtl-sdr.com/). I've had one of these for months, and haven't really done anything cool with it. Recently I've seen a lot of people on the [rtl-sdr reddit](http://www.reddit.com/r/rtlsdr) building quadrifilar helix (QFH) antennas to receive images from satellites using [automatic picture transmission](http://en.wikipedia.org/wiki/Automatic_Picture_Transmission) (APT). I decided to try this over spring break.  
+  
+  
+  
+  
+Step one is research. This is a pretty old ham radio project and now a lot of people are redoing it with the RTL-SDR, so there is a lot of information out there. I probably used [this](http://www.alternet.us.com/?p=1461) blog post the most, because it has links to a ton of other helpful posts.  
+  
+Step two is buying materials. I bought 1" and 0.75" PVC, but if I was going to do this again I would probably buy 1.5" and 0.5".  I already had copper pipe from a very old project to use for this antenna.  
+  
+Then generate the template using [this website.](http://jcoppens.com/ant/qfh/calc.en.php) The default values for 137.5 MHz are good. Put the diameter of the conductor, which was 5mm for me. Then just scroll down and insert the two PVC diameters in mm. I measured 1" as 35mm and 0.75" as 25mm (although I know 1 inch is 25mm when converted directly) using a tape measured that had cm on it, but your pipe may be different. Download the template and print it out, but make sure the printer doesn't scale it. Compare the printed size to your PVC to check.  
+  
+
+[![](http://2.bp.blogspot.com/-W61Uu0O9af0/VRGeDU2YM4I/AAAAAAAAoE4/t8pYtl3VBDs/s1600/IMG_20150322_123953.jpg)](http://2.bp.blogspot.com/-W61Uu0O9af0/VRGeDU2YM4I/AAAAAAAAoE4/t8pYtl3VBDs/s1600/IMG_20150322_123953.jpg)
+
+  
+
+  
+
+Cut out the template, tape it to your pipe, and get drilling. I had a cm measuring tape, but you might have to convert the measurements to inches if you don't. A useful tip from [here](http://www.alternet.us.com/?p=1461) is to use a door jamb to make a line down the pipe.  
+  
+
+[![](http://4.bp.blogspot.com/-tUN849P2eHc/VRGeZ1EtLHI/AAAAAAAAoFA/7Khy34Ro124/s1600/IMG_20150322_124439.jpg)](http://4.bp.blogspot.com/-tUN849P2eHc/VRGeZ1EtLHI/AAAAAAAAoFA/7Khy34Ro124/s1600/IMG_20150322_124439.jpg)
+
+  
+The copper pipe that I used is easy\* enough to bend, but some guides say to use a log to bend the pipe if you can't. Follow the template exactly, with pipe from hole A going to A, and D to D, etc. You should be aware that the larger loop from the template is holes B and D, which makes the smaller loop holes A and C.  
+  
+\*This pipe might have been too easy to bend. I had a serious kink on the bottom loop.  
+  
+
+[![](http://1.bp.blogspot.com/-eYoTCnePDO4/VRGgA22fONI/AAAAAAAAoFM/mvH2rGugsNQ/s1600/IMG_20150322_132347.jpg)](http://1.bp.blogspot.com/-eYoTCnePDO4/VRGgA22fONI/AAAAAAAAoFM/mvH2rGugsNQ/s1600/IMG_20150322_132347.jpg)
+
+  
+
+Later I tried to fix it with solder, but I don't really think that did the job.  
+  
+
+[![](http://3.bp.blogspot.com/-PiPPE34bWQs/VRGgXvpeiOI/AAAAAAAAoFU/vR5xnE0DjiE/s1600/IMG_20150322_133622.jpg)](http://3.bp.blogspot.com/-PiPPE34bWQs/VRGgXvpeiOI/AAAAAAAAoFU/vR5xnE0DjiE/s1600/IMG_20150322_133622.jpg)
+
+  
+Eventually you should have something that looks weird from any direction but is generally symmetrical. Time to attach the coax.  
+  
+I went through my pile of coax and picked the highest-quality, stiffest coax. This is probably overkill. Then you drill a hole near the top, feed to coax in, and solder it on. I was very confused about which wires go to which loop until I found [this post](http://www.gregorystrike.com/2010/05/16/quadrifilar-helix-antenna-137-mhz/), which has a nice graphic.  
+  
+
+[![](http://1.bp.blogspot.com/-VJGwxKVFuJg/VRGhWA587KI/AAAAAAAAoFc/DW7A6Qvk5bU/s1600/IMG_20150322_145453.jpg)](http://1.bp.blogspot.com/-VJGwxKVFuJg/VRGhWA587KI/AAAAAAAAoFc/DW7A6Qvk5bU/s1600/IMG_20150322_145453.jpg)
+
+  
+My soldering solution was an old iron set to max temp with a huge tip, and a ton of solder. Cut down the top of the pipe if you can't reach in enough. The real tip here is to sand the copper before you solder it. Sand even if you are just using copper wire.  
+  
+
+[![](http://2.bp.blogspot.com/-DMcPkLeVLcw/VRGh_N3r7yI/AAAAAAAAoFk/_AbgeiPwibg/s1600/IMG_20150322_145502.jpg)](http://2.bp.blogspot.com/-DMcPkLeVLcw/VRGh_N3r7yI/AAAAAAAAoFk/_AbgeiPwibg/s1600/IMG_20150322_145502.jpg)
+
+  
+Wrap the cable tightly around the main tube a few times to create a balun. I used five times.  
+  
+
+[![](http://2.bp.blogspot.com/-YTtGQvhytDA/VRGibzIqlqI/AAAAAAAAoFs/p08HR91xh9g/s1600/2015-03-22%2B14.58.04.jpg)](http://2.bp.blogspot.com/-YTtGQvhytDA/VRGibzIqlqI/AAAAAAAAoFs/p08HR91xh9g/s1600/2015-03-22%2B14.58.04.jpg)
+
+It's something!
+
+  
+
+Later I used a piece of particle board to create a simple stand for it, but don't have any pictures. If you have any experience with wood you can probably build one better than mine. 
+
+  
+
+[![](http://4.bp.blogspot.com/-g15p3X5SM4s/VRGjZzspXWI/AAAAAAAAoF0/tyKt7DKD8K8/s1600/IMG_20150322_151922.jpg)](http://4.bp.blogspot.com/-g15p3X5SM4s/VRGjZzspXWI/AAAAAAAAoF0/tyKt7DKD8K8/s1600/IMG_20150322_151922.jpg)
+
+  
+
+  
+
+  
+
+My RTL-SDR (in the altoids can in the picture) already has an F connector, so I just plugged it in. Then I used a usb extension cable to provide distance from the antenna. Then I waited for satellites.  
+  
+To receive the images I referenced [this post](http://www.rtl-sdr.com/rtl-sdr-tutorial-receiving-noaa-weather-satellite-images/) and used [SDR#](http://sdrsharp.com/), [VB-Cable](http://www.rtl-sdr.com/free-virtual-audio-cable-alternative/) and [WXtoImg](http://www.wxtoimg.com/) on Windows. It should be possible using [Gqrx](http://gqrx.dk/) on Linux, but I'm sure how to pipe audio from one program to another.  
+  
+Once I had that set up I used the WXtoImg satellite pass tracker and [n2yo](http://www.n2yo.com/) to track NOAA 15, 18, and 19, and found that the next pass was NOAA 15 at 6am.  
+  
+
+[![](http://4.bp.blogspot.com/-nOoCJcuOelY/VRGmcBWc1iI/AAAAAAAAoGA/t0HSGB6hT2M/s1600/IMG_20150323_060335.jpg)](http://4.bp.blogspot.com/-nOoCJcuOelY/VRGmcBWc1iI/AAAAAAAAoGA/t0HSGB6hT2M/s1600/IMG_20150323_060335.jpg)
+
+  
+The next morning, I went out and set up and got an image! It was pretty overcast at the time, but it still worked.  
+  
+  
+  
+
+[![](http://4.bp.blogspot.com/-s4legUWiXjg/VRGqqZpdj4I/AAAAAAAAoGQ/yEq6qVZa3dg/s1600/Capture3.jpg)](http://4.bp.blogspot.com/-s4legUWiXjg/VRGqqZpdj4I/AAAAAAAAoGQ/yEq6qVZa3dg/s1600/Capture3.jpg)
+
+NOAA 15 Passing over Idaho
+
+  
+
+[![](http://4.bp.blogspot.com/-HxwIZFxmqKc/VRGqxtt1sNI/AAAAAAAAoGY/Wa7wTk4Z7nw/s1600/Capture4.PNG)](http://4.bp.blogspot.com/-HxwIZFxmqKc/VRGqxtt1sNI/AAAAAAAAoGY/Wa7wTk4Z7nw/s1600/Capture4.PNG)
+
+Sorry for the low contrast, but the signal is there!
+
+  
+
+[![](http://3.bp.blogspot.com/-xpe2NRr3Il4/VRGrBA9ledI/AAAAAAAAoGg/HCBF3CZwWmw/s1600/Capture2.PNG)](http://3.bp.blogspot.com/-xpe2NRr3Il4/VRGrBA9ledI/AAAAAAAAoGg/HCBF3CZwWmw/s1600/Capture2.PNG)
+
+Receiving picture
+
+  
+
+  
+
+After it passed I let WXtoImg decode it and got something.  
+  
+
+[![](http://2.bp.blogspot.com/-wQYaQQqnlsU/VRGrakD7FbI/AAAAAAAAoGo/jdhz9Nyvcrw/s1600/03231317.jpg)](http://2.bp.blogspot.com/-wQYaQQqnlsU/VRGrakD7FbI/AAAAAAAAoGo/jdhz9Nyvcrw/s1600/03231317.jpg)
+
+  
+Not exactly the highest quality, but it's there!  
+  
+A few more satellites passed over that day, and I grabbed them.  
+  
+
+[![](http://1.bp.blogspot.com/-WQvV8BHcoWo/VRGs3u7BIzI/AAAAAAAAoHE/PwJYU0_U2eQ/s1600/03232022.jpg)](http://1.bp.blogspot.com/-WQvV8BHcoWo/VRGs3u7BIzI/AAAAAAAAoHE/PwJYU0_U2eQ/s1600/03232022.jpg)
+
+NOAA 19
+
+  
+  
+
+[![](http://4.bp.blogspot.com/-Vc7I9E0KaiY/VRGr8RhXezI/AAAAAAAAoG0/Q1fgiZ04Dms/s1600/03232258s.jpg)](http://4.bp.blogspot.com/-Vc7I9E0KaiY/VRGr8RhXezI/AAAAAAAAoG0/Q1fgiZ04Dms/s1600/03232258s.jpg)
+
+NOAA 15
+
+  
+
+[![](http://4.bp.blogspot.com/-7-Ejjt8t9I4/VRGsDDk72AI/AAAAAAAAoG8/9qkYnEeGncM/s1600/03232322.jpg)](http://4.bp.blogspot.com/-7-Ejjt8t9I4/VRGsDDk72AI/AAAAAAAAoG8/9qkYnEeGncM/s1600/03232322.jpg)
+
+NOAA 18
+
+  
+NOAA 18 and 19 had strange interference in their frequency, so the pictures really suffered. However, the idea worked.  
+  
+Next morning NOAA 15 was flying almost directly over me, so I went out at 6am again to get a really nice picture.  
+  
+
+[![](http://2.bp.blogspot.com/-gztLQsR9OsI/VRGtSFetP5I/AAAAAAAAoHM/wz4_FiUMLIA/s1600/03241252c.jpg)](http://2.bp.blogspot.com/-gztLQsR9OsI/VRGtSFetP5I/AAAAAAAAoHM/wz4_FiUMLIA/s1600/03241252c.jpg)
+
+  
+This time I was even able to do color!  
+  
+Later that night I tried to record the [Russian Meteor-M N2](http://www.rtl-sdr.com/rtl-sdr-tutorial-receiving-meteor-m-n2-lrpt-weather-satellite-images-rtl-sdr/), but the signal wasn't strong enough.  
+  
+I still wasn't satisfied, and identified some problems in the original antenna that could be improved on. Then I went to go build another antenna.  
+  
+Copper pipe turned out to be pretty hard for me to work with, so I switched to 12 gauge copper wiring instead. I also used the center supporting pipes this time, and triple-checked every measurement on the antenna.  
+
+  
+
+The new antenna doesn't look as cool because there isn't any copper showing, but it works great!  
+  
+
+[![](http://4.bp.blogspot.com/-ZWR-zvDhEDQ/VRGuRIyPMjI/AAAAAAAAoHc/uvQqe1XS_IE/s1600/IMG_20150324_074157.jpg)](http://4.bp.blogspot.com/-ZWR-zvDhEDQ/VRGuRIyPMjI/AAAAAAAAoHc/uvQqe1XS_IE/s1600/IMG_20150324_074157.jpg)
+
+  
+  
+
+[![](http://1.bp.blogspot.com/-OonSC8-gA6E/VRIy8gRQL4I/AAAAAAAAoI8/tbE4acrrU9g/s1600/IMG_20150324_161344.jpg)](http://1.bp.blogspot.com/-OonSC8-gA6E/VRIy8gRQL4I/AAAAAAAAoI8/tbE4acrrU9g/s1600/IMG_20150324_161344.jpg)
+
+  
+  
+I used it to get this picture from NOAA 18, which didn't even fly that close to me.  
+  
+
+[![](http://4.bp.blogspot.com/-fDL-Bq0Ih5M/VRGuXjF3NMI/AAAAAAAAoHk/1jBIul3A4p0/s1600/03241326c.jpg)](http://4.bp.blogspot.com/-fDL-Bq0Ih5M/VRGuXjF3NMI/AAAAAAAAoHk/1jBIul3A4p0/s1600/03241326c.jpg)
+
+  
+The only weird thing is that band in the middle, which I think was caused by me doing something on the computer at the wrong time.  
+  
+
+[![](http://2.bp.blogspot.com/-hxNAEnXmDjw/VRI0ktpVeLI/AAAAAAAAoJs/NfsYEru5BEQ/s1600/newconfig.PNG)](http://2.bp.blogspot.com/-hxNAEnXmDjw/VRI0ktpVeLI/AAAAAAAAoJs/NfsYEru5BEQ/s1600/newconfig.PNG)
+
+  
+I found the best setup for me is WFM mode with a 40k bandwidth. I'm not sure how much sample rate matters, I've gotten images 2.8MSPS sample rate and 0.25MSPS sample rate.  
+  
+With this new setup, I've gotten some great images.  
+  
+
+[![](http://4.bp.blogspot.com/-7TncCiR5IPA/VRIzQyQZ-PI/AAAAAAAAoJE/nmq1aq4NH0g/s1600/03242234hvctm.jpg)](http://4.bp.blogspot.com/-7TncCiR5IPA/VRIzQyQZ-PI/AAAAAAAAoJE/nmq1aq4NH0g/s1600/03242234hvctm.jpg)
+
+Notice how my location isn't even in the picture!
+
+  
+
+[![](http://3.bp.blogspot.com/-Ky4aHVmEGRg/VRIzfbIGNsI/AAAAAAAAoJM/Bx27go7CZpM/s1600/03242311hvcthe.jpg)](http://3.bp.blogspot.com/-Ky4aHVmEGRg/VRIzfbIGNsI/AAAAAAAAoJM/Bx27go7CZpM/s1600/03242311hvcthe.jpg)
+
+  
+
+[![](http://3.bp.blogspot.com/-30C9gUNOKoE/VRIzlI2QnKI/AAAAAAAAoJU/CYMEtvHxyOE/s1600/03250012hvctm.jpg)](http://3.bp.blogspot.com/-30C9gUNOKoE/VRIzlI2QnKI/AAAAAAAAoJU/CYMEtvHxyOE/s1600/03250012hvctm.jpg)
+
+  
+
+[![](http://3.bp.blogspot.com/-_2j95z7eTE4/VRNNXDEaL7I/AAAAAAAAoKU/v4_zZf3_f_g/s1600/03252347hvcthe.jpg)](http://3.bp.blogspot.com/-_2j95z7eTE4/VRNNXDEaL7I/AAAAAAAAoKU/v4_zZf3_f_g/s1600/03252347hvcthe.jpg)
+---
+### Comments:
+#### Great work! I have a question about the new antenn...
+[Unknown](https://www.blogger.com/profile/05394690194626526159 "noreply@blogger.com") - <time datetime="2016-08-28T12:05:29.045-06:00">Aug 0, 2016</time>
+
+Great work! I have a question about the new antenna you built specifically the bottom part. Are the 12 gauge copper wires soldered together? Is it one piece?
+<hr />
+#### It's two long wires, soldered together at the ...
+[Paul Schow](https://www.blogger.com/profile/02139879554145337777 "noreply@blogger.com") - <time datetime="2016-08-29T16:02:35.489-06:00">Aug 1, 2016</time>
+
+It's two long wires, soldered together at the top. At the bottom they just run straight through.
+<hr />

@@ -1,0 +1,82 @@
+---
+title: 'Shower Radio Repair'
+date: 2013-08-13T12:26:00.002-06:00
+draft: false
+url: /2013/08/shower-radio-repair.html
+---
+
+[![](http://2.bp.blogspot.com/-SyGa5ofFobs/Ugp0whX4Y0I/AAAAAAAAOOM/B7F26PruZoE/s400/IMAG0931.jpg)](http://2.bp.blogspot.com/-SyGa5ofFobs/Ugp0whX4Y0I/AAAAAAAAOOM/B7F26PruZoE/s1600/IMAG0931.jpg)
+
+  
+While browsing a thrift store in Boulder, I found a great deal on a shower radio. I picked it up, figuring any problems with it could be fixed. The model is SR-25.  
+  
+  
+  
+  
+  
+
+[![](http://2.bp.blogspot.com/-oHVCA0cYEpc/Ugp1ajK-qSI/AAAAAAAAOOU/C5Uo1A-PhU0/s400/IMAG0932.jpg)](http://2.bp.blogspot.com/-oHVCA0cYEpc/Ugp1ajK-qSI/AAAAAAAAOOU/C5Uo1A-PhU0/s1600/IMAG0932.jpg)
+
+  
+
+I got home and put in four AA's, and nothing happened. Time to open it up! It was closed via six screws under pads on the back. 
+
+  
+
+[![](http://1.bp.blogspot.com/-SbuE_L9TW40/Ugp2dhCGbtI/AAAAAAAAOOg/a5Qu5Awu3gY/s400/IMG_1513e.jpg)](http://1.bp.blogspot.com/-SbuE_L9TW40/Ugp2dhCGbtI/AAAAAAAAOOg/a5Qu5Awu3gY/s1600/IMG_1513e.jpg)
+
+Inside the radio. Note the clear plastic speaker.
+
+  
+
+After some testing, I determined the problem was with the clock/timer module on the front. This also controls the power to the radio but the whole thing was not working for some reason. 
+
+  
+
+[![](http://1.bp.blogspot.com/-98PAtdRSMx0/Ugp3b1wdYdI/AAAAAAAAOO0/NyAZzSL30FI/s400/IMG_1517.JPG)](http://1.bp.blogspot.com/-98PAtdRSMx0/Ugp3b1wdYdI/AAAAAAAAOO0/NyAZzSL30FI/s1600/IMG_1517.JPG)
+
+Broken clock/timer
+
+  
+
+The clock/timer was connected to the main radio board with a ribbon cable. Luckily the pinout was labeled and I discovered that the radio turns on when the battery voltage is applied to the power pin.
+
+  
+
+[![](http://1.bp.blogspot.com/-5wOvdvTzn4s/Ugp33CJrr-I/AAAAAAAAOO8/vYJ7UNL3bhY/s400/IMG_1521.JPG)](http://1.bp.blogspot.com/-5wOvdvTzn4s/Ugp33CJrr-I/AAAAAAAAOO8/vYJ7UNL3bhY/s1600/IMG_1521.JPG)
+
+Clock ribbon cable pinout
+
+\\
+
+Now I just needed a way to control the power. The default power button is a momentary tactile switch, so something new is needed. First I tried to use the volume control knob, but I couldn't get that to work. Then I looked at the AM/FM/TV tuner selector switch and notice that only half of it was used.
+
+  
+
+[![](http://3.bp.blogspot.com/-V46RrgRSlfY/Ugp4UogGGtI/AAAAAAAAOPE/MiGq8KUX-mI/s400/IMG_1522.JPG)](http://3.bp.blogspot.com/-V46RrgRSlfY/Ugp4UogGGtI/AAAAAAAAOPE/MiGq8KUX-mI/s1600/IMG_1522.JPG)
+
+AM/FM/TV tuner switch
+
+  
+
+I decided to use the unused half of this switch, although it would limit the radio to FM only. 
+
+  
+
+[![](http://2.bp.blogspot.com/-gaTD6xwSlek/Ugp4zTF8NWI/AAAAAAAAOPM/EoH62YWjKYs/s400/IMG_1523.JPG)](http://2.bp.blogspot.com/-gaTD6xwSlek/Ugp4zTF8NWI/AAAAAAAAOPM/EoH62YWjKYs/s1600/IMG_1523.JPG)
+
+Switch wired in
+
+  
+
+Now when the switch is set to the middle position (FM) the power is given to the power pin from the batteries. 
+
+  
+
+[![](http://3.bp.blogspot.com/-cuirXmsQ5IY/Ugp5Gv1QlcI/AAAAAAAAOPU/nqtKpGKJasw/s400/IMG_1524.JPG)](http://3.bp.blogspot.com/-cuirXmsQ5IY/Ugp5Gv1QlcI/AAAAAAAAOPU/nqtKpGKJasw/s1600/IMG_1524.JPG)
+
+Working radio
+
+  
+
+As a bonus, the TUNE light still works because it is separate from the clock board.

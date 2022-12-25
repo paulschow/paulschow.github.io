@@ -1,0 +1,30 @@
+---
+title: 'Digilent Basys 2 Setup Tutorial'
+date: 2012-04-05T11:06:00.002-06:00
+draft: false
+url: /2012/04/digilent-basys-2-setup-tutorial.html
+---
+
+  
+
+[![](http://1.bp.blogspot.com/-I6AWPgKl-y8/UTZTTsmqZiI/AAAAAAAAIpw/vjyfcNwI8I0/s400/Screenshot+from+2013-03-05+13:17:58.png)](http://1.bp.blogspot.com/-I6AWPgKl-y8/UTZTTsmqZiI/AAAAAAAAIpw/vjyfcNwI8I0/s1600/Screenshot+from+2013-03-05+13:17:58.png)
+
+  
+When I got my Digilent Basys 2, I was not able to find a good tutorial for how to set it up in Xilinx ISE Webpack. After lots of trial and error, I figured out the correct process. Then I made this tutorial so other people would be able to see how it is done.  
+  
+  
+[Here is a link in case the embed doesn't work.](https://docs.google.com/file/d/0B0QOo4z8zMZpNUNlT0JyWElTSGFTWUFTUmZmN3Jzdw/edit?usp=sharing)
+---
+### Comments:
+#### Thanks for sharing. It was useful to me like nothi...
+[Unknown](https://www.blogger.com/profile/15261891274510023317 "noreply@blogger.com") - <time datetime="2013-08-06T13:37:19.098-06:00">Aug 2, 2013</time>
+
+Thanks for sharing. It was useful to me like nothing...
+<hr />
+#### Thank you, needed to change to Jtag clock. Now I k...
+[TD](https://www.blogger.com/profile/13723239047099927866 "noreply@blogger.com") - <time datetime="2014-05-08T08:37:39.606-06:00">May 4, 2014</time>
+
+Thank you, needed to change to Jtag clock. Now I know how to do it.  
+RC  
+Belgium
+<hr />

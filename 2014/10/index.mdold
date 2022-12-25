@@ -1,0 +1,97 @@
+---
+title: 'RGB Internet Pumpkin'
+date: 2014-10-24T20:18:00.000-06:00
+draft: false
+url: /2014/10/rgb-internet-pumpkin.html
+---
+
+  
+
+[![](http://3.bp.blogspot.com/-EBcxqjdMeDo/VEsFcOoyvyI/AAAAAAAAZh8/-Diepp6m65w/s1600/vlcsnap-2014-10-24-20h04m33s161.png)](http://3.bp.blogspot.com/-EBcxqjdMeDo/VEsFcOoyvyI/AAAAAAAAZh8/-Diepp6m65w/s1600/vlcsnap-2014-10-24-20h04m33s161.png)
+
+  
+Just in time for Halloween, I modified my previous [Raspberry Pi Internet LED Control](http://www.paulschow.com/2013/06/raspberry-pi-internet-led-control.html) project to control an RGB LED, and stuck it inside a fake pumpkin. Now I have an internet controlled RGB pumpkin!  
+  
+  
+  
+  
+[The code](http://github.com/paulschow/WebLedPi) is basically the same as the old [Raspberry Pi Internet LED Control](http://www.paulschow.com/2013/06/raspberry-pi-internet-led-control.html), but instead of using four links to turn four LEDs on or off, it uses a form to control the levels of the three legs of the RGB LED.  
+  
+I used a [common anode diffused RGB LED](https://www.sparkfun.com/products/10821) for this, which I received from the [Sparkfun dumpster dive](https://www.sparkfun.com/products/12012) a few months ago.  
+  
+I wired it up to the extra pins on the Rpi V2, BCM numbers 28, 29, and 30. The resistors are each 100 Ohm. Some wiring guides for RGB LEDs have a 180 Ohm for the red, and 100 for blue and green. I used what I had, which was 100. It works fine for me.  
+  
+
+[![](http://3.bp.blogspot.com/-tLP6xN_oaZY/VEr_GLTjfdI/AAAAAAAAZg0/GBzGp-UJrB0/s1600/1024x768.png)](http://3.bp.blogspot.com/-tLP6xN_oaZY/VEr_GLTjfdI/AAAAAAAAZg0/GBzGp-UJrB0/s1600/1024x768.png)
+
+  
+After trying out a few test programs, I was ready to make it interface with the web. At first, I started with my old code and was modifying it to take any url operator (?color=ff00ff), but then I found the [WebPy form library](http://webpy.org/form). This is a much more elegant solution, although an even better one would use something like Ajax to enable live updates.  
+  
+
+[![](http://1.bp.blogspot.com/-daJgvdbZtpo/VEsBckQq3JI/AAAAAAAAZhA/67g6I7Ry6Sc/s1600/IMG_1699_scale.JPG)](http://1.bp.blogspot.com/-daJgvdbZtpo/VEsBckQq3JI/AAAAAAAAZhA/67g6I7Ry6Sc/s1600/IMG_1699_scale.JPG)
+
+  
+At first, I had it so that 100 was full off and 0 was full on. I later changed this to be compatible with [color pickers](http://www.colorpicker.com/) that give RGB values from off at 0 to full on at 255.  
+  
+
+[![](http://1.bp.blogspot.com/-yNxIwVDaQGE/VEsEd59CN8I/AAAAAAAAZh0/4a5bLffLUXw/s1600/Screenshot%2Bfrom%2B2014-10-23%2B19%3A21%3A54.png)](http://1.bp.blogspot.com/-yNxIwVDaQGE/VEsEd59CN8I/AAAAAAAAZh0/4a5bLffLUXw/s1600/Screenshot%2Bfrom%2B2014-10-23%2B19%3A21%3A54.png)
+
+  
+  
+Here's a video of the initial test:  
+
+  
+  
+The color of the LED is pretty hard to pick out, because it needs a diffuser. A popular thing to use is a ping pong ball with a hole in it. Instead, I used a fake pumpkin.  
+  
+
+[![](http://4.bp.blogspot.com/-vU0tezRwug4/VEsDr8wDrcI/AAAAAAAAZhk/7KBZlSWBs4Y/s1600/2014-10-24%2B19.56.45.jpg)](http://4.bp.blogspot.com/-vU0tezRwug4/VEsDr8wDrcI/AAAAAAAAZhk/7KBZlSWBs4Y/s1600/2014-10-24%2B19.56.45.jpg)
+
+  
+This pumpkin used to have an incandescent lightbulb in the back. I took that out and just placed the LED inside.  
+  
+
+[![](http://2.bp.blogspot.com/-JYsOAO6pmBw/VEsEJ6u9GTI/AAAAAAAAZhs/yK7oi3eFQ5k/s1600/IMG_1698_scale.JPG)](http://2.bp.blogspot.com/-JYsOAO6pmBw/VEsEJ6u9GTI/AAAAAAAAZhs/yK7oi3eFQ5k/s1600/IMG_1698_scale.JPG)
+
+  
+This works very well. The inside of the pumpkin is matte white, so it shows the correct color.  
+  
+
+[![](http://4.bp.blogspot.com/-4d1Cc5AAd6Y/VEsGEWL5IaI/AAAAAAAAZiE/fE18hhQjG5M/s1600/vlcsnap-2014-10-24-20h07m47s23.png)](http://4.bp.blogspot.com/-4d1Cc5AAd6Y/VEsGEWL5IaI/AAAAAAAAZiE/fE18hhQjG5M/s1600/vlcsnap-2014-10-24-20h07m47s23.png)
+
+  
+Here's a video of the final product:  
+
+  
+I'm pretty happy with it. The plan is to put it on a table for a Halloween party and give out the address, which should prove entertaining for five minutes.  
+  
+  
+[Source Code at Github](https://github.com/paulschow/WebLedPi)  
+  
+  
+
+### Update:
+
+  
+I added [phant.py from python-phant](https://github.com/matze/python-phant) to this, so now it outputs to [data.sparkfun.com](http://data.sparkfun.com/).  
+  
+
+[![](http://3.bp.blogspot.com/-kzwixGdx1v4/VFMCPhftn3I/AAAAAAAAaS8/C8V3WMq2OV0/s1600/Screenshot%2Bfrom%2B2014-10-30%2B21%3A29%3A36.png)](http://3.bp.blogspot.com/-kzwixGdx1v4/VFMCPhftn3I/AAAAAAAAaS8/C8V3WMq2OV0/s1600/Screenshot%2Bfrom%2B2014-10-30%2B21%3A29%3A36.png)
+
+  
+  
+[Data stream here](https://data.sparkfun.com/streams/XGAqR7LEqyC672205Dbx)  
+  
+ I also adapted their [tutorial on using google charts](http://phant.io/graphing/google/2014/07/07/graphing-data/) to make a html file with a graph of  the values.  
+  
+
+[![](http://1.bp.blogspot.com/-pfP56uL5Vx8/VFMCsRW6xVI/AAAAAAAAaTE/0we6O4Ptbqg/s1600/Screenshot%2Bfrom%2B2014-10-30%2B21%3A29%3A50.png)](http://1.bp.blogspot.com/-pfP56uL5Vx8/VFMCsRW6xVI/AAAAAAAAaTE/0we6O4Ptbqg/s1600/Screenshot%2Bfrom%2B2014-10-30%2B21%3A29%3A50.png)
+
+You can view the graph using [RawGit](https://rawgit.com/) [here](https://cdn.rawgit.com/paulschow/WebLedPi/master/graph.html).
+---
+### Comments:
+#### Heh, just needs some animatronics to move the &quo...
+[conundrum](https://www.blogger.com/profile/00367656902932421352 "noreply@blogger.com") - <time datetime="2014-10-26T08:13:12.465-06:00">Oct 0, 2014</time>
+
+Heh, just needs some animatronics to move the "beam" around inside.
+<hr />

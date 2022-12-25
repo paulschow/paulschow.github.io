@@ -1,0 +1,134 @@
+---
+title: 'Raspberry Pi Internet LED Control'
+date: 2013-06-22T12:01:00.000-06:00
+draft: false
+url: /2013/06/raspberry-pi-internet-led-control.html
+---
+
+[![](http://2.bp.blogspot.com/-6OnqyHSMp_A/UZ0DvPkM-uI/AAAAAAAAMl0/TWChH8YzO7k/s400/IMAG0523.jpg)](http://2.bp.blogspot.com/-6OnqyHSMp_A/UZ0DvPkM-uI/AAAAAAAAMl0/TWChH8YzO7k/s1600/IMAG0523.jpg)
+
+  
+Recently I obtained a Raspberry Pi. This exciting development board offers many features that quickly made it the center of a large community of makers. It runs embedded Linux and can be used for a wide variety of projects. To me, the most exciting feature is the web connectivity of the Pi. The built-in Ethernet port allows for projects that are controlled or control the internet. I decided to make a webserver running from the Pi to control a LED.  
+  
+  
+  
+The Raspberry Pi comes with a general purpose input/output (GPIO) header attached. However, this header is all male pins and I did not have any ribbon cables or other male connectors. To fix this I soldered female pins to the second expansion header on the board, which allows me to use male jumpers.  
+  
+
+[![](http://4.bp.blogspot.com/-umOk5N94ghg/UcIfA7B0kUI/AAAAAAAANCg/8KMnameWiOU/s400/IMAG0496.jpg)](http://4.bp.blogspot.com/-umOk5N94ghg/UcIfA7B0kUI/AAAAAAAANCg/8KMnameWiOU/s1600/IMAG0496.jpg)
+
+8 female headers attached to board
+
+  
+
+From there it was simple to connect an LED to the Raspberry Pi.
+
+  
+
+[![](http://1.bp.blogspot.com/-JmqOsExuauQ/UXtJpw-tqpI/AAAAAAAAK-g/1Ux3jBK_0lc/w1292-h727-no/IMAG0500.jpg)](http://1.bp.blogspot.com/-JmqOsExuauQ/UXtJpw-tqpI/AAAAAAAAK-g/1Ux3jBK_0lc/w1292-h727-no/IMAG0500.jpg)
+
+LED running from Raspberry Pi
+
+  
+
+I knew that I wanted to do some kind of web-controlled interface. I decided to use Python for the language because I had preformed all the LED tests in it and found it simple enough. First I used [webpy](http://webpy.org/) to host a simple webpage from the Raspberry Pi. With a google search I found some s[imple code](http://newfreshpeace.blogspot.com/2013/01/raspberry-pi-gpio-web-interface-using.html) using webpy to control the GPIO pins on the Raspberry Pi. This code works, but it requires the user to visit separate urls to control the LED. I modified the code to have hyperlinks on the homepage that control the LED and also show the status of the LED.
+
+  
+
+  
+
+<!\[CDATA\[ $def with (status) $if status: <h2><em>LED Status:</em> $status</h2>$else: LED status unknown <style>h1 {font-size:250%;} h2 {font-size:200%;} p {font-size:100%;} </style><br><br><h1><a href="http://0.0.0.0/?turn=on">Turn On</a></h1><br><br><h1><a href="http://0.0.0.0?turn=off">Turn Off</a></h1>\]\]>  
+
+  
+
+Video of me controlling the LED from my phone
+
+  
+
+Then I sent the address to some of my friends to test out. After a few minutes of LED light show in my room, they got bored. The webpage indicator only updated when the page was refreshed, and there wasn't any way to tell if you were actually doing anything in real life. 
+
+  
+
+  
+
+  
+
+Video of someone else controlling the LED from the internet
+
+  
+
+  
+
+To make it more entertaining, I added a webcam using my old android phone the the [IP Webcam](https://play.google.com/store/apps/details?id=com.pas.webcam) app. 
+
+  
+
+[![](http://4.bp.blogspot.com/-ODRGaddrLmQ/UcIrej9oiJI/AAAAAAAANCw/w74_JpQxpWU/s640/IMAG0525.jpg)](http://4.bp.blogspot.com/-ODRGaddrLmQ/UcIrej9oiJI/AAAAAAAANCw/w74_JpQxpWU/s1600/IMAG0525.jpg)
+
+Webcam monitoring LED
+
+  
+
+  
+
+  
+
+Being able to control and see a light over the internet is pretty cool, but my friends wanted more control! After a disappointing search though my parts bin, I realized I only had red LEDs. Still, I used four LEDs and a note card with labels to allow make things more interesting.
+
+  
+
+  
+
+[![](http://4.bp.blogspot.com/-RW3qrRpsT3g/UcXgVODm-pI/AAAAAAAANGU/6SkRY5ORv_0/s640/IMAG0528.jpg)](http://4.bp.blogspot.com/-RW3qrRpsT3g/UcXgVODm-pI/AAAAAAAANGU/6SkRY5ORv_0/s1600/IMAG0528.jpg)
+
+Webcam monitoring four LEDs
+
+  
+
+The code was modified to allow the controlling of 4 LEDs, and a new HTML template was created that allowed the control and embedded the webcam.
+
+Python code
+
+  
+
+HTML template
+
+  
+
+The code works by creating a global variable array with 4 elements. Each LED has it's own element that indicates if it is on (1) or off (0). For example: when the "/?turn=1" url is entered, the first LED is toggled on or off through GPIO, and the command is printed to the terminal, then the main page is updated with the status of the LED and the user is returned there. 
+
+  
+
+  
+
+  
+
+Video with the entire four LED setup in action
+
+  
+
+  
+
+  
+
+  
+
+>
+---
+### Comments:
+#### Great Project! How did you make your webpy webpag...
+[Anonymous]( "noreply@blogger.com") - <time datetime="2014-07-27T00:20:28.417-06:00">Jul 0, 2014</time>
+
+Great Project!  
+  
+How did you make your webpy webpage available to your friends?  
+  
+Were they using an internet connection that was outside of your local home network?  
+  
+Thanks
+<hr />
+#### Yes, I had it connected to the internet. This isn&...
+[Paul Schow](https://www.blogger.com/profile/02139879554145337777 "noreply@blogger.com") - <time datetime="2014-07-27T10:58:36.844-06:00">Jul 0, 2014</time>
+
+Yes, I had it connected to the internet. This isn't really safe or secure though, so I only had it up for a short amount of time.
+<hr />

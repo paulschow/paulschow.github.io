@@ -1,0 +1,822 @@
+
+
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="light"
+  data-auto-appearance="true"
+><head>
+  <meta charset="utf-8" />
+  
+    <meta http-equiv="content-language" content="en" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="rgb(255,255,255)" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Monitoring Temperatures Using a Raspberry Pi and a MCP3208 ADC with Thermistors  &middot; Paul&#39;s Projects</title>
+    <meta name="title" content="Monitoring Temperatures Using a Raspberry Pi and a MCP3208 ADC with Thermistors  &middot; Paul&#39;s Projects" />
+  
+  <meta name="description" content="After my Raspbery Pi Internet LED Control project, I wanted to try reading sensors from my room on to the internet." />
+  
+  
+  
+  <link rel="canonical" href="https://paulschow.com/2013/08/monitoring-temperatures-using-raspberry.html" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.9a3c55add7114104f4403b9784a2fea7343e1785bbc807491f6d70233f97a907d15c2d558e81a8220f9c7b777731a662989704838e02e9e7cac019fd25e5d6b8.css"
+    integrity="sha512-mjxVrdcRQQT0QDuXhKL&#43;pzQ&#43;F4W7yAdJH21wIz&#43;XqQfRXC1VjoGoIg&#43;ce3d3MaZimJcEg44C6efKwBn9JeXWuA=="
+  />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.75869c865625ed3d10fe38f2274fa90938094d28b518ee2088f544a29fe6b826626bae550302adcbde61e83ba341bdd928a250d644367723ce01e798033098c5.js" integrity="sha512-dYachlYl7T0Q/jjyJ0&#43;pCTgJTSi1GO4giPVEop/muCZia65VAwKty95h6DujQb3ZKKJQ1kQ2dyPOAeeYAzCYxQ=="></script>
+  
+  
+  
+  
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Monitoring Temperatures Using a Raspberry Pi and a MCP3208 ADC with Thermistors " />
+<meta property="og:description" content="After my Raspbery Pi Internet LED Control project, I wanted to try reading sensors from my room on to the internet." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://paulschow.com/2013/08/monitoring-temperatures-using-raspberry.html" /><meta property="og:image" content="https://paulschow.com/2013/08/cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2013-08-16T17:55:00-06:00" />
+<meta property="article:modified_time" content="2013-08-16T17:55:00-06:00" /><meta property="og:site_name" content="Paul&#39;s Projects" />
+
+
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://paulschow.com/2013/08/cover.png"/>
+<meta name="twitter:title" content="Monitoring Temperatures Using a Raspberry Pi and a MCP3208 ADC with Thermistors "/>
+<meta name="twitter:description" content="After my Raspbery Pi Internet LED Control project, I wanted to try reading sensors from my room on to the internet."/>
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Monitoring Temperatures Using a Raspberry Pi and a MCP3208 ADC with Thermistors ",
+    "headline": "Monitoring Temperatures Using a Raspberry Pi and a MCP3208 ADC with Thermistors ",
+    
+    "abstract": "After my Raspbery Pi Internet LED Control project, I wanted to try reading sensors from my room on to the internet.",
+    "inLanguage": "en",
+    "url" : "https:\/\/paulschow.com\/2013\/08\/monitoring-temperatures-using-raspberry.html",
+    "author" : {
+      "@type": "Person",
+      "name": "Paul Schow"
+    },
+    "copyrightYear": "2013",
+    "dateCreated": "2013-08-16T17:55:00-06:00",
+    "datePublished": "2013-08-16T17:55:00-06:00",
+    
+    "dateModified": "2013-08-16T17:55:00-06:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1869"
+  }]
+  </script>
+
+
+  
+  <meta name="author" content="Paul Schow" />
+  
+    
+      <link href="https://twitter.com/weirdguy" rel="me" />
+    
+  
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+  
+  
+</head>
+<body
+    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400"
+          >&darr;</span
+        >Skip to main content</a
+      >
+    </div>
+    
+    
+      <header class="py-6 font-semibold text-neutral-900 dark:text-neutral print:hidden sm:py-10">
+  <nav class="flex items-start justify-between sm:items-center">
+    
+    <div class="flex flex-row items-center">
+      
+  <a
+    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+    rel="me"
+    href="/"
+    >Paul&rsquo;s Projects</a
+  >
+
+      
+
+    </div>
+    
+    
+      <ul class="flex list-none flex-col ltr:text-right rtl:text-left sm:flex-row">
+        
+          
+            <li class="mb-1 sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+              <a
+                class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+                href="/posts/"
+                title="Posts"
+                >Blog</a
+              >
+            </li>
+          
+        
+        
+      </ul>
+    
+  </nav>
+</header>
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  <article>
+    <header class="max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Monitoring Temperatures Using a Raspberry Pi and a MCP3208 ADC with Thermistors 
+      </h1>
+      <div class="mt-8 mb-12 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2013-08-16 17:55:00 -0600 MDT">16 August 2013</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">9 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+  
+
+
+      </div>
+      
+        <img
+          class="mb-6 -mt-4 rounded-md"
+          srcset="/2013/08/cover_hu7260e30415c3f1c6e9449027d4cdded8_34345_330x0_resize_box_3.png 330w,/2013/08/cover_hu7260e30415c3f1c6e9449027d4cdded8_34345_660x0_resize_box_3.png 660w,/2013/08/cover_hu7260e30415c3f1c6e9449027d4cdded8_34345_1024x0_resize_box_3.png 1024w,/2013/08/cover_hu7260e30415c3f1c6e9449027d4cdded8_34345_1320x0_resize_box_3.png 2x"
+          src="/2013/08/cover_hu7260e30415c3f1c6e9449027d4cdded8_34345_660x0_resize_box_3.png"
+        />
+      
+    </header>
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      <div class="min-w-0 min-h-0 max-w-prose grow">
+        <p>After my <a href="http://www.paulschow.com/2013/06/raspberry-pi-internet-led-control.html"   target="_blank">Raspbery Pi Internet LED Control</a> project, I wanted to try reading sensors from my room on to the internet. The only sensors I had around were <a href="http://en.wikipedia.org/wiki/Thermistor"   target="_blank">thermistors</a>, a type of resistor that changes resistance based on the temperature. </p>
+<p>Thermistors are analog sensors, and the Raspberry Pi does not have an analog-to-digital converters (ADC) built in. An external ADC is needed to measure analog sensors. Most tutorials use the MCP3008 chip for this, but I had the MCP3208, which is just an MCP3008 with higher resolution. I found a great <a href="http://scruss.com/blog/2013/02/02/simple-adc-with-the-raspberry-pi/"   target="_blank">tutorial</a> to measure temperature using the MCP3008 with a more modern temperature sensor. </p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2013/08/image26_hub545fd5d55d905bb1f3dfab0848b2501_33771_330x0_resize_q75_box.jpg 330w,
+          /2013/08/image26_hub545fd5d55d905bb1f3dfab0848b2501_33771_660x0_resize_q75_box.jpg 660w,
+          /2013/08/image26_hub545fd5d55d905bb1f3dfab0848b2501_33771_1024x0_resize_q75_box.jpg 1024w,
+          /2013/08/image26_hub545fd5d55d905bb1f3dfab0848b2501_33771_1320x0_resize_q75_box.jpg 2x"
+        src="/2013/08/image26_hub545fd5d55d905bb1f3dfab0848b2501_33771_660x0_resize_q75_box.jpg"
+        alt="image26.jpg"
+      />
+      
+    </figure>
+  
+
+
+MCP3208 and thermistor connected</p>
+<blockquote>
+<pre tabindex="0"><code>Pinout   
+[](http://www.blogger.com/blogger.g?blogID=6889717346319980874)  
+[](http://www.blogger.com/blogger.g?blogID=6889717346319980874)MCP 3208 Pin          Pi GPIO Pin #    Pi Pin Name  
+[](http://www.blogger.com/blogger.g?blogID=6889717346319980874)\==============        ===============  =============  
+[](http://www.blogger.com/blogger.g?blogID=6889717346319980874) 16  VDD                 1              3.3 V  
+[](http://www.blogger.com/blogger.g?blogID=6889717346319980874) 15  VREF                1              3.3 V  
+[](http://www.blogger.com/blogger.g?blogID=6889717346319980874) 14  AGND                6              GND  
+[](http://www.blogger.com/blogger.g?blogID=6889717346319980874) 13  CLK                23              GPIO11 SPI0\_SCLK  
+[](http://www.blogger.com/blogger.g?blogID=6889717346319980874) 12  DOUT               21              GPIO09 SPI0\_MISO  
+[](http://www.blogger.com/blogger.g?blogID=6889717346319980874) 11  DIN                19              GPIO10 SPI0\_MOSI  
+[](http://www.blogger.com/blogger.g?blogID=6889717346319980874) 10  CS                 24              GPIO08 CE0  
+[](http://www.blogger.com/blogger.g?blogID=6889717346319980874)  9  DGND                6              GND
+</code></pre></blockquote>
+<p>Pinout to connect Pi to MCP3208 </p>
+<p>The tutorial code works fine for modern sensors, but I had to adjust it to work with a thermistor. I needed to be able to calculate the resistance of the thermistor using the ADC, so I created a voltage divider with the 1K ohm thermistor and a 1K ohm resistor. </p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2013/08/image55_hud4310eb136e7dfea49ae42152a6ed0aa_16030_330x0_resize_box_3.png 330w,
+          /2013/08/image55_hud4310eb136e7dfea49ae42152a6ed0aa_16030_660x0_resize_box_3.png 660w,
+          /2013/08/image55_hud4310eb136e7dfea49ae42152a6ed0aa_16030_1024x0_resize_box_3.png 1024w,
+          /2013/08/image55_hud4310eb136e7dfea49ae42152a6ed0aa_16030_1320x0_resize_box_3.png 2x"
+        src="/2013/08/image55_hud4310eb136e7dfea49ae42152a6ed0aa_16030_660x0_resize_box_3.png"
+        alt="image55.png"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>Voltage divider circuit. I&rsquo;m using the photoresistor symbol for the thermistor </p>
+<p>This circuit allows me to read the voltage and calculate resistance of the thermistor, and is simple to implement in python.</p>
+<p>Python code to read thermistor</p>
+<p>Unfortunately the reason no one sane uses thermistors anymore is because they have a non-linear relation between temperature and resistance. This means to calculate temperatures from resistance a lookup table has to be used for maximum accuracy. However, there are equations that are close enough for me. I used the <a href="http://en.wikipedia.org/wiki/Steinhart%E2%80%93Hart_equation"   target="_blank">Steinhart Hart Equation</a>: Temp = 1/(a + b[ln(ohm)] + c[ln(ohm)]^3) . To complicate it further, I had no idea who made the thermistors I was using, only that they read 1K ohms at 25 degrees celsius. Luckily I found an <a href="http://www.thermistor.com/calculators.php"   target="_blank">online thermistor calculator</a> that calculated the values for me. I discovered by comparing values from the calculator to a thermometer in my room that the best curve for my thermistors was curve R (-6.2%/C @ 25C) Mil Ratio X. </p>
+<p>Python function to get °C from thermistor</p>
+<p>I created a function in python: temp_get().  When provided with the value of a pin on the MCP3208, this function calculates and returns the temperature in °C. </p>
+<p>One problem I encountered was python rounding part of the calculation up to 0. The third part of the equation (c[ln(ohm)]^3) was rounded up to 0 instead of the actual value. This threw off all my readings, but I was able to compensate by subtracting 4 from the final value. </p>
+<p>Then I created a loop to take temperature readings once a minute and save them in a file, which I can then import to google drive and make a nice graph from.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2013/08/image93_hu1a30629d161043ebfdba660ec7bc295d_20496_330x0_resize_box_3.png 330w,
+          /2013/08/image93_hu1a30629d161043ebfdba660ec7bc295d_20496_660x0_resize_box_3.png 660w,
+          /2013/08/image93_hu1a30629d161043ebfdba660ec7bc295d_20496_1024x0_resize_box_3.png 1024w,
+          /2013/08/image93_hu1a30629d161043ebfdba660ec7bc295d_20496_1320x0_resize_box_3.png 2x"
+        src="/2013/08/image93_hu1a30629d161043ebfdba660ec7bc295d_20496_660x0_resize_box_3.png"
+        alt="image93.png"
+      />
+      
+    </figure>
+  
+
+
+Recorded room temperature over one hour. <a href="https://docs.google.com/spreadsheet/ccc?key=0AkQOo4z8zMZpdHIyenFkcmpuYmg3UkV5RVJGNFB3b2c#gid=1"   target="_blank">Interactive version here</a></p>
+<p>Although this room temperature graph is a cool proof of concept, it&rsquo;s not very exciting or even useful. I added code to record the time of the recording and built a second sensor to go outside. </p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2013/08/image103_hu62d8d6cb3be374e65fc901a35876ab7b_13359_330x0_resize_q75_box.jpg 330w,
+          /2013/08/image103_hu62d8d6cb3be374e65fc901a35876ab7b_13359_660x0_resize_q75_box.jpg 660w,
+          /2013/08/image103_hu62d8d6cb3be374e65fc901a35876ab7b_13359_1024x0_resize_q75_box.jpg 1024w,
+          /2013/08/image103_hu62d8d6cb3be374e65fc901a35876ab7b_13359_1320x0_resize_q75_box.jpg 2x"
+        src="/2013/08/image103_hu62d8d6cb3be374e65fc901a35876ab7b_13359_660x0_resize_q75_box.jpg"
+        alt="image103.jpg"
+      />
+      
+    </figure>
+  
+
+
+Thermistor attached to cable and soldered in</p>
+<p>I picked out a fairly long cable from my parts pile and added a thermistor at the end, then covered it in heat shrink tubing. I measured the resistance in the cable to be 0.1 ohm, not high enough to mess with my readings. </p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2013/08/image113_hu80ebe01f81f41fb7459aa4cfcb0610ea_20332_330x0_resize_q75_box.jpg 330w,
+          /2013/08/image113_hu80ebe01f81f41fb7459aa4cfcb0610ea_20332_660x0_resize_q75_box.jpg 660w,
+          /2013/08/image113_hu80ebe01f81f41fb7459aa4cfcb0610ea_20332_1024x0_resize_q75_box.jpg 1024w,
+          /2013/08/image113_hu80ebe01f81f41fb7459aa4cfcb0610ea_20332_1320x0_resize_q75_box.jpg 2x"
+        src="/2013/08/image113_hu80ebe01f81f41fb7459aa4cfcb0610ea_20332_660x0_resize_q75_box.jpg"
+        alt="image113.jpg"
+      />
+      
+    </figure>
+  
+
+
+Heat shrinked sensor</p>
+<p>Then I took the sensor and placed it under my window so it could read from outside.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2013/08/image123_hu057de31b87e08a9edfd215f5f6cb168e_20579_330x0_resize_q75_box.jpg 330w,
+          /2013/08/image123_hu057de31b87e08a9edfd215f5f6cb168e_20579_660x0_resize_q75_box.jpg 660w,
+          /2013/08/image123_hu057de31b87e08a9edfd215f5f6cb168e_20579_1024x0_resize_q75_box.jpg 1024w,
+          /2013/08/image123_hu057de31b87e08a9edfd215f5f6cb168e_20579_1320x0_resize_q75_box.jpg 2x"
+        src="/2013/08/image123_hu057de31b87e08a9edfd215f5f6cb168e_20579_660x0_resize_q75_box.jpg"
+        alt="image123.jpg"
+      />
+      
+    </figure>
+  
+
+
+Outdoor sensor in place</p>
+<p>I was worried about my window crushing the cable, but it still worked fine. It&rsquo;s not a long-term solution though. The sensor cable is connected to another voltage divider on digital channel 1.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2013/08/image133_huaf7ca3b6d0efd9e93e80f902c9fac312_133731_330x0_resize_box_3.png 330w,
+          /2013/08/image133_huaf7ca3b6d0efd9e93e80f902c9fac312_133731_660x0_resize_box_3.png 660w,
+          /2013/08/image133_huaf7ca3b6d0efd9e93e80f902c9fac312_133731_1024x0_resize_box_3.png 1024w,
+          /2013/08/image133_huaf7ca3b6d0efd9e93e80f902c9fac312_133731_1320x0_resize_box_3.png 2x"
+        src="/2013/08/image133_huaf7ca3b6d0efd9e93e80f902c9fac312_133731_660x0_resize_box_3.png"
+        alt="image133.png"
+      />
+      
+    </figure>
+  
+
+
+Terminal output of the program</p>
+<p>Then I modified the code to record both sensors and the time from strftime in the log file. </p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2013/08/image145_huf6296c0bda4c8a9ec2a384f0c0376453_25929_330x0_resize_box_3.png 330w,
+          /2013/08/image145_huf6296c0bda4c8a9ec2a384f0c0376453_25929_660x0_resize_box_3.png 660w,
+          /2013/08/image145_huf6296c0bda4c8a9ec2a384f0c0376453_25929_1024x0_resize_box_3.png 1024w,
+          /2013/08/image145_huf6296c0bda4c8a9ec2a384f0c0376453_25929_1320x0_resize_box_3.png 2x"
+        src="/2013/08/image145_huf6296c0bda4c8a9ec2a384f0c0376453_25929_660x0_resize_box_3.png"
+        alt="image145.png"
+      />
+      
+    </figure>
+  
+
+
+Recorded outside and inside temperatures over 12.2 hours. <a href="https://docs.google.com/spreadsheet/ccc?key=0AkQOo4z8zMZpdGMzUW43c0t6cUN1T1FIcUJYSkhWekE#gid=1"   target="_blank">Interactive version here</a></p>
+<p>This graph is more exciting, you can see the exact time that the temperature outside gets cooler than the temperature inside. My next goal was to log the temperatures for an entire day.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2013/08/image155_hue10cc5564fed507f0a2470961daca1c9_26989_330x0_resize_box_3.png 330w,
+          /2013/08/image155_hue10cc5564fed507f0a2470961daca1c9_26989_660x0_resize_box_3.png 660w,
+          /2013/08/image155_hue10cc5564fed507f0a2470961daca1c9_26989_1024x0_resize_box_3.png 1024w,
+          /2013/08/image155_hue10cc5564fed507f0a2470961daca1c9_26989_1320x0_resize_box_3.png 2x"
+        src="/2013/08/image155_hue10cc5564fed507f0a2470961daca1c9_26989_660x0_resize_box_3.png"
+        alt="image155.png"
+      />
+      
+    </figure>
+  
+
+
+Recorded outside and inside temperatures on August 3rd. <a href="https://docs.google.com/spreadsheet/ccc?key=0AkQOo4z8zMZpdEVtZld6aDhQTHZRSEhDbHdEamFielE#gid=1"   target="_blank">Interactive version here</a></p>
+<p>The August 3rd graph is much more interesting, but it has a few anomalies. In the morning around 2:30 the temperature goes up and then goes back down again. This was probably caused by the sprinkler systems outside my window. </p>
+<p>More obviously, the huge temperature spike in the morning. No, it does not reach 40°C when the sun rises only to drop to 28 °C a few hours later. This huge spike is caused by the sun hitting the sensor directly and warming it up beyond the actual temperature. </p>
+<p>To verify my theories about the analmonies I recorded another day of temperatures. </p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2013/08/image173_hu4e088a734ad29e7744e35ec11ac62f53_37097_330x0_resize_box_3.png 330w,
+          /2013/08/image173_hu4e088a734ad29e7744e35ec11ac62f53_37097_660x0_resize_box_3.png 660w,
+          /2013/08/image173_hu4e088a734ad29e7744e35ec11ac62f53_37097_1024x0_resize_box_3.png 1024w,
+          /2013/08/image173_hu4e088a734ad29e7744e35ec11ac62f53_37097_1320x0_resize_box_3.png 2x"
+        src="/2013/08/image173_hu4e088a734ad29e7744e35ec11ac62f53_37097_660x0_resize_box_3.png"
+        alt="image173.png"
+      />
+      
+    </figure>
+  
+
+
+Comparison of recorded temperatures on August 3rd and August 5th. <a href="https://docs.google.com/spreadsheet/ccc?key=0AkQOo4z8zMZpdHUxS0xkaEN4Uy05XzV1S3hsbUt0NUE#gid=4"   target="_blank">Interactive version here</a></p>
+<p>When the two graphs are compared, it is easy to see that the 2:30 anomaly is gone, but the sun anomaly is still present.  </p>
+<p>To verify my theory about the sun anomaly, I needed another source of temperature. Ideally I would have place another sensor outside in the shade all day, but that was not practical for me. Instead I used <a href="https://code.google.com/p/python-weather-api/"   target="_blank">python-weather-api</a> to get the temperature from weather.com and then record it along with my temperatures.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2013/08/image187_hue9e5ec8f599511bc233eb3a706cf4363_24794_330x0_resize_box_3.png 330w,
+          /2013/08/image187_hue9e5ec8f599511bc233eb3a706cf4363_24794_660x0_resize_box_3.png 660w,
+          /2013/08/image187_hue9e5ec8f599511bc233eb3a706cf4363_24794_1024x0_resize_box_3.png 1024w,
+          /2013/08/image187_hue9e5ec8f599511bc233eb3a706cf4363_24794_1320x0_resize_box_3.png 2x"
+        src="/2013/08/image187_hue9e5ec8f599511bc233eb3a706cf4363_24794_660x0_resize_box_3.png"
+        alt="image187.png"
+      />
+      
+    </figure>
+  
+
+
+Comparison of recorded and internet temperatures on August 6th. <a href="https://docs.google.com/spreadsheet/ccc?key=0AkQOo4z8zMZpdERCUE1RemZzOVBGbjFReWNweGdSVEE#gid=1"   target="_blank">Interactive version here</a></p>
+<p>The weather.com temperatures verified my sun theory, while still follwing the same general line. Also, the internet temperature gets a lot lower than my recorded temperatures, which indicates that my sensor is still being heated through the window. </p>
+<p>There is something strange in the August 6th graph, the sun temperature goes down for a bit before going back up. This was probably caused by a car parking in front of my window and shading the sensor from the sun, then driving off later. </p>
+<p>I&rsquo;m still working on this project, with aims to use the Pi as a webserver and display temperatures and graphs automatically. Maybe I will even build a wireless temperature sensor and put it somewhere shady.</p>
+<p>For this project I put the code in a git repository on bitbucket:</p>
+<p><a href="https://bitbucket.org/pschow/rpiadctherm/overview"   target="_blank">https://bitbucket.org/pschow/rpiadctherm/overview</a></p>
+<p>The script for recording the temperatures is <a href="https://bitbucket.org/pschow/rpiadctherm/src/dbfe8101eeb4/basiclogmcp.py?at=master"   target="_blank">basiclogmcp.py</a></p>
+<h2 id="note-even-with-this-data-my-roommates-still-cant-understand-why-to-keep-the-windows-closed-during-the-day-and-open-at-night-oh-well" class="relative group">Note: Even with this data my roommates still can&rsquo;t understand why to keep the windows closed during the day and open at night. Oh well. <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#note-even-with-this-data-my-roommates-still-cant-understand-why-to-keep-the-windows-closed-during-the-day-and-open-at-night-oh-well" aria-label="Anchor">#</a></span></h2>
+<h3 id="comments" class="relative group">Comments: <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#comments" aria-label="Anchor">#</a></span></h3>
+<h4 id="great-post-could-you-eloberate-a-little-on-the-lo" class="relative group">Great Post. Could you eloberate a little on the lo&hellip; <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#great-post-could-you-eloberate-a-little-on-the-lo" aria-label="Anchor">#</a></span></h4>
+<p><a href="https://www.blogger.com/profile/17232018236643958133"  title="noreply@blogger.com"  target="_blank">Abhiram</a> - <time datetime="2013-09-27T06:02:30.460-06:00">Sep 5, 2013</time></p>
+<p>Great Post. Could you eloberate a little on the log portion?</p>
+<hr />
+#### Thanks! The problem is with the part of the equati...
+[Paul Schow](https://www.blogger.com/profile/02139879554145337777 "noreply@blogger.com") - <time datetime="2013-09-27T16:49:47.166-06:00">Sep 5, 2013</time>
+<p>Thanks! The problem is with the part of the equation that multiplies 0.000000125008328 (C) by the natural log of the resistance. In python it always comes out to zero, even though it should actually be something like 7.6687768*10^-7. There&rsquo;s probably a good way to fix it, but I never figured it out.</p>
+<hr />
+#### Consider referencing this if you ever go wireless ...
+[John Wayne](https://www.blogger.com/profile/17119087286324061921 "noreply@blogger.com") - <time datetime="2013-12-05T09:34:52.929-07:00">Dec 4, 2013</time>
+<p>Consider referencing this if you ever go wireless with your sensor. Its a great tutorial using a thermoistor and XRF wireless transcievers!</p>
+<p><a href="http://openmicros.org/index.php/articles/79-computer-projects/241-python-thermostat-control"   target="_blank">http://openmicros.org/index.php/articles/79-computer-projects/241-python-thermostat-control</a></p>
+<hr />
+#### Great sir
+[Unknown](https://www.blogger.com/profile/11573839639826658296 "noreply@blogger.com") - <time datetime="2016-04-09T22:16:23.238-06:00">Apr 6, 2016</time>
+<p>Great sir</p>
+<hr />
+#### Your sample schematic above (with the photoresisto...
+[Steve](https://www.blogger.com/profile/06936373823068615688 "noreply@blogger.com") - <time datetime="2016-05-16T19:42:42.467-06:00">May 1, 2016</time>
+<p>Your sample schematic above (with the photoresistor standing in for the thermister) shows it connected to a digital pin.. Dont you mean that to be an analog pin? I thought that was representing an analog pin on the ADC?</p>
+<hr />
+#### You're right, it should be connected to an ana...
+[Paul Schow](https://www.blogger.com/profile/02139879554145337777 "noreply@blogger.com") - <time datetime="2016-05-16T20:25:54.421-06:00">May 1, 2016</time>
+<p>You&rsquo;re right, it should be connected to an analog pin. I&rsquo;m not sure why I wrote digital there.</p>
+<hr />
+#### Hi, nice tutorial. Just wanted to point out that p...
+[Josh](https://www.blogger.com/profile/01019188535279626568 "noreply@blogger.com") - <time datetime="2016-05-28T23:54:07.792-06:00">May 6, 2016</time>
+<p>Hi, nice tutorial. Just wanted to point out that part off your implementation of the S-H equation in your code is wrong and ought to be corrected. In the c[ln(ohms)]^3 part of the equation, only the value of ln(ohms) should be cubed before multipling by c. In your code, you multiply by c before cubing which will give these very small numbers you describe.</p>
+<hr />
+#### Cześć czy Ty wiesz jaka jest różnica pomiędzy prze...
+[Unknown](https://www.blogger.com/profile/10749556602460641281 "noreply@blogger.com") - <time datetime="2016-08-27T01:01:51.399-06:00">Aug 6, 2016</time>
+<p>Cześć czy Ty wiesz jaka jest różnica pomiędzy przetwornikiem 10 a 12 bitowym. Napisałeś rozwiązanie dl 10 bitowego mcp3008 a nie 12bitowego mcp3208</p>
+<hr />
+#### Great tutorial, thanks for the write up. I've...
+[cheekygnome](https://www.blogger.com/profile/02203120669718761396 "noreply@blogger.com") - <time datetime="2016-09-04T07:19:08.032-06:00">Sep 0, 2016</time>
+<p>Great tutorial, thanks for the write up. I&rsquo;ve just begun to play around with my RPi as a weather station, beginning with using a DHT11 sensor yesterday. My ultimate goal is to have an accurate home built weather station. This morning I was worrying over the long term accuracy of these cheap Chinese made DHT sensors (the 11 and 22) and started to consider thermistors which lead me to your page. In the long run do you think the thermistor is the best way to go? Seems like all the maker plans I come across use DHT sensors and I&rsquo;m wondering if it isn&rsquo;t just due to simplicity.</p>
+<hr />
+#### I re-did the math from unknown suggestion and it s...
+[Unknown](https://www.blogger.com/profile/01271709557159599292 "noreply@blogger.com") - <time datetime="2016-10-23T21:23:27.411-06:00">Oct 0, 2016</time>
+<p>I re-did the math from unknown suggestion and it seems to be right&hellip;im getting values that are real close to my other store bought sensor setups.</p>
+<hr />
+#### i re-did the math from unknown suggestion...it wor...
+[Unknown](https://www.blogger.com/profile/01271709557159599292 "noreply@blogger.com") - <time datetime="2016-10-23T21:24:37.273-06:00">Oct 0, 2016</time>
+<p>i re-did the math from unknown suggestion&hellip;it works out for me&hellip;values are better and closer to my test math.</p>
+<hr />
+#### I have been using a 3008, but have a 3208, so am c...
+[Unknown](https://www.blogger.com/profile/18424698271673981298 "noreply@blogger.com") - <time datetime="2016-11-07T22:42:50.023-07:00">Nov 1, 2016</time>
+<p>I have been using a 3008, but have a 3208, so am considering switching. A couple of questions, if I may&hellip;<br>
+1. In my 3008, when I put in a reference voltage (a resistance to 3.3V and a diode to ground) into channel 1, I get a lot of variability in my readings &ndash; 503, 506, 510, etc.) Is that a limitation of the chip? Seems like very poor resolution, and it is driving me nuts. Or is the power supply to my board varying?<br>
+2. The 3208 has 12-bit resolution, but in your code, you are dividing by 1024 instead of 4096. Why is this?</p>
+<hr />
+#### Warren.. I'm not the one who made the project...
+[Steve](https://www.blogger.com/profile/06936373823068615688 "noreply@blogger.com") - <time datetime="2017-02-11T12:09:12.293-07:00">Feb 6, 2017</time>
+<p>Warren.. I&rsquo;m not the one who made the project but I saw your comment.. why are you using a diode to ground? His original circuit shows a resistor.. you need the resistor to make the voltage devider circuit.. I wonder if that&rsquo;s why you&rsquo;re having the problem?</p>
+<hr />
+#### 
+[Unknown](https://www.blogger.com/profile/07947484845292656605 "noreply@blogger.com") - <time datetime="2017-03-02T12:20:37.812-07:00">Mar 4, 2017</time>
+<p>This comment has been removed by the author.</p>
+<hr />
+
+      </div>
+    </section>
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  <div class="flex">
+    
+    <div class="place-self-center">
+      
+        <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+          Author
+        </div>
+        <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+          Paul Schow
+        </div>
+      
+      
+      <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://twitter.com/weirdguy"
+          target="_blank"
+          aria-label="Twitter"
+          rel="me noopener noreferrer"
+          >
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+
+  </span>
+
+</a
+        >
+      
+    
+  </div>
+
+</div>
+    </div>
+  </div>
+
+
+      
+
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="group flex" href="/2013/08/shower-radio-repair.html">
+              <span
+                class="mr-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-2 text-neutral-700 transition-transform group-hover:translate-x-[2px] group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Shower Radio Repair</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2013-08-13 12:26:00.002 -0600 MDT">13 August 2013</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="group flex text-right" href="/2013/12/raspberry-pi-visual-ping-indicator.html">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Raspberry Pi Visual Ping Indicator / Roommate Tracker</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2013-12-28 14:14:00.001 -0700 MST">28 December 2013</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-2 text-neutral-700 transition-transform group-hover:translate-x-[2px] group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+          <div
+            class="pointer-events-none absolute top-[100vh] bottom-0 w-12 ltr:right-0 rtl:left-0"
+          >
+            <a
+              href="#the-top"
+              class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+              aria-label="Scroll to top"
+              title="Scroll to top"
+            >
+              &uarr;
+            </a>
+          </div>
+        
+      </main><footer class="py-10 print:hidden">
+  
+  
+  <div class="flex items-center justify-between">
+    <div>
+      
+      
+      
+      
+        <p class="text-xs text-neutral-500 dark:text-neutral-400">
+          
+          
+          Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href="https://git.io/hugo-congo" target="_blank" rel="noopener noreferrer">Congo</a>
+        </p>
+      
+    </div>
+    
+    
+      <div
+        class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+      >
+        <button id="appearance-switcher" type="button">
+          <div
+            class="flex items-center justify-center w-12 h-12 dark:hidden"
+            title="Switch to dark appearance"
+          >
+            
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+          </div>
+          <div
+            class="items-center justify-center hidden w-12 h-12 dark:flex"
+            title="Switch to light appearance"
+          >
+            
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+          </div>
+        </button>
+      </div>
+    
+  </div>
+  
+  
+</footer>
+
+    </div>
+  </body>
+</html>

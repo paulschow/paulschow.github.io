@@ -1,0 +1,45 @@
+---
+title: 'US-sized scale model solar system'
+date: 2013-03-05T13:11:00.002-07:00
+draft: false
+url: /2013/03/us-sized-scale-model-solar-system.html
+---
+
+  
+
+[![](http://i.imgur.com/eQiziDW.jpg)](http://i.imgur.com/eQiziDW.jpg)
+
+  
+
+[Scale Model Solar Systems](http://en.wikipedia.org/wiki/Solar_system_model)are pretty cool. Currently the largest one is in [Sweden](http://en.wikipedia.org/wiki/Sweden_Solar_System) with a bigger one under construction in England.
+
+What if there was a model that spanned the United States?
+
+  
+  
+
+I decided to use the distance from San Francisco to Washington DC as a base length of 3932km (from Wolfram Alpha).
+
+Then I took the average AU distance of the planets (ending at Neptune) as a percentage and converted that to km in the SF to DC distance.
+
+Here is the spreadsheet I made for the data.
+
+  
+
+  
+I used Google Earth to estimate the location of each planet in the US.
+
+Here is the map of the points on Google Maps.
+
+  
+View [US Scale Solar system](https://maps.google.com/maps/ms?msid=204171978533958063965.0004d70a91cb5016bc66c&msa=0&ie=UTF8&t=h&ll=38.307181,-102.65625&spn=29.661493,54.228516&source=embed) in a larger map  
+  
+  
+
+Calculating the ratio of scale km to real km turns out to be
+
+1 km:1.14x106 km
+
+Scaling the planets according to this ratio (also on the spreadsheet) unfortunately results in a 1,200m diameter sun in SF. The most practical way would probably be to use a different scale for the planets, and use a 1.2m (diameter) sun in SF, and a 4cm mercury.  
+  
+Yes, I did post this on [Reddit](http://www.reddit.com/r/estimation/comments/19lh0s/ussized_scale_model_solar_system/) first, to make sure my math was correct.

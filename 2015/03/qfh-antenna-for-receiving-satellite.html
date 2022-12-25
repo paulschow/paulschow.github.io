@@ -1,0 +1,1106 @@
+
+
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="light"
+  data-auto-appearance="true"
+><head>
+  <meta charset="utf-8" />
+  
+    <meta http-equiv="content-language" content="en" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="rgb(255,255,255)" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>QFH Antenna for Receiving Satellite Images Using RTL-SDR &middot; Paul&#39;s Projects</title>
+    <meta name="title" content="QFH Antenna for Receiving Satellite Images Using RTL-SDR &middot; Paul&#39;s Projects" />
+  
+  <meta name="description" content="There is an incredibly popular low-cost software defined radio, known as the RTL-SDR." />
+  
+  
+  
+  <link rel="canonical" href="https://paulschow.com/2015/03/qfh-antenna-for-receiving-satellite.html" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.9a3c55add7114104f4403b9784a2fea7343e1785bbc807491f6d70233f97a907d15c2d558e81a8220f9c7b777731a662989704838e02e9e7cac019fd25e5d6b8.css"
+    integrity="sha512-mjxVrdcRQQT0QDuXhKL&#43;pzQ&#43;F4W7yAdJH21wIz&#43;XqQfRXC1VjoGoIg&#43;ce3d3MaZimJcEg44C6efKwBn9JeXWuA=="
+  />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.75869c865625ed3d10fe38f2274fa90938094d28b518ee2088f544a29fe6b826626bae550302adcbde61e83ba341bdd928a250d644367723ce01e798033098c5.js" integrity="sha512-dYachlYl7T0Q/jjyJ0&#43;pCTgJTSi1GO4giPVEop/muCZia65VAwKty95h6DujQb3ZKKJQ1kQ2dyPOAeeYAzCYxQ=="></script>
+  
+  
+  
+  
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="QFH Antenna for Receiving Satellite Images Using RTL-SDR" />
+<meta property="og:description" content="There is an incredibly popular low-cost software defined radio, known as the RTL-SDR." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://paulschow.com/2015/03/qfh-antenna-for-receiving-satellite.html" /><meta property="og:image" content="https://paulschow.com/2015/03/cover.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2015-03-25T18:06:00-06:00" />
+<meta property="article:modified_time" content="2015-03-25T18:06:00-06:00" /><meta property="og:site_name" content="Paul&#39;s Projects" />
+
+
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://paulschow.com/2015/03/cover.jpg"/>
+<meta name="twitter:title" content="QFH Antenna for Receiving Satellite Images Using RTL-SDR"/>
+<meta name="twitter:description" content="There is an incredibly popular low-cost software defined radio, known as the RTL-SDR."/>
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "QFH Antenna for Receiving Satellite Images Using RTL-SDR",
+    "headline": "QFH Antenna for Receiving Satellite Images Using RTL-SDR",
+    
+    "abstract": "There is an incredibly popular low-cost software defined radio, known as the RTL-SDR.",
+    "inLanguage": "en",
+    "url" : "https:\/\/paulschow.com\/2015\/03\/qfh-antenna-for-receiving-satellite.html",
+    "author" : {
+      "@type": "Person",
+      "name": "Paul Schow"
+    },
+    "copyrightYear": "2015",
+    "dateCreated": "2015-03-25T18:06:00-06:00",
+    "datePublished": "2015-03-25T18:06:00-06:00",
+    
+    "dateModified": "2015-03-25T18:06:00-06:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1097"
+  }]
+  </script>
+
+
+  
+  <meta name="author" content="Paul Schow" />
+  
+    
+      <link href="https://twitter.com/weirdguy" rel="me" />
+    
+  
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+  
+  
+</head>
+<body
+    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400"
+          >&darr;</span
+        >Skip to main content</a
+      >
+    </div>
+    
+    
+      <header class="py-6 font-semibold text-neutral-900 dark:text-neutral print:hidden sm:py-10">
+  <nav class="flex items-start justify-between sm:items-center">
+    
+    <div class="flex flex-row items-center">
+      
+  <a
+    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+    rel="me"
+    href="/"
+    >Paul&rsquo;s Projects</a
+  >
+
+      
+
+    </div>
+    
+    
+      <ul class="flex list-none flex-col ltr:text-right rtl:text-left sm:flex-row">
+        
+          
+            <li class="mb-1 sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+              <a
+                class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+                href="/posts/"
+                title="Posts"
+                >Blog</a
+              >
+            </li>
+          
+        
+        
+      </ul>
+    
+  </nav>
+</header>
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  <article>
+    <header class="max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        QFH Antenna for Receiving Satellite Images Using RTL-SDR
+      </h1>
+      <div class="mt-8 mb-12 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2015-03-25 18:06:00.001 -0600 MDT">25 March 2015</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">6 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+  
+
+
+      </div>
+      
+        <img
+          class="mb-6 -mt-4 rounded-md"
+          srcset="/2015/03/cover_hub64da5639747fed891468536af0987cf_339457_330x0_resize_q75_box.jpg 330w,/2015/03/cover_hub64da5639747fed891468536af0987cf_339457_660x0_resize_q75_box.jpg 660w,/2015/03/cover_hub64da5639747fed891468536af0987cf_339457_1024x0_resize_q75_box.jpg 1024w,/2015/03/cover_hub64da5639747fed891468536af0987cf_339457_1320x0_resize_q75_box.jpg 2x"
+          src="/2015/03/cover_hub64da5639747fed891468536af0987cf_339457_660x0_resize_q75_box.jpg"
+        />
+      
+    </header>
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      <div class="min-w-0 min-h-0 max-w-prose grow">
+        <p>There is an incredibly popular low-cost software defined radio, known as the <a href="http://www.rtl-sdr.com/"   target="_blank">RTL-SDR</a>. I&rsquo;ve had one of these for months, and haven&rsquo;t really done anything cool with it. Recently I&rsquo;ve seen a lot of people on the <a href="http://www.reddit.com/r/rtlsdr"   target="_blank">rtl-sdr reddit</a> building quadrifilar helix (QFH) antennas to receive images from satellites using <a href="http://en.wikipedia.org/wiki/Automatic_Picture_Transmission"   target="_blank">automatic picture transmission</a> (APT). I decided to try this over spring break.</p>
+<p>Step one is research. This is a pretty old ham radio project and now a lot of people are redoing it with the RTL-SDR, so there is a lot of information out there. I probably used <a href="http://www.alternet.us.com/?p=1461"   target="_blank">this</a> blog post the most, because it has links to a ton of other helpful posts.</p>
+<p>Step two is buying materials. I bought 1&quot; and 0.75&quot; PVC, but if I was going to do this again I would probably buy 1.5&quot; and 0.5&quot;.  I already had copper pipe from a very old project to use for this antenna.</p>
+<p>Then generate the template using <a href="http://jcoppens.com/ant/qfh/calc.en.php"   target="_blank">this website.</a> The default values for 137.5 MHz are good. Put the diameter of the conductor, which was 5mm for me. Then just scroll down and insert the two PVC diameters in mm. I measured 1&quot; as 35mm and 0.75&quot; as 25mm (although I know 1 inch is 25mm when converted directly) using a tape measured that had cm on it, but your pipe may be different. Download the template and print it out, but make sure the printer doesn&rsquo;t scale it. Compare the printed size to your PVC to check.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image22_hu64db671d0211f726bca357f7cbf031a4_361428_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image22_hu64db671d0211f726bca357f7cbf031a4_361428_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image22_hu64db671d0211f726bca357f7cbf031a4_361428_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image22_hu64db671d0211f726bca357f7cbf031a4_361428_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image22_hu64db671d0211f726bca357f7cbf031a4_361428_660x0_resize_q75_box.jpg"
+        alt="image22.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>Cut out the template, tape it to your pipe, and get drilling. I had a cm measuring tape, but you might have to convert the measurements to inches if you don&rsquo;t. A useful tip from <a href="http://www.alternet.us.com/?p=1461"   target="_blank">here</a> is to use a door jamb to make a line down the pipe.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image31_huc7ba29d05cfd81a563c71786862f61c0_238171_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image31_huc7ba29d05cfd81a563c71786862f61c0_238171_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image31_huc7ba29d05cfd81a563c71786862f61c0_238171_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image31_huc7ba29d05cfd81a563c71786862f61c0_238171_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image31_huc7ba29d05cfd81a563c71786862f61c0_238171_660x0_resize_q75_box.jpg"
+        alt="image31.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>The copper pipe that I used is easy* enough to bend, but some guides say to use a log to bend the pipe if you can&rsquo;t. Follow the template exactly, with pipe from hole A going to A, and D to D, etc. You should be aware that the larger loop from the template is holes B and D, which makes the smaller loop holes A and C.</p>
+<p>*This pipe might have been too easy to bend. I had a serious kink on the bottom loop.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image39_hubdd939b0515f1cfe503fa97f45e0c92f_184923_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image39_hubdd939b0515f1cfe503fa97f45e0c92f_184923_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image39_hubdd939b0515f1cfe503fa97f45e0c92f_184923_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image39_hubdd939b0515f1cfe503fa97f45e0c92f_184923_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image39_hubdd939b0515f1cfe503fa97f45e0c92f_184923_660x0_resize_q75_box.jpg"
+        alt="image39.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>Later I tried to fix it with solder, but I don&rsquo;t really think that did the job.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image46_hu9fe9ca0ac4bcd4592b9d9133f8ab43fc_400470_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image46_hu9fe9ca0ac4bcd4592b9d9133f8ab43fc_400470_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image46_hu9fe9ca0ac4bcd4592b9d9133f8ab43fc_400470_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image46_hu9fe9ca0ac4bcd4592b9d9133f8ab43fc_400470_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image46_hu9fe9ca0ac4bcd4592b9d9133f8ab43fc_400470_660x0_resize_q75_box.jpg"
+        alt="image46.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>Eventually you should have something that looks weird from any direction but is generally symmetrical. Time to attach the coax.</p>
+<p>I went through my pile of coax and picked the highest-quality, stiffest coax. This is probably overkill. Then you drill a hole near the top, feed to coax in, and solder it on. I was very confused about which wires go to which loop until I found <a href="http://www.gregorystrike.com/2010/05/16/quadrifilar-helix-antenna-137-mhz/"   target="_blank">this post</a>, which has a nice graphic.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image54_hufa7e1deaccc643626596414321669d5a_285845_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image54_hufa7e1deaccc643626596414321669d5a_285845_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image54_hufa7e1deaccc643626596414321669d5a_285845_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image54_hufa7e1deaccc643626596414321669d5a_285845_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image54_hufa7e1deaccc643626596414321669d5a_285845_660x0_resize_q75_box.jpg"
+        alt="image54.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>My soldering solution was an old iron set to max temp with a huge tip, and a ton of solder. Cut down the top of the pipe if you can&rsquo;t reach in enough. The real tip here is to sand the copper before you solder it. Sand even if you are just using copper wire.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image60_hu46a859f8ee95cf1999edb4f139d54364_465532_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image60_hu46a859f8ee95cf1999edb4f139d54364_465532_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image60_hu46a859f8ee95cf1999edb4f139d54364_465532_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image60_hu46a859f8ee95cf1999edb4f139d54364_465532_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image60_hu46a859f8ee95cf1999edb4f139d54364_465532_660x0_resize_q75_box.jpg"
+        alt="image60.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>Wrap the cable tightly around the main tube a few times to create a balun. I used five times.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image66_hu9c79318017db104557d830857dc22d3c_289773_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image66_hu9c79318017db104557d830857dc22d3c_289773_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image66_hu9c79318017db104557d830857dc22d3c_289773_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image66_hu9c79318017db104557d830857dc22d3c_289773_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image66_hu9c79318017db104557d830857dc22d3c_289773_660x0_resize_q75_box.jpg"
+        alt="image66.jpg"
+      />
+      
+    </figure>
+  
+
+
+It&rsquo;s something!</p>
+<p>Later I used a piece of particle board to create a simple stand for it, but don&rsquo;t have any pictures. If you have any experience with wood you can probably build one better than mine. </p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image76_hu7142f25b269829c94392c0f0daf81a45_894126_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image76_hu7142f25b269829c94392c0f0daf81a45_894126_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image76_hu7142f25b269829c94392c0f0daf81a45_894126_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image76_hu7142f25b269829c94392c0f0daf81a45_894126_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image76_hu7142f25b269829c94392c0f0daf81a45_894126_660x0_resize_q75_box.jpg"
+        alt="image76.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>My RTL-SDR (in the altoids can in the picture) already has an F connector, so I just plugged it in. Then I used a usb extension cable to provide distance from the antenna. Then I waited for satellites.</p>
+<p>To receive the images I referenced <a href="http://www.rtl-sdr.com/rtl-sdr-tutorial-receiving-noaa-weather-satellite-images/"   target="_blank">this post</a> and used <a href="http://sdrsharp.com/"   target="_blank">SDR#</a>, <a href="http://www.rtl-sdr.com/free-virtual-audio-cable-alternative/"   target="_blank">VB-Cable</a> and <a href="http://www.wxtoimg.com/"   target="_blank">WXtoImg</a> on Windows. It should be possible using <a href="http://gqrx.dk/"   target="_blank">Gqrx</a> on Linux, but I&rsquo;m sure how to pipe audio from one program to another.</p>
+<p>Once I had that set up I used the WXtoImg satellite pass tracker and <a href="http://www.n2yo.com/"   target="_blank">n2yo</a> to track NOAA 15, 18, and 19, and found that the next pass was NOAA 15 at 6am.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image91_hu3850b246806ad4c88a2e2bc20cab7b1f_386292_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image91_hu3850b246806ad4c88a2e2bc20cab7b1f_386292_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image91_hu3850b246806ad4c88a2e2bc20cab7b1f_386292_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image91_hu3850b246806ad4c88a2e2bc20cab7b1f_386292_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image91_hu3850b246806ad4c88a2e2bc20cab7b1f_386292_660x0_resize_q75_box.jpg"
+        alt="image91.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>The next morning, I went out and set up and got an image! It was pretty overcast at the time, but it still worked.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image99_hu57b67194b532a9b68409459011897c8c_97612_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image99_hu57b67194b532a9b68409459011897c8c_97612_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image99_hu57b67194b532a9b68409459011897c8c_97612_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image99_hu57b67194b532a9b68409459011897c8c_97612_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image99_hu57b67194b532a9b68409459011897c8c_97612_660x0_resize_q75_box.jpg"
+        alt="image99.jpg"
+      />
+      
+    </figure>
+  
+
+
+NOAA 15 Passing over Idaho</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image105_hub044026ee737598d60747b8d39dece4e_384211_330x0_resize_box_3.PNG 330w,
+          /2015/03/image105_hub044026ee737598d60747b8d39dece4e_384211_660x0_resize_box_3.PNG 660w,
+          /2015/03/image105_hub044026ee737598d60747b8d39dece4e_384211_1024x0_resize_box_3.PNG 1024w,
+          /2015/03/image105_hub044026ee737598d60747b8d39dece4e_384211_1320x0_resize_box_3.PNG 2x"
+        src="/2015/03/image105_hub044026ee737598d60747b8d39dece4e_384211_660x0_resize_box_3.PNG"
+        alt="image105.PNG"
+      />
+      
+    </figure>
+  
+
+
+Sorry for the low contrast, but the signal is there!</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image111_hu3f3bdda8f984626baa5e24b1dfd9df69_499305_330x0_resize_box_3.PNG 330w,
+          /2015/03/image111_hu3f3bdda8f984626baa5e24b1dfd9df69_499305_660x0_resize_box_3.PNG 660w,
+          /2015/03/image111_hu3f3bdda8f984626baa5e24b1dfd9df69_499305_1024x0_resize_box_3.PNG 1024w,
+          /2015/03/image111_hu3f3bdda8f984626baa5e24b1dfd9df69_499305_1320x0_resize_box_3.PNG 2x"
+        src="/2015/03/image111_hu3f3bdda8f984626baa5e24b1dfd9df69_499305_660x0_resize_box_3.PNG"
+        alt="image111.PNG"
+      />
+      
+    </figure>
+  
+
+
+Receiving picture</p>
+<p>After it passed I let WXtoImg decode it and got something.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image122_huf3987dc960b621571bdd7a55c95aa324_777205_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image122_huf3987dc960b621571bdd7a55c95aa324_777205_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image122_huf3987dc960b621571bdd7a55c95aa324_777205_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image122_huf3987dc960b621571bdd7a55c95aa324_777205_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image122_huf3987dc960b621571bdd7a55c95aa324_777205_660x0_resize_q75_box.jpg"
+        alt="image122.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>Not exactly the highest quality, but it&rsquo;s there!</p>
+<p>A few more satellites passed over that day, and I grabbed them.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image130_hu60dba0e5bbdb3ac27e2022cce7ac11f7_147344_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image130_hu60dba0e5bbdb3ac27e2022cce7ac11f7_147344_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image130_hu60dba0e5bbdb3ac27e2022cce7ac11f7_147344_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image130_hu60dba0e5bbdb3ac27e2022cce7ac11f7_147344_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image130_hu60dba0e5bbdb3ac27e2022cce7ac11f7_147344_660x0_resize_q75_box.jpg"
+        alt="image130.jpg"
+      />
+      
+    </figure>
+  
+
+
+NOAA 19</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image137_hu3e68a3c226259e865d3a877ef7bfdeb2_232604_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image137_hu3e68a3c226259e865d3a877ef7bfdeb2_232604_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image137_hu3e68a3c226259e865d3a877ef7bfdeb2_232604_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image137_hu3e68a3c226259e865d3a877ef7bfdeb2_232604_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image137_hu3e68a3c226259e865d3a877ef7bfdeb2_232604_660x0_resize_q75_box.jpg"
+        alt="image137.jpg"
+      />
+      
+    </figure>
+  
+
+
+NOAA 15</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image143_hu20badd3dc9fecafa12493c91a2fb7b65_729304_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image143_hu20badd3dc9fecafa12493c91a2fb7b65_729304_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image143_hu20badd3dc9fecafa12493c91a2fb7b65_729304_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image143_hu20badd3dc9fecafa12493c91a2fb7b65_729304_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image143_hu20badd3dc9fecafa12493c91a2fb7b65_729304_660x0_resize_q75_box.jpg"
+        alt="image143.jpg"
+      />
+      
+    </figure>
+  
+
+
+NOAA 18</p>
+<p>NOAA 18 and 19 had strange interference in their frequency, so the pictures really suffered. However, the idea worked.</p>
+<p>Next morning NOAA 15 was flying almost directly over me, so I went out at 6am again to get a really nice picture.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image153_hubc3d31a4d577193a9a85cedd6bf61707_573684_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image153_hubc3d31a4d577193a9a85cedd6bf61707_573684_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image153_hubc3d31a4d577193a9a85cedd6bf61707_573684_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image153_hubc3d31a4d577193a9a85cedd6bf61707_573684_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image153_hubc3d31a4d577193a9a85cedd6bf61707_573684_660x0_resize_q75_box.jpg"
+        alt="image153.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>This time I was even able to do color!</p>
+<p>Later that night I tried to record the <a href="http://www.rtl-sdr.com/rtl-sdr-tutorial-receiving-meteor-m-n2-lrpt-weather-satellite-images-rtl-sdr/"   target="_blank">Russian Meteor-M N2</a>, but the signal wasn&rsquo;t strong enough.</p>
+<p>I still wasn&rsquo;t satisfied, and identified some problems in the original antenna that could be improved on. Then I went to go build another antenna.</p>
+<p>Copper pipe turned out to be pretty hard for me to work with, so I switched to 12 gauge copper wiring instead. I also used the center supporting pipes this time, and triple-checked every measurement on the antenna.</p>
+<p>The new antenna doesn&rsquo;t look as cool because there isn&rsquo;t any copper showing, but it works great!</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image169_hu9f1fd844abe5aa0c4557ff2a138bc8d5_823469_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image169_hu9f1fd844abe5aa0c4557ff2a138bc8d5_823469_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image169_hu9f1fd844abe5aa0c4557ff2a138bc8d5_823469_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image169_hu9f1fd844abe5aa0c4557ff2a138bc8d5_823469_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image169_hu9f1fd844abe5aa0c4557ff2a138bc8d5_823469_660x0_resize_q75_box.jpg"
+        alt="image169.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image174_hu51426c022eafe74ca59898fe2d534e25_912392_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image174_hu51426c022eafe74ca59898fe2d534e25_912392_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image174_hu51426c022eafe74ca59898fe2d534e25_912392_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image174_hu51426c022eafe74ca59898fe2d534e25_912392_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image174_hu51426c022eafe74ca59898fe2d534e25_912392_660x0_resize_q75_box.jpg"
+        alt="image174.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>I used it to get this picture from NOAA 18, which didn&rsquo;t even fly that close to me.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image181_hu735e8a65ad80af533f204431176c31d4_509702_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image181_hu735e8a65ad80af533f204431176c31d4_509702_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image181_hu735e8a65ad80af533f204431176c31d4_509702_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image181_hu735e8a65ad80af533f204431176c31d4_509702_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image181_hu735e8a65ad80af533f204431176c31d4_509702_660x0_resize_q75_box.jpg"
+        alt="image181.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>The only weird thing is that band in the middle, which I think was caused by me doing something on the computer at the wrong time.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image187_huf528573e1b07a4d4f60ab373a8cc279e_290643_330x0_resize_box_3.PNG 330w,
+          /2015/03/image187_huf528573e1b07a4d4f60ab373a8cc279e_290643_660x0_resize_box_3.PNG 660w,
+          /2015/03/image187_huf528573e1b07a4d4f60ab373a8cc279e_290643_1024x0_resize_box_3.PNG 1024w,
+          /2015/03/image187_huf528573e1b07a4d4f60ab373a8cc279e_290643_1320x0_resize_box_3.PNG 2x"
+        src="/2015/03/image187_huf528573e1b07a4d4f60ab373a8cc279e_290643_660x0_resize_box_3.PNG"
+        alt="image187.PNG"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>I found the best setup for me is WFM mode with a 40k bandwidth. I&rsquo;m not sure how much sample rate matters, I&rsquo;ve gotten images 2.8MSPS sample rate and 0.25MSPS sample rate.</p>
+<p>With this new setup, I&rsquo;ve gotten some great images.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image195_hu6c463f67ecbd9422a25071057859ec45_443539_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image195_hu6c463f67ecbd9422a25071057859ec45_443539_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image195_hu6c463f67ecbd9422a25071057859ec45_443539_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image195_hu6c463f67ecbd9422a25071057859ec45_443539_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image195_hu6c463f67ecbd9422a25071057859ec45_443539_660x0_resize_q75_box.jpg"
+        alt="image195.jpg"
+      />
+      
+    </figure>
+  
+
+
+Notice how my location isn&rsquo;t even in the picture!</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image201_hucbae6b8a5d72f5dc9f677327ea550f68_556658_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image201_hucbae6b8a5d72f5dc9f677327ea550f68_556658_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image201_hucbae6b8a5d72f5dc9f677327ea550f68_556658_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image201_hucbae6b8a5d72f5dc9f677327ea550f68_556658_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image201_hucbae6b8a5d72f5dc9f677327ea550f68_556658_660x0_resize_q75_box.jpg"
+        alt="image201.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image205_hu43840234a292b7595ae0976b2e5ea85b_609573_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image205_hu43840234a292b7595ae0976b2e5ea85b_609573_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image205_hu43840234a292b7595ae0976b2e5ea85b_609573_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image205_hu43840234a292b7595ae0976b2e5ea85b_609573_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image205_hu43840234a292b7595ae0976b2e5ea85b_609573_660x0_resize_q75_box.jpg"
+        alt="image205.jpg"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2015/03/image209_huffef502a873eb3935118e9c570823a62_419946_330x0_resize_q75_box.jpg 330w,
+          /2015/03/image209_huffef502a873eb3935118e9c570823a62_419946_660x0_resize_q75_box.jpg 660w,
+          /2015/03/image209_huffef502a873eb3935118e9c570823a62_419946_1024x0_resize_q75_box.jpg 1024w,
+          /2015/03/image209_huffef502a873eb3935118e9c570823a62_419946_1320x0_resize_q75_box.jpg 2x"
+        src="/2015/03/image209_huffef502a873eb3935118e9c570823a62_419946_660x0_resize_q75_box.jpg"
+        alt="image209.jpg"
+      />
+      
+    </figure>
+  
+
+&mdash;</p>
+<h3 id="comments" class="relative group">Comments: <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#comments" aria-label="Anchor">#</a></span></h3>
+<h4 id="great-work-i-have-a-question-about-the-new-antenn" class="relative group">Great work! I have a question about the new antenn&hellip; <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#great-work-i-have-a-question-about-the-new-antenn" aria-label="Anchor">#</a></span></h4>
+<p><a href="https://www.blogger.com/profile/05394690194626526159"  title="noreply@blogger.com"  target="_blank">Unknown</a> - <time datetime="2016-08-28T12:05:29.045-06:00">Aug 0, 2016</time></p>
+<p>Great work! I have a question about the new antenna you built specifically the bottom part. Are the 12 gauge copper wires soldered together? Is it one piece?</p>
+<hr />
+#### It's two long wires, soldered together at the ...
+[Paul Schow](https://www.blogger.com/profile/02139879554145337777 "noreply@blogger.com") - <time datetime="2016-08-29T16:02:35.489-06:00">Aug 1, 2016</time>
+<p>It&rsquo;s two long wires, soldered together at the top. At the bottom they just run straight through.</p>
+<hr />
+
+      </div>
+    </section>
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  <div class="flex">
+    
+    <div class="place-self-center">
+      
+        <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+          Author
+        </div>
+        <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+          Paul Schow
+        </div>
+      
+      
+      <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://twitter.com/weirdguy"
+          target="_blank"
+          aria-label="Twitter"
+          rel="me noopener noreferrer"
+          >
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+
+  </span>
+
+</a
+        >
+      
+    
+  </div>
+
+</div>
+    </div>
+  </div>
+
+
+      
+
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="group flex" href="/2014/10/rgb-internet-pumpkin.html">
+              <span
+                class="mr-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-2 text-neutral-700 transition-transform group-hover:translate-x-[2px] group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >RGB Internet Pumpkin</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2014-10-24 20:18:00 -0600 MDT">24 October 2014</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="group flex text-right" href="/2016/05/25-satellite-tracker.html">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >$25 Satellite Tracker</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2016-05-12 16:29:00 -0600 MDT">12 May 2016</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-2 text-neutral-700 transition-transform group-hover:translate-x-[2px] group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+          <div
+            class="pointer-events-none absolute top-[100vh] bottom-0 w-12 ltr:right-0 rtl:left-0"
+          >
+            <a
+              href="#the-top"
+              class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+              aria-label="Scroll to top"
+              title="Scroll to top"
+            >
+              &uarr;
+            </a>
+          </div>
+        
+      </main><footer class="py-10 print:hidden">
+  
+  
+  <div class="flex items-center justify-between">
+    <div>
+      
+      
+      
+      
+        <p class="text-xs text-neutral-500 dark:text-neutral-400">
+          
+          
+          Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href="https://git.io/hugo-congo" target="_blank" rel="noopener noreferrer">Congo</a>
+        </p>
+      
+    </div>
+    
+    
+      <div
+        class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+      >
+        <button id="appearance-switcher" type="button">
+          <div
+            class="flex items-center justify-center w-12 h-12 dark:hidden"
+            title="Switch to dark appearance"
+          >
+            
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+          </div>
+          <div
+            class="items-center justify-center hidden w-12 h-12 dark:flex"
+            title="Switch to light appearance"
+          >
+            
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+          </div>
+        </button>
+      </div>
+    
+  </div>
+  
+  
+</footer>
+
+    </div>
+  </body>
+</html>

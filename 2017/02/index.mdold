@@ -1,0 +1,194 @@
+---
+title: 'Pervasive Displays EPD Extension Kit Gen 2 Review'
+date: 2017-02-25T17:22:00.000-07:00
+draft: false
+url: /2017/02/pervasive-displays-epd-extension-kit.html
+---
+
+[![](https://4.bp.blogspot.com/-UYFCPw2--OA/WKnunVc88DI/AAAAAAABKTU/ZmY_UMxSqGoIoRkMAjVwUPves4c_n_KYwCLcB/s1600/header_500.jpg)](https://4.bp.blogspot.com/-UYFCPw2--OA/WKnunVc88DI/AAAAAAABKTU/ZmY_UMxSqGoIoRkMAjVwUPves4c_n_KYwCLcB/s1600/header_500.jpg)
+
+  
+My previous post about my [epaper business card](http://www.paulschow.com/2016/08/epaper-business-card.html) attracted a lot of attention, most of it good. After publishing that project I was contacted by [Pervasive Displays](http://www.pervasivedisplays.com/), who offered to send me an epaper demo kit in exchange for me writing something about it.  
+  
+This isn't really a proper review, more of a look at the screens and their software. For a better review, check out [this one by Rei Vilo](http://embeddedcomputing.weebly.com/pervasive-displays-e-paper-epd-extension-kit-gen-2.html).  
+  
+  
+  
+  
+What they sent me was their [EPD Extension Kit Gen 2](http://www.pervasivedisplays.com/kits/ext2_kit) ($25), along with a [TI EK-TM4C123GXL Launchpad](http://www.ti.com/tool/Ek-TM4C123Gxl) ($13.49) and a nice selection of screens.  
+  
+
+[![](https://3.bp.blogspot.com/-nlpPUpvZ0qk/WJ9jqVLeS7I/AAAAAAABKJY/JYDWWyfL5XYwPECqDZUXNw3KnT7UKIBMwCLcB/s640/P1010991.JPG)](https://3.bp.blogspot.com/-nlpPUpvZ0qk/WJ9jqVLeS7I/AAAAAAABKJY/JYDWWyfL5XYwPECqDZUXNw3KnT7UKIBMwCLcB/s1600/P1010991.JPG)
+
+  
+
+[![](https://2.bp.blogspot.com/-YqbHB8x8GYU/WJ9jroqTkPI/AAAAAAABKJc/Qv-Pkfb6WYcesBBWU2b4qMCw9izFHxqQQCLcB/s640/P1010992.JPG)](https://2.bp.blogspot.com/-YqbHB8x8GYU/WJ9jroqTkPI/AAAAAAABKJc/Qv-Pkfb6WYcesBBWU2b4qMCw9izFHxqQQCLcB/s1600/P1010992.JPG)
+
+  
+  
+
+[![](https://1.bp.blogspot.com/-_JEXQiU7TjM/WJ9jsCxwlBI/AAAAAAABKJg/wlXjlOhb4C4nc1WdCopxzVWDdhNeTa9PACLcB/s640/P1010993.JPG)](https://1.bp.blogspot.com/-_JEXQiU7TjM/WJ9jsCxwlBI/AAAAAAABKJg/wlXjlOhb4C4nc1WdCopxzVWDdhNeTa9PACLcB/s1600/P1010993.JPG)
+
+  
+The EPD Extension Kit Gen 2 is better than the Gen 1 extension kit because it supports both types of screens that Pervasive Displays has: Internal Timing Control (iTC) and External Timing Control (eTC). It works with all of their current displays from 1.44" to 4.2". That includes the color displays!  
+  
+
+[![](https://1.bp.blogspot.com/-WXTBTgHbvvY/WJ9nBlw9imI/AAAAAAABKJw/Q0ZPdH1bbzArAU3O5bpV5hO6lwA0-QDRACLcB/s640/P1010996.JPG)](https://1.bp.blogspot.com/-WXTBTgHbvvY/WJ9nBlw9imI/AAAAAAABKJw/Q0ZPdH1bbzArAU3O5bpV5hO6lwA0-QDRACLcB/s1600/P1010996.JPG)
+
+  
+I received four screens:  
+
+*   [2.15" iTC](http://www.pervasivedisplays.com/products/215) ($15.50)
+*   [2.71" eTC](http://www.pervasivedisplays.com/products/271) ($25.00)
+*   [2.87" iTC Color](http://www.pervasivedisplays.com/products/287) ($29.03)
+*   [4.2" iTC Color](http://www.pervasivedisplays.com/products/420) ($48.75)
+
+  
+Prices are the current from Digi-Key, and might be different by the time you read this. Of course, you don't need to buy everything I have just to mess around with epaper, and they have a wide variety of [kits on their site](http://www.pervasivedisplays.com/kits).  
+  
+One of the best parts about this kit is the software they wrote to go along with it. Under the "Utility" tab of their [EPD Extension Kit Gen 2 website](http://www.pervasivedisplays.com/kits/ext2_kit) you can download the "PDI Apps" tool. Unfortunately they require you to fill out a registration form to get an email with the download link, but it's worth it.  
+  
+
+[![](https://3.bp.blogspot.com/-LBmaux_TDqk/WJ9r-hMk5bI/AAAAAAABKKA/wZnOzCsOPyUuIgoBjjRqhWW_KdiMM3v2QCLcB/s640/2017-02-11%2B12_54_04-PDI%2BApps%2BVer.1.21.png)](https://3.bp.blogspot.com/-LBmaux_TDqk/WJ9r-hMk5bI/AAAAAAABKKA/wZnOzCsOPyUuIgoBjjRqhWW_KdiMM3v2QCLcB/s1600/2017-02-11%2B12_54_04-PDI%2BApps%2BVer.1.21.png)
+
+  
+Using their software makes messing around with the screens a lot easier than what I was doing before. With my epaper card I had to take every file, crop it, change the file type, change the file names in the source code, and reupload to the microcontroller. This made testing different images a pain. Using the PDI Apps software, you can just browse to any folder click an image to display it right away.  
+  
+To go along with the PDI Apps software, the user's guide (under "Supported Platform") is really nicely written and easy to understand.  
+  
+
+[![](https://1.bp.blogspot.com/-F-kPd_AOFkQ/WJ-lJkXLIYI/AAAAAAABKKk/grFKtlsKNmoK2oKEBcW_o2ypxSmcgsQYACLcB/s640/2017-02-11%2B16_58_05-EPD%252BExtension%252BKit%252BGen2%252B%2528EXT2%2529_User%252BGuide_Rev04_20161007%2B%25281%2529.pdf.png)](https://1.bp.blogspot.com/-F-kPd_AOFkQ/WJ-lJkXLIYI/AAAAAAABKKk/grFKtlsKNmoK2oKEBcW_o2ypxSmcgsQYACLcB/s1600/2017-02-11%2B16_58_05-EPD%252BExtension%252BKit%252BGen2%252B%2528EXT2%2529_User%252BGuide_Rev04_20161007%2B%25281%2529.pdf.png)
+
+One example of a page from the user's guide, showing how to connect the displays
+
+The user's guide covers way more than I'm covering in this "review", so make sure to give it a look if you're thinking about picking up this kit.  
+  
+Importantly, the user's guide contains this dip switch setting table:  
+
+[![](https://2.bp.blogspot.com/-xv9GTIQ5Z6o/WJ-mEBx8isI/AAAAAAABKKs/aCFKWQ3hXAIrCarsJeiCGeoCQ20e2uRHgCLcB/s1600/2017-02-11%2B17_01_44-EPD%252BExtension%252BKit%252BGen2%252B%2528EXT2%2529_User%252BGuide_Rev04_20161007%2B%25281%2529.pdf.png)](https://2.bp.blogspot.com/-xv9GTIQ5Z6o/WJ-mEBx8isI/AAAAAAABKKs/aCFKWQ3hXAIrCarsJeiCGeoCQ20e2uRHgCLcB/s1600/2017-02-11%2B17_01_44-EPD%252BExtension%252BKit%252BGen2%252B%2528EXT2%2529_User%252BGuide_Rev04_20161007%2B%25281%2529.pdf.png)
+
+  
+When changing display types, it's important to set the dip switches on the bottom on the board to match the correct display. This is a bit unfortunate as you have to remove the board from the launchpad to change the dip switch, but it's not really that big of a deal.  
+  
+Once you've got the software installed, the dip switch set correctly, and the screen attached, it's ready to go.  
+  
+
+### 2.15" Monochrome iTC
+
+I started by looking at the 2.15" screen. It's the smallest and the cheapest of the screens I got. Pervasive Displays does make smaller, cheaper screens (2", 1.9", and 1.44").  
+  
+
+[![](https://1.bp.blogspot.com/-i4AApJ3e4y4/WJ-pkJoeQUI/AAAAAAABKK4/73IF2BuWO_8wezw0n4aMzcd0l7FKvBEbwCLcB/s640/P1010998.JPG)](https://1.bp.blogspot.com/-i4AApJ3e4y4/WJ-pkJoeQUI/AAAAAAABKK4/73IF2BuWO_8wezw0n4aMzcd0l7FKvBEbwCLcB/s1600/P1010998.JPG)
+
+2.15" Screen
+
+The screen is almost the same as the 2" one I used for my business card, but with internal timing control and a bit larger. It's actually fun to use the PDI Apps software to go through random images and see how they look on a small epaper screen, something that would have been a chore the old way.  
+  
+
+### 2.71" Monochrome eTC & Partial Updates
+
+The 2.71" screen is much the same. It's larger but still monochrome. I can use it to show off a really cool feature: partial updates. Normally if you want to change an image on an eink display it has to refresh the entire screen with a blinking effect. This makes the frame rate very slow, and limits the applications you can do with it.  
+  
+Pervasive Displays has a partial update technology that enables much faster display updates.  
+  
+
+  
+
+This really opens up the possible applications for epaper. I've already got a few projects in mind for this.  
+  
+The PDI Apps software comes with two partial update demos for the 2.71" display. The partial update screen is called "Fast update".  
+  
+
+[![](https://4.bp.blogspot.com/-7jBFWsjQT6U/WJ-307ZooxI/AAAAAAABKLM/NJqbMswnIJ8EN5ZvcDN9OxCtmZFV5O07ACLcB/s640/2017-02-11%2B18_17_12-PDI%2BApps%2BVer.1.21.png)](https://4.bp.blogspot.com/-7jBFWsjQT6U/WJ-307ZooxI/AAAAAAABKLM/NJqbMswnIJ8EN5ZvcDN9OxCtmZFV5O07ACLcB/s1600/2017-02-11%2B18_17_12-PDI%2BApps%2BVer.1.21.png)
+
+  
+
+[![](https://2.bp.blogspot.com/-PCra-5d_cEw/WJ-4OC0xhyI/AAAAAAABKLQ/BcyHec5FM0A42gXTfy5Od348bZI7z0l-wCLcB/s640/2017-02-11%2B18_18_24-Select%2BEPD%2BImage%2BFiles.png)](https://2.bp.blogspot.com/-PCra-5d_cEw/WJ-4OC0xhyI/AAAAAAABKLQ/BcyHec5FM0A42gXTfy5Od348bZI7z0l-wCLcB/s1600/2017-02-11%2B18_18_24-Select%2BEPD%2BImage%2BFiles.png)
+
+  
+
+[![](https://1.bp.blogspot.com/-eMpmXg_KFjA/WJ-4Rdl1zxI/AAAAAAABKLU/QkPEv3nY7dM2aOdDIw5W_giSR7EaMi9JgCLcB/s640/2017-02-11%2B18_19_03-PDI%2BApps%2BVer.1.21.png)](https://1.bp.blogspot.com/-eMpmXg_KFjA/WJ-4Rdl1zxI/AAAAAAABKLU/QkPEv3nY7dM2aOdDIw5W_giSR7EaMi9JgCLcB/s1600/2017-02-11%2B18_19_03-PDI%2BApps%2BVer.1.21.png)
+
+  
+One demo is a thermostat, and the other is a rocket launching with some text. The time between images can be set in milliseconds, with a default of 400ms (2.5 frames per second) for each image. This can be increased (or decreased) but the results aren't that great. I made a short video to show the difference between the rocket animation at 400ms (2.5 fps) and 100ms (10 fps).  
+  
+
+  
+As you can see, the display looks pretty incredible at 400ms! At 100ms there is noticeable ghosting and the text is harder to read. At something like 33ms (30 fps) it just becomes a blur. You're not going to get 30fps video out of this screen, and that's to be expected. Even at 400ms it really opens up a lot of new ideas for me about epaper display projects.  
+  
+
+### 2.87" Spectra iTC
+
+Partial update is impressive, but what's even cooler is the three color screens. These display black, white, and red. After looking at two-color epaper displays for so long, it's weird to see one with a nice red on it.  
+  
+
+[![](https://2.bp.blogspot.com/-1wEP6IOzZuE/WJ_CwE98ZYI/AAAAAAABKLs/YSdGFvhydSA2mluOvA0W0I-lVkIxbKJywCLcB/s1600/dat_compare.jpg)](https://2.bp.blogspot.com/-1wEP6IOzZuE/WJ_CwE98ZYI/AAAAAAABKLs/YSdGFvhydSA2mluOvA0W0I-lVkIxbKJywCLcB/s1600/dat_compare.jpg)
+
+  
+This is where the PDI Apps software gets really fun. You can load up any full-color image and see it displayed on the epaper display a few seconds later.  
+  
+
+[![](https://1.bp.blogspot.com/-rrJoLQJ353Q/WJ_D-tJresI/AAAAAAABKL4/pwTzsxMjOIoWlTg1z70MLwCLwS0dw3vjgCLcB/s1600/kfc_comapre.jpg)](https://1.bp.blogspot.com/-rrJoLQJ353Q/WJ_D-tJresI/AAAAAAABKL4/pwTzsxMjOIoWlTg1z70MLwCLwS0dw3vjgCLcB/s1600/kfc_comapre.jpg)
+
+  
+Pervasive Displays provides a few demo images, like the KFC logo.  
+  
+
+[![](https://4.bp.blogspot.com/-l55A2JhdPmE/WJ_FlcqXqFI/AAAAAAABKME/TWl26A3x1t8rCJ5iBArpVBc0i23OsRFugCLcB/s1600/water_compare.jpg)](https://4.bp.blogspot.com/-l55A2JhdPmE/WJ_FlcqXqFI/AAAAAAABKME/TWl26A3x1t8rCJ5iBArpVBc0i23OsRFugCLcB/s1600/water_compare.jpg)
+
+  
+
+[![](https://2.bp.blogspot.com/-IXTlUWqQIfs/WJ_FtZCIuRI/AAAAAAABKMM/wSEP01dWDYIzqWTZFRTfU1p0bCDHiXzrgCLcB/s640/P1020092.JPG)](https://2.bp.blogspot.com/-IXTlUWqQIfs/WJ_FtZCIuRI/AAAAAAABKMM/wSEP01dWDYIzqWTZFRTfU1p0bCDHiXzrgCLcB/s1600/P1020092.JPG)
+
+  
+
+[![](https://3.bp.blogspot.com/-Pgr7TvpMO9s/WJ_FtXpe3wI/AAAAAAABKMQ/07oaqqGgJTw_lpFr36zyG4c7yu12mdQuQCLcB/s640/P1020093.JPG)](https://3.bp.blogspot.com/-Pgr7TvpMO9s/WJ_FtXpe3wI/AAAAAAABKMQ/07oaqqGgJTw_lpFr36zyG4c7yu12mdQuQCLcB/s1600/P1020093.JPG)
+
+  
+
+[![](https://4.bp.blogspot.com/-d3YVHSdq_vM/WJ_FtaNUobI/AAAAAAABKMI/q3YhuKj0_nYQ5ooefv1Z9Ipw72FGdVbPQCLcB/s640/P1020094.JPG)](https://4.bp.blogspot.com/-d3YVHSdq_vM/WJ_FtaNUobI/AAAAAAABKMI/q3YhuKj0_nYQ5ooefv1Z9Ipw72FGdVbPQCLcB/s1600/P1020094.JPG)
+
+  
+
+Even though it's only one color, seeing it on an epaper display is really nice. If you are only doing a project using the monochrome display, I would still suggest picking up a color one just to mess around with. I'm even considering making an even more impractical color version of my business card, just because of how cool it looks.  
+  
+
+### 4.2" Spectra iTC
+
+The color 4.2" display is the biggest and most expensive, but also the coolest. You could fit a ton of information on this one, and it looks just as great.  
+  
+
+[![](https://2.bp.blogspot.com/-y-0-H1IzL3o/WJ_HAtcV62I/AAAAAAABKMc/zmqEbKTMgh8jMeW4R42EL5Wq2-nyrg_FgCLcB/s640/shiba_comp.jpg)](https://2.bp.blogspot.com/-y-0-H1IzL3o/WJ_HAtcV62I/AAAAAAABKMc/zmqEbKTMgh8jMeW4R42EL5Wq2-nyrg_FgCLcB/s1600/shiba_comp.jpg)
+
+  
+Playing around with the software and loading on random images is a blast.  
+  
+
+[![](https://4.bp.blogspot.com/-eNjGHLxGzwo/WJ_Htf2XMNI/AAAAAAABKMg/M_r3HXjRZlIsJrWxWKC5B2LEc3i4vKRbACLcB/s640/orange_comp.jpg)](https://4.bp.blogspot.com/-eNjGHLxGzwo/WJ_Htf2XMNI/AAAAAAABKMg/M_r3HXjRZlIsJrWxWKC5B2LEc3i4vKRbACLcB/s1600/orange_comp.jpg)
+
+  
+
+[![](https://1.bp.blogspot.com/-S4FNnfjaoDo/WKnqwXfa_lI/AAAAAAABKTA/ARu0wijRug0aN-bjV7CdkP6gJ63AgV40gCLcB/s640/taipei_compare.jpg)](https://1.bp.blogspot.com/-S4FNnfjaoDo/WKnqwXfa_lI/AAAAAAABKTA/ARu0wijRug0aN-bjV7CdkP6gJ63AgV40gCLcB/s1600/taipei_compare.jpg)
+
+  
+  
+The best uses for a display like this are probably monochrome images with some kind of red highlight, but it's always interesting to load up some random pictures and see what happens.  
+  
+
+### Summary
+
+If you're prototyping anything involving epaper, this board is a great starting point. Even if you're not using the same microcontroller, the ability to load an image directly on to the screen and instantly see what it looks like is incredibly helpful. At $25 + $13.49 for the Extension Kit board and a Launchpad, it's a cheap prototyping solution. If you're picking one up, you might as well order one of the Spectra screens just to mess around with. 
+
+#### Pros:
+
+*   Enables very fast epaper testing
+*   User's guide is comprehensive and understandable
+*   PDI Apps software works well
+*   The screens look great
+*   Reasonably priced
+
+#### Cons:
+
+*   Registration required to get the software
+*   DIP switches on the back of the board
+*   Software only runs on windows

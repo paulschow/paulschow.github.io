@@ -6,7 +6,7 @@
     <description>Recent content on Paul&#39;s Projects</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 12 May 2016 16:29:00 -0600</lastBuildDate><atom:link href="https://paulschow.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Feb 2017 17:22:00 -0700</lastBuildDate><atom:link href="https://paulschow.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>https://paulschow.com/about/</link>
@@ -17,12 +17,129 @@
     </item>
     
     <item>
+      <title>Pervasive Displays EPD Extension Kit Gen 2 Review</title>
+      <link>https://paulschow.com/2017/02/pervasive-displays-epd-extension-kit.html</link>
+      <pubDate>Sat, 25 Feb 2017 17:22:00 -0700</pubDate>
+      
+      <guid>https://paulschow.com/2017/02/pervasive-displays-epd-extension-kit.html</guid>
+      <description>My previous post about my epaper business card attracted a lot of attention, most of it good.</description>
+    </item>
+    
+    <item>
+      <title>Epaper Business Card</title>
+      <link>https://paulschow.com/2016/08/epaper-business-card.html</link>
+      <pubDate>Wed, 17 Aug 2016 10:00:00 -0600</pubDate>
+      
+      <guid>https://paulschow.com/2016/08/epaper-business-card.html</guid>
+      <description>Recently, after graduating with a EE degree from the University of Colorado Colorado Springs and working at X-IO for a few months, I found myself out of a job.</description>
+    </item>
+    
+    <item>
       <title>$25 Satellite Tracker</title>
       <link>https://paulschow.com/2016/05/25-satellite-tracker.html</link>
       <pubDate>Thu, 12 May 2016 16:29:00 -0600</pubDate>
       
       <guid>https://paulschow.com/2016/05/25-satellite-tracker.html</guid>
       <description>After building my QFH antenna, I became more interested in satellite communications.</description>
+    </item>
+    
+    <item>
+      <title>QFH Antenna for Receiving Satellite Images Using RTL-SDR</title>
+      <link>https://paulschow.com/2015/03/qfh-antenna-for-receiving-satellite.html</link>
+      <pubDate>Wed, 25 Mar 2015 18:06:00 -0600</pubDate>
+      
+      <guid>https://paulschow.com/2015/03/qfh-antenna-for-receiving-satellite.html</guid>
+      <description>There is an incredibly popular low-cost software defined radio, known as the RTL-SDR.</description>
+    </item>
+    
+    <item>
+      <title>RGB Internet Pumpkin</title>
+      <link>https://paulschow.com/2014/10/rgb-internet-pumpkin.html</link>
+      <pubDate>Fri, 24 Oct 2014 20:18:00 -0600</pubDate>
+      
+      <guid>https://paulschow.com/2014/10/rgb-internet-pumpkin.html</guid>
+      <description>Just in time for Halloween, I modified my previous Raspberry Pi Internet LED Control project to control an RGB LED, and stuck it inside a fake pumpkin.</description>
+    </item>
+    
+    <item>
+      <title>Digital Picture Frame with Animated Gifs</title>
+      <link>https://paulschow.com/2014/03/digital-picture-frame.html</link>
+      <pubDate>Sun, 16 Mar 2014 16:15:00 -0600</pubDate>
+      
+      <guid>https://paulschow.com/2014/03/digital-picture-frame.html</guid>
+      <description>The problem with old computers is trying to find a use for them after you have upgraded.</description>
+    </item>
+    
+    <item>
+      <title>Astro Star Projector Kit Build</title>
+      <link>https://paulschow.com/2014/02/astrostar-astro-star-projector-kit-build.html</link>
+      <pubDate>Thu, 13 Feb 2014 11:17:00 -0700</pubDate>
+      
+      <guid>https://paulschow.com/2014/02/astrostar-astro-star-projector-kit-build.html</guid>
+      <description>Recently I heard about the Cloud b Twilight Constellation Night Light, which is a stuffed turtle that projects stars from it&amp;rsquo;s shell.</description>
+    </item>
+    
+    <item>
+      <title>Toolbox Boombox</title>
+      <link>https://paulschow.com/2014/01/toolbox-boombox.html</link>
+      <pubDate>Sat, 04 Jan 2014 15:14:00 -0700</pubDate>
+      
+      <guid>https://paulschow.com/2014/01/toolbox-boombox.html</guid>
+      <description>While I was home for winter vacation, I quickly grew bored without access to my electronic tools and projects.</description>
+    </item>
+    
+    <item>
+      <title>Raspberry Pi Visual Ping Indicator / Roommate Tracker</title>
+      <link>https://paulschow.com/2013/12/raspberry-pi-visual-ping-indicator.html</link>
+      <pubDate>Sat, 28 Dec 2013 14:14:00 -0700</pubDate>
+      
+      <guid>https://paulschow.com/2013/12/raspberry-pi-visual-ping-indicator.html</guid>
+      <description>A frequent problem in my apartment is the lack of a consistent sleep schedule among my roommates.</description>
+    </item>
+    
+    <item>
+      <title>Monitoring Temperatures Using a Raspberry Pi and a MCP3208 ADC with Thermistors </title>
+      <link>https://paulschow.com/2013/08/monitoring-temperatures-using-raspberry.html</link>
+      <pubDate>Fri, 16 Aug 2013 17:55:00 -0600</pubDate>
+      
+      <guid>https://paulschow.com/2013/08/monitoring-temperatures-using-raspberry.html</guid>
+      <description>After my Raspbery Pi Internet LED Control project, I wanted to try reading sensors from my room on to the internet.</description>
+    </item>
+    
+    <item>
+      <title>Shower Radio Repair</title>
+      <link>https://paulschow.com/2013/08/shower-radio-repair.html</link>
+      <pubDate>Tue, 13 Aug 2013 12:26:00 -0600</pubDate>
+      
+      <guid>https://paulschow.com/2013/08/shower-radio-repair.html</guid>
+      <description>While browsing a thrift store in Boulder, I found a great deal on a shower radio.</description>
+    </item>
+    
+    <item>
+      <title>Raspberry Pi Internet LED Control</title>
+      <link>https://paulschow.com/2013/06/raspberry-pi-internet-led-control.html</link>
+      <pubDate>Sat, 22 Jun 2013 12:01:00 -0600</pubDate>
+      
+      <guid>https://paulschow.com/2013/06/raspberry-pi-internet-led-control.html</guid>
+      <description>Recently I obtained a Raspberry Pi.</description>
+    </item>
+    
+    <item>
+      <title>US-sized scale model solar system</title>
+      <link>https://paulschow.com/2013/03/us-sized-scale-model-solar-system.html</link>
+      <pubDate>Tue, 05 Mar 2013 13:11:00 -0700</pubDate>
+      
+      <guid>https://paulschow.com/2013/03/us-sized-scale-model-solar-system.html</guid>
+      <description>Scale Model Solar Systemsare pretty cool.</description>
+    </item>
+    
+    <item>
+      <title>Digilent Basys 2 Setup Tutorial</title>
+      <link>https://paulschow.com/2012/04/digilent-basys-2-setup-tutorial.html</link>
+      <pubDate>Thu, 05 Apr 2012 11:06:00 -0600</pubDate>
+      
+      <guid>https://paulschow.com/2012/04/digilent-basys-2-setup-tutorial.html</guid>
+      <description>When I got my Digilent Basys 2, I was not able to find a good tutorial for how to set it up in Xilinx ISE Webpack.</description>
     </item>
     
   </channel>

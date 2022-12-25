@@ -1,0 +1,982 @@
+
+
+
+<!DOCTYPE html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="light"
+  data-auto-appearance="true"
+><head>
+  <meta charset="utf-8" />
+  
+    <meta http-equiv="content-language" content="en" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="rgb(255,255,255)" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  
+  <title>Digital Picture Frame with Animated Gifs &middot; Paul&#39;s Projects</title>
+    <meta name="title" content="Digital Picture Frame with Animated Gifs &middot; Paul&#39;s Projects" />
+  
+  <meta name="description" content="The problem with old computers is trying to find a use for them after you have upgraded." />
+  
+  
+  
+  <link rel="canonical" href="https://paulschow.com/2014/03/digital-picture-frame.html" />
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.9a3c55add7114104f4403b9784a2fea7343e1785bbc807491f6d70233f97a907d15c2d558e81a8220f9c7b777731a662989704838e02e9e7cac019fd25e5d6b8.css"
+    integrity="sha512-mjxVrdcRQQT0QDuXhKL&#43;pzQ&#43;F4W7yAdJH21wIz&#43;XqQfRXC1VjoGoIg&#43;ce3d3MaZimJcEg44C6efKwBn9JeXWuA=="
+  />
+  
+  
+  <script type="text/javascript" src="/js/appearance.min.75869c865625ed3d10fe38f2274fa90938094d28b518ee2088f544a29fe6b826626bae550302adcbde61e83ba341bdd928a250d644367723ce01e798033098c5.js" integrity="sha512-dYachlYl7T0Q/jjyJ0&#43;pCTgJTSi1GO4giPVEop/muCZia65VAwKty95h6DujQb3ZKKJQ1kQ2dyPOAeeYAzCYxQ=="></script>
+  
+  
+  
+  
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Digital Picture Frame with Animated Gifs" />
+<meta property="og:description" content="The problem with old computers is trying to find a use for them after you have upgraded." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://paulschow.com/2014/03/digital-picture-frame.html" /><meta property="og:image" content="https://paulschow.com/2014/03/cover.JPG"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2014-03-16T16:15:00-06:00" />
+<meta property="article:modified_time" content="2014-03-16T16:15:00-06:00" /><meta property="og:site_name" content="Paul&#39;s Projects" />
+
+
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://paulschow.com/2014/03/cover.JPG"/>
+<meta name="twitter:title" content="Digital Picture Frame with Animated Gifs"/>
+<meta name="twitter:description" content="The problem with old computers is trying to find a use for them after you have upgraded."/>
+
+  
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Digital Picture Frame with Animated Gifs",
+    "headline": "Digital Picture Frame with Animated Gifs",
+    
+    "abstract": "The problem with old computers is trying to find a use for them after you have upgraded.",
+    "inLanguage": "en",
+    "url" : "https:\/\/paulschow.com\/2014\/03\/digital-picture-frame.html",
+    "author" : {
+      "@type": "Person",
+      "name": "Paul Schow"
+    },
+    "copyrightYear": "2014",
+    "dateCreated": "2014-03-16T16:15:00-06:00",
+    "datePublished": "2014-03-16T16:15:00-06:00",
+    
+    "dateModified": "2014-03-16T16:15:00-06:00",
+    
+    
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "789"
+  }]
+  </script>
+
+
+  
+  <meta name="author" content="Paul Schow" />
+  
+    
+      <link href="https://twitter.com/weirdguy" rel="me" />
+    
+  
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+  
+  
+</head>
+<body
+    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400"
+          >&darr;</span
+        >Skip to main content</a
+      >
+    </div>
+    
+    
+      <header class="py-6 font-semibold text-neutral-900 dark:text-neutral print:hidden sm:py-10">
+  <nav class="flex items-start justify-between sm:items-center">
+    
+    <div class="flex flex-row items-center">
+      
+  <a
+    class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+    rel="me"
+    href="/"
+    >Paul&rsquo;s Projects</a
+  >
+
+      
+
+    </div>
+    
+    
+      <ul class="flex list-none flex-col ltr:text-right rtl:text-left sm:flex-row">
+        
+          
+            <li class="mb-1 sm:mb-0 ltr:sm:mr-7 ltr:sm:last:mr-0 rtl:sm:ml-7 rtl:sm:last:ml-0">
+              <a
+                class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2"
+                href="/posts/"
+                title="Posts"
+                >Blog</a
+              >
+            </li>
+          
+        
+        
+      </ul>
+    
+  </nav>
+</header>
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  <article>
+    <header class="max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Digital Picture Frame with Animated Gifs
+      </h1>
+      <div class="mt-8 mb-12 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2014-03-16 16:15:00.001 -0600 MDT">16 March 2014</time><span class="px-2 text-primary-500">&middot;</span><span title="Reading time">4 mins</span>
+    
+
+    
+    
+  </div>
+
+  
+  
+
+
+      </div>
+      
+        <img
+          class="mb-6 -mt-4 rounded-md"
+          srcset="/2014/03/cover_hu5f6d6e27e9b115d4f3f0d178daf13012_61043_330x0_resize_q75_box.JPG 330w,/2014/03/cover_hu5f6d6e27e9b115d4f3f0d178daf13012_61043_660x0_resize_q75_box.JPG 660w,/2014/03/cover_hu5f6d6e27e9b115d4f3f0d178daf13012_61043_1024x0_resize_q75_box.JPG 1024w,/2014/03/cover_hu5f6d6e27e9b115d4f3f0d178daf13012_61043_1320x0_resize_q75_box.JPG 2x"
+          src="/2014/03/cover_hu5f6d6e27e9b115d4f3f0d178daf13012_61043_660x0_resize_q75_box.JPG"
+        />
+      
+    </header>
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+      <div class="min-w-0 min-h-0 max-w-prose grow">
+        <p>The problem with old computers is trying to find a use for them after you have upgraded. I found myself owning four different laptops. Along with my tablet, phone, and desktop, I didn&rsquo;t have use for so many laptops.</p>
+<h3 id="initial-hardware" class="relative group">Initial Hardware  <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#initial-hardware" aria-label="Anchor">#</a></span></h3>
+<p>One of these was given to me for free by Google in 2010. A CR-48 chromebook. It served me well in high school and the first year of college. However, they have a hinge problem. Mine was being held together by three machine screws through a hinge.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image23_hu1b54dc454179491c881d8f5da59f73a2_31642_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image23_hu1b54dc454179491c881d8f5da59f73a2_31642_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image23_hu1b54dc454179491c881d8f5da59f73a2_31642_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image23_hu1b54dc454179491c881d8f5da59f73a2_31642_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image23_hu1b54dc454179491c881d8f5da59f73a2_31642_660x0_resize_q75_box.JPG"
+        alt="image23.JPG"
+      />
+      
+    </figure>
+  
+
+
+CR48 with hinge repair in upper right</p>
+<p>Although I had Ubuntu 13.10 installed and working, I still almost never used this laptop. When I got a newer chromebook, I decided I had to do something with the old one, so I did. </p>
+<p>My plan was simple: remove the hinges completely and turn the screen around, then hang it on the wall to use as a digital picture frame. Even though digital picture frames seem very 2005, my roommates liked the idea enough that I decided to go through with it.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image37_hu4a5076b160fd672b7507a99265a3fa43_39787_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image37_hu4a5076b160fd672b7507a99265a3fa43_39787_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image37_hu4a5076b160fd672b7507a99265a3fa43_39787_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image37_hu4a5076b160fd672b7507a99265a3fa43_39787_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image37_hu4a5076b160fd672b7507a99265a3fa43_39787_660x0_resize_q75_box.JPG"
+        alt="image37.JPG"
+      />
+      
+    </figure>
+  
+
+
+Hinge screws removed</p>
+<p>The CR48 is actually fairly easy to disassemble. There is a great <a href="http://cr-48.wikispaces.com/Open&#43;the&#43;Cr-48"   target="_blank">guide on the CR48 wiki</a>. Once I had it open I removed the hinges and unplugged the fan.  </p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image47_huc0bda423d875b1b10add8430685a13fa_73884_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image47_huc0bda423d875b1b10add8430685a13fa_73884_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image47_huc0bda423d875b1b10add8430685a13fa_73884_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image47_huc0bda423d875b1b10add8430685a13fa_73884_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image47_huc0bda423d875b1b10add8430685a13fa_73884_660x0_resize_q75_box.JPG"
+        alt="image47.JPG"
+      />
+      
+    </figure>
+  
+
+
+Fan disconnected</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image53_hu76ac17e3017f48b6dbd95d46a2ca0d3b_76220_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image53_hu76ac17e3017f48b6dbd95d46a2ca0d3b_76220_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image53_hu76ac17e3017f48b6dbd95d46a2ca0d3b_76220_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image53_hu76ac17e3017f48b6dbd95d46a2ca0d3b_76220_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image53_hu76ac17e3017f48b6dbd95d46a2ca0d3b_76220_660x0_resize_q75_box.JPG"
+        alt="image53.JPG"
+      />
+      
+    </figure>
+  
+
+
+Hinge removal</p>
+<p>Then it was a simple matter of turning the screen the other way.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image63_huf0267bf75fc15b675b55e7423f3fe0e5_48717_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image63_huf0267bf75fc15b675b55e7423f3fe0e5_48717_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image63_huf0267bf75fc15b675b55e7423f3fe0e5_48717_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image63_huf0267bf75fc15b675b55e7423f3fe0e5_48717_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image63_huf0267bf75fc15b675b55e7423f3fe0e5_48717_660x0_resize_q75_box.JPG"
+        alt="image63.JPG"
+      />
+      
+    </figure>
+  
+
+
+Screen turned around</p>
+<p> I needed some way to tape the screen to the back of the laptop, so I gathered up my adhesive supplies.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image73_huc34894c305c90376321bc4bd776a0c31_48715_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image73_huc34894c305c90376321bc4bd776a0c31_48715_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image73_huc34894c305c90376321bc4bd776a0c31_48715_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image73_huc34894c305c90376321bc4bd776a0c31_48715_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image73_huc34894c305c90376321bc4bd776a0c31_48715_660x0_resize_q75_box.JPG"
+        alt="image73.JPG"
+      />
+      
+    </figure>
+  
+
+
+Different types of tape</p>
+<p>Luckily I discovered some velcro strips! These were exactly what I was looking for.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image83_huff6dd769d02aa101a2af5047b4832bdb_40496_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image83_huff6dd769d02aa101a2af5047b4832bdb_40496_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image83_huff6dd769d02aa101a2af5047b4832bdb_40496_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image83_huff6dd769d02aa101a2af5047b4832bdb_40496_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image83_huff6dd769d02aa101a2af5047b4832bdb_40496_660x0_resize_q75_box.JPG"
+        alt="image83.JPG"
+      />
+      
+    </figure>
+  
+
+
+Velcro applied to one side</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image89_hue113d324ca827f906ac54c0c87ed17ff_51577_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image89_hue113d324ca827f906ac54c0c87ed17ff_51577_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image89_hue113d324ca827f906ac54c0c87ed17ff_51577_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image89_hue113d324ca827f906ac54c0c87ed17ff_51577_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image89_hue113d324ca827f906ac54c0c87ed17ff_51577_660x0_resize_q75_box.JPG"
+        alt="image89.JPG"
+      />
+      
+    </figure>
+  
+
+
+Velcro on both sides</p>
+<p>Now I had to figure out a way to hang this whole assembly on the wall. I looked through my dollar store picture hanging kit and pulled out some picture hanging wire. Then I tied it through the speaker holes on either side of the CR48.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image99_huea666579c6b0d7126797b2f880b4f221_44916_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image99_huea666579c6b0d7126797b2f880b4f221_44916_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image99_huea666579c6b0d7126797b2f880b4f221_44916_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image99_huea666579c6b0d7126797b2f880b4f221_44916_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image99_huea666579c6b0d7126797b2f880b4f221_44916_660x0_resize_q75_box.JPG"
+        alt="image99.JPG"
+      />
+      
+    </figure>
+  
+
+
+Sorry Google hardware designers</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image105_hu2609ed40cac49cfca25943cd933133fc_67233_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image105_hu2609ed40cac49cfca25943cd933133fc_67233_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image105_hu2609ed40cac49cfca25943cd933133fc_67233_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image105_hu2609ed40cac49cfca25943cd933133fc_67233_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image105_hu2609ed40cac49cfca25943cd933133fc_67233_660x0_resize_q75_box.JPG"
+        alt="image105.JPG"
+      />
+      
+    </figure>
+  
+
+
+It hangs!</p>
+<p>When I tried to turn it on I discovered a problem. The computer goes to sleep when the lid is in hanging configuration because of a magnet in the lid. So I pulled the magnet out.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image115_hu6c41099d2638bab5b1729013c91437bc_64395_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image115_hu6c41099d2638bab5b1729013c91437bc_64395_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image115_hu6c41099d2638bab5b1729013c91437bc_64395_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image115_hu6c41099d2638bab5b1729013c91437bc_64395_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image115_hu6c41099d2638bab5b1729013c91437bc_64395_660x0_resize_q75_box.JPG"
+        alt="image115.JPG"
+      />
+      
+    </figure>
+  
+
+
+Lid magnet</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image121_hub6141931e64252180f0adb0d8dba6062_43355_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image121_hub6141931e64252180f0adb0d8dba6062_43355_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image121_hub6141931e64252180f0adb0d8dba6062_43355_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image121_hub6141931e64252180f0adb0d8dba6062_43355_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image121_hub6141931e64252180f0adb0d8dba6062_43355_660x0_resize_q75_box.JPG"
+        alt="image121.JPG"
+      />
+      
+    </figure>
+  
+
+
+No more lid magnet</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image127_hu3c49c313ed64ad1c833b839683eb4def_67135_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image127_hu3c49c313ed64ad1c833b839683eb4def_67135_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image127_hu3c49c313ed64ad1c833b839683eb4def_67135_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image127_hu3c49c313ed64ad1c833b839683eb4def_67135_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image127_hu3c49c313ed64ad1c833b839683eb4def_67135_660x0_resize_q75_box.JPG"
+        alt="image127.JPG"
+      />
+      
+    </figure>
+  
+
+
+Now it works! </p>
+<h3 id="software" class="relative group">Software <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#software" aria-label="Anchor">#</a></span></h3>
+<p>I knew the whole time that I wanted anyone to be able to add pictures. The easiest way to do this was by email. For awhile I figured I would set up some sort of POP3 email server with a script to put them on the laptop, but it&rsquo;s even easier than that. </p>
+<p>I used <a href="https://www.dropbox.com/home"   target="_blank">Dropbox</a> and <a href="https://sendtodropbox.com/"   target="_blank">Send to Dropbox</a> to give my Dropbox account a special folder with its own email. Then I installed Dropbox on the picture frame and used selective sync to only sync the special folder.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image143_hu28e6a4fe2028a00305f0f8a62fa919bc_165844_330x0_resize_box_3.png 330w,
+          /2014/03/image143_hu28e6a4fe2028a00305f0f8a62fa919bc_165844_660x0_resize_box_3.png 660w,
+          /2014/03/image143_hu28e6a4fe2028a00305f0f8a62fa919bc_165844_1024x0_resize_box_3.png 1024w,
+          /2014/03/image143_hu28e6a4fe2028a00305f0f8a62fa919bc_165844_1320x0_resize_box_3.png 2x"
+        src="/2014/03/image143_hu28e6a4fe2028a00305f0f8a62fa919bc_165844_660x0_resize_box_3.png"
+        alt="image143.png"
+      />
+      
+    </figure>
+  
+
+
+Dropbox selective sync</p>
+<p>Send to Dropbox is a nice free service, but it gives an ugly email. Instead of using that, I set up another gmail account for my domain and forwarded all the email to Send to Dropbox. Then I tested this out with a few pictures.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image153_hu60663c2d772483c6d2fb40ad4a306368_897796_330x0_resize_box_3.png 330w,
+          /2014/03/image153_hu60663c2d772483c6d2fb40ad4a306368_897796_660x0_resize_box_3.png 660w,
+          /2014/03/image153_hu60663c2d772483c6d2fb40ad4a306368_897796_1024x0_resize_box_3.png 1024w,
+          /2014/03/image153_hu60663c2d772483c6d2fb40ad4a306368_897796_1320x0_resize_box_3.png 2x"
+        src="/2014/03/image153_hu60663c2d772483c6d2fb40ad4a306368_897796_660x0_resize_box_3.png"
+        alt="image153.png"
+      />
+      
+    </figure>
+  
+
+
+Email sending works!</p>
+<p>Next, I had to pick out a slideshow program. I had several requirements for it:</p>
+<ul>
+<li>Fullscreen all pictures</li>
+<li>Animated gif support</li>
+<li>Random slideshow order</li>
+</ul>
+<p>After looking through the Ubuntu software center and trying about 10 programs, I was ready to give up. However, I discovered a plugin package for the default image viewer, Eye of Gnome (eog). Eog can already fullscreen all pictures and play animated gifs, but it lacks random slideshow order. The package <a href="https://help.gnome.org/users/eog/stable/plugins.html.en"   target="_blank">eog-plugins</a> gives it random slideshow order. </p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image169_hue1ac5e7b4a4a93199e45614a2be9f5c5_746551_330x0_resize_box_3.png 330w,
+          /2014/03/image169_hue1ac5e7b4a4a93199e45614a2be9f5c5_746551_660x0_resize_box_3.png 660w,
+          /2014/03/image169_hue1ac5e7b4a4a93199e45614a2be9f5c5_746551_1024x0_resize_box_3.png 1024w,
+          /2014/03/image169_hue1ac5e7b4a4a93199e45614a2be9f5c5_746551_1320x0_resize_box_3.png 2x"
+        src="/2014/03/image169_hue1ac5e7b4a4a93199e45614a2be9f5c5_746551_660x0_resize_box_3.png"
+        alt="image169.png"
+      />
+      
+    </figure>
+  
+
+
+Setting the slideshow duration to 100 seconds</p>
+<p>Now pictures are sent to the email, added to Dropbox, and put in the random slideshow to be shown eventually. </p>
+<h3 id="final-hardware" class="relative group">Final Hardware <span class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#final-hardware" aria-label="Anchor">#</a></span></h3>
+<p>In this state, I hung the picture frame up on a wall in my living room for about three weeks. </p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image187_hu8b7707a126a3dff587889c9d9f941079_51877_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image187_hu8b7707a126a3dff587889c9d9f941079_51877_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image187_hu8b7707a126a3dff587889c9d9f941079_51877_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image187_hu8b7707a126a3dff587889c9d9f941079_51877_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image187_hu8b7707a126a3dff587889c9d9f941079_51877_660x0_resize_q75_box.JPG"
+        alt="image187.JPG"
+      />
+      
+    </figure>
+  
+
+
+On the wall (ignore the ethernet cables)</p>
+<p>I put the email address up on Facebook and on a note next to the frame. It worked and I quickly reached over 200 pictures in the slideshow! </p>
+<p>I was not done yet. Now I went back to the dollar store and picked up a picture frame and some black construction paper to make it look a little better. </p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image201_hu5f6d6e27e9b115d4f3f0d178daf13012_61043_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image201_hu5f6d6e27e9b115d4f3f0d178daf13012_61043_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image201_hu5f6d6e27e9b115d4f3f0d178daf13012_61043_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image201_hu5f6d6e27e9b115d4f3f0d178daf13012_61043_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image201_hu5f6d6e27e9b115d4f3f0d178daf13012_61043_660x0_resize_q75_box.JPG"
+        alt="image201.JPG"
+      />
+      
+    </figure>
+  
+
+
+Fancied up</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image207_hu862bd741f479513f0d346a5780a4cb72_56462_330x0_resize_q75_box.JPG 330w,
+          /2014/03/image207_hu862bd741f479513f0d346a5780a4cb72_56462_660x0_resize_q75_box.JPG 660w,
+          /2014/03/image207_hu862bd741f479513f0d346a5780a4cb72_56462_1024x0_resize_q75_box.JPG 1024w,
+          /2014/03/image207_hu862bd741f479513f0d346a5780a4cb72_56462_1320x0_resize_q75_box.JPG 2x"
+        src="/2014/03/image207_hu862bd741f479513f0d346a5780a4cb72_56462_660x0_resize_q75_box.JPG"
+        alt="image207.JPG"
+      />
+      
+    </figure>
+  
+
+
+Another angle</p>
+<p>One of the best features is animated gif support. I created a gif of a gif on the picture frame to show this.</p>
+<p>
+
+
+
+  
+  
+    
+  
+  
+    <figure>
+      <img
+        class="my-0 rounded-md"
+        srcset="
+          /2014/03/image217_hua902ab37e35483d2bbbcd14d84e203d2_5764409_330x0_resize_box.gif 330w,
+          /2014/03/image217_hua902ab37e35483d2bbbcd14d84e203d2_5764409_660x0_resize_box.gif 660w,
+          /2014/03/image217_hua902ab37e35483d2bbbcd14d84e203d2_5764409_1024x0_resize_box.gif 1024w,
+          /2014/03/image217_hua902ab37e35483d2bbbcd14d84e203d2_5764409_1320x0_resize_box.gif 2x"
+        src="/2014/03/image217_hua902ab37e35483d2bbbcd14d84e203d2_5764409_660x0_resize_box.gif"
+        alt="image217.gif"
+      />
+      
+    </figure>
+  
+
+</p>
+<p>Here&rsquo;s a youtube video of the same thing</p>
+<p>To put the frame to sleep, I simply put a large hard drive magnet next to the right side of the frame and leave it there. To shut it down, I ssh in and turn it off.</p>
+
+      </div>
+    </section>
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  <div class="flex">
+    
+    <div class="place-self-center">
+      
+        <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+          Author
+        </div>
+        <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+          Paul Schow
+        </div>
+      
+      
+      <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          href="https://twitter.com/weirdguy"
+          target="_blank"
+          aria-label="Twitter"
+          rel="me noopener noreferrer"
+          >
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+
+  </span>
+
+</a
+        >
+      
+    
+  </div>
+
+</div>
+    </div>
+  </div>
+
+
+      
+
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="group flex" href="/2014/02/astrostar-astro-star-projector-kit-build.html">
+              <span
+                class="mr-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+              <span
+                class="ml-2 text-neutral-700 transition-transform group-hover:translate-x-[2px] group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >Astro Star Projector Kit Build</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2014-02-13 11:17:00.001 -0700 MST">13 February 2014</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+            <a class="group flex text-right" href="/2014/10/rgb-internet-pumpkin.html">
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >RGB Internet Pumpkin</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2014-10-24 20:18:00 -0600 MDT">24 October 2014</time>
+                  
+                </span>
+              </span>
+              <span
+                class="ml-2 text-neutral-700 transition-transform group-hover:translate-x-[2px] group-hover:text-primary-600 ltr:inline rtl:hidden dark:text-neutral dark:group-hover:text-primary-400"
+                >&rarr;</span
+              >
+              <span
+                class="mr-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 ltr:hidden rtl:inline dark:text-neutral dark:group-hover:text-primary-400"
+                >&larr;</span
+              >
+            </a>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+    </footer>
+  </article>
+
+        
+          <div
+            class="pointer-events-none absolute top-[100vh] bottom-0 w-12 ltr:right-0 rtl:left-0"
+          >
+            <a
+              href="#the-top"
+              class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+              aria-label="Scroll to top"
+              title="Scroll to top"
+            >
+              &uarr;
+            </a>
+          </div>
+        
+      </main><footer class="py-10 print:hidden">
+  
+  
+  <div class="flex items-center justify-between">
+    <div>
+      
+      
+      
+      
+        <p class="text-xs text-neutral-500 dark:text-neutral-400">
+          
+          
+          Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+            href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500" href="https://git.io/hugo-congo" target="_blank" rel="noopener noreferrer">Congo</a>
+        </p>
+      
+    </div>
+    
+    
+      <div
+        class="ltr:mr-14 rtl:ml-14 cursor-pointer text-sm text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+      >
+        <button id="appearance-switcher" type="button">
+          <div
+            class="flex items-center justify-center w-12 h-12 dark:hidden"
+            title="Switch to dark appearance"
+          >
+            
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+
+  </span>
+
+
+          </div>
+          <div
+            class="items-center justify-center hidden w-12 h-12 dark:flex"
+            title="Switch to light appearance"
+          >
+            
+
+  <span class="relative inline-block align-text-bottom icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+
+  </span>
+
+
+          </div>
+        </button>
+      </div>
+    
+  </div>
+  
+  
+</footer>
+
+    </div>
+  </body>
+</html>
