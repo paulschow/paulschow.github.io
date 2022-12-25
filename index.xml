@@ -6,7 +6,16 @@
     <description>Recent content on Paul&#39;s Projects</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 25 Feb 2017 17:22:00 -0700</lastBuildDate><atom:link href="https://paulschow.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Dec 2022 22:16:00 -0700</lastBuildDate><atom:link href="https://paulschow.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog Updated</title>
+      <link>https://paulschow.com/posts/updated/</link>
+      <pubDate>Sat, 24 Dec 2022 22:16:00 -0700</pubDate>
+      
+      <guid>https://paulschow.com/posts/updated/</guid>
+      <description>It&amp;rsquo;s been awhile since I&amp;rsquo;ve posted anything here!</description>
+    </item>
+    
     <item>
       <title>Pervasive Displays EPD Extension Kit Gen 2 Review</title>
       <link>https://paulschow.com/2017/02/pervasive-displays-epd-extension-kit.html</link>
