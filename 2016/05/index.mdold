@@ -1,0 +1,467 @@
+---
+title: '$25 Satellite Tracker'
+date: 2016-05-12T16:29:00.000-06:00
+draft: false
+url: /2016/05/25-satellite-tracker.html
+---
+
+
+
+<!--
+[![](https://4.bp.blogspot.com/-BqIQtMf6mfI/VzEeu29koJI/AAAAAAAA97M/UC-2XBW2hGUguU89r8H-_BkgHR7scfD7QCKgB/s640/P1010551.JPG)](https://4.bp.blogspot.com/-BqIQtMf6mfI/VzEeu29koJI/AAAAAAAA97M/UC-2XBW2hGUguU89r8H-_BkgHR7scfD7QCKgB/s1600/P1010551.JPG)
+-->
+  
+After building my [QFH antenna](http://www.paulschow.com/2015/03/qfh-antenna-for-receiving-satellite.html), I became more interested in satellite communications. The QFH antenna works great for circularly polarized signals like weather satellites, but something like a yagi or log-periodic antenna is better for most sats, because it can be pointed directly at the sat.  
+  
+  
+  
+  
+After a short break where I interned at Keysight Technologies then finished my last semester at school, I built a [tape measure yagi](http://theleggios.net/wb2hol/projects/rdf/tape_bm.htm) for 145.8 MHz to receive ISS SSTV broadcasts. It works great for that, but after a few passes I started to wonder if there was a better way. Ideally, some way to track the sat with a computer, automatically. Commercial solutions exist of course, like the [Yaesu G-5500](https://www.yaesu.com/indexVS.cfm?cmd=DisplayProducts&ProdCatID=104&encProdID=79A89CEC477AA3B819EE02831F3FD5B8&DivisionID=65&isArchived=0). This is a bit expensive for my tastes, and meant for more permanent installations. [SatNOGS](https://satnogs.org/) is a great open-source solution, if you have access to a 3D printer and some parts. I still want to build the SatNOGS rotor, but first I wanted to see if I could build my own version cheaper.  
+  
+\* I'll tell you straight away that my solution ended up costing more than $25, but I think someone could make the same thing for $25.  
+  
+
+Hardware
+--------
+
+As with most projects these days, I started out by shopping around for parts. Eventually, I found a [$25 pan and tilt solution](http://www.dx.com/p/2-dof-fan-tilt-mg995-steering-gear-joint-for-robot-arm-26cc-50cc-gasoline-fixed-wing-helicopter-184261), meant for mounting cameras from drones.  
+  
+
+[![](https://2.bp.blogspot.com/-Id0XI4J1Eko/VyWX_6chQ4I/AAAAAAAA9gM/MjBDQUKB3GIj2GfhXWA2jXy7-JLCbIUKgCLcB/s400/sku_184261_1.jpg)](https://2.bp.blogspot.com/-Id0XI4J1Eko/VyWX_6chQ4I/AAAAAAAA9gM/MjBDQUKB3GIj2GfhXWA2jXy7-JLCbIUKgCLcB/s1600/sku_184261_1.jpg)
+
+  
+
+It seemed to me that if I could make the antenna light enough, I should be able to use something like this to point it wherever I want. I ordered one of these, and also some [okay servos ($7.21)](http://www.dx.com/p/mg995-tower-pro-servo-gear-for-r-c-car-plane-helicopter-148051) with [metal mounting brackets ($3.74)](http://www.dx.com/p/2-metal-u-holders-2-round-servo-mount-brackets-w-screws-for-r-c-helicopter-silver-193069) in case I wanted to completely make my own solution.  
+  
+Naturally, the servos and brackets shipped about a week earlier than the $25 pan and tilt kit. I couldn't be bothered to wait, so I got right to trying to make it all fit together.  
+  
+
+[![](https://4.bp.blogspot.com/-MvTTkSJCh_Q/VyVyJtLKGjI/AAAAAAAA9OE/N9rWCI6iRpEcTRoOAX4EGMzeuqbLHR_MgCKgB/s640/P1010449.JPG)](https://4.bp.blogspot.com/-MvTTkSJCh_Q/VyVyJtLKGjI/AAAAAAAA9OE/N9rWCI6iRpEcTRoOAX4EGMzeuqbLHR_MgCKgB/s1600/P1010449.JPG)
+
+  
+Using a bunch of masking tape and an arduino, I began to test if these servos could even support a pvc tape measure antenna.  
+  
+
+[![](https://1.bp.blogspot.com/-wFIB0QelxMk/VyV15hpm1WI/AAAAAAAA9Qk/M83N1SaEAes9MyNc-3UgN8iy30KxY9wvQCKgB/s640/P1010459.JPG)](https://1.bp.blogspot.com/-wFIB0QelxMk/VyV15hpm1WI/AAAAAAAA9Qk/M83N1SaEAes9MyNc-3UgN8iy30KxY9wvQCKgB/s1600/P1010459.JPG)
+
+  
+The answer: kinda. The azimuth control works fine, but the elevation struggles a lot. The PVC elbows add more weight than you would think, and make it hard to balance. The antenna has to be made of something lighter than PVC (measuring tape is still light enough).  
+  
+Large antistatic tubes used to ship high-speed connectors in work well for this. They're long enough, and very lightweight while still being rigid. If I was doing it again though, I would probably just use a cheap yardstick.  
+  
+
+[![](https://2.bp.blogspot.com/-e1eKLJiKaM8/VyV7_rW4gDI/AAAAAAAA9U4/OVCJYj1JoKIKJ-iylqUnY3mSwG9-M9y6gCKgB/s640/P1010478.JPG)](https://2.bp.blogspot.com/-e1eKLJiKaM8/VyV7_rW4gDI/AAAAAAAA9U4/OVCJYj1JoKIKJ-iylqUnY3mSwG9-M9y6gCKgB/s1600/P1010478.JPG)
+
+  
+The servos have no problems moving an antistatic tube around.  
+  
+
+[![](https://3.bp.blogspot.com/-b1YLTJViWOI/VyV8sZuV3fI/AAAAAAAA9VM/dirLzaV8h9Y57GE-g-KDt0j9fx_U69MPQCKgB/s640/P1010480.JPG)](https://3.bp.blogspot.com/-b1YLTJViWOI/VyV8sZuV3fI/AAAAAAAA9VM/dirLzaV8h9Y57GE-g-KDt0j9fx_U69MPQCKgB/s1600/P1010480.JPG)
+
+  
+It is a bit harder to attach the measuring tape to a square tube than it is to a pvc elbow. I used very cheap electrical tape for testing, but later actually used screws.  
+  
+
+[![](https://3.bp.blogspot.com/--iSwL4QD3e4/VyWAceGE1sI/AAAAAAAA9Ws/QlswmnoWee0Qn90mypJ-5reCy8L4bObtACKgB/s640/P1010484.JPG)](https://3.bp.blogspot.com/--iSwL4QD3e4/VyWAceGE1sI/AAAAAAAA9Ws/QlswmnoWee0Qn90mypJ-5reCy8L4bObtACKgB/s1600/P1010484.JPG)
+
+  
+However, after finishing this I took a step back and decided to work on the software more. It's a bit of a pain to have this huge antenna flailing around when your code has a bug in it.  
+  
+The arduino [servo library](https://www.arduino.cc/en/Reference/Servo) is simple enough, and worked well for my servos. I did find that the writeMicroseconds() function worked better for me than the write() function. I made a simple script to control the two servos over the serial terminal: [servo\_serial.ino](https://github.com/paulschow/CheapSatTrack/blob/master/Servo_serial/Servo_serial.ino).  
+  
+Normally, servos don't give actual feedback of their position. If you use the read() function, it just returns the last value that was written to the servo. This can be useful in some cases, but I decided I wanted to have actual feedback. The servo uses a potentiometer internally to determine the position, and it's a simple matter to attach another wire to the center terminal and read the current value using the analog input on the arduino. [Credit to jes1510 on trossenrobotics.com](http://forums.trossenrobotics.com/tutorials/how-to-diy-128/get-position-feedback-from-a-standard-hobby-servo-3279/) for the complete tutorial.  
+  
+I cut some wires from broken computer fans and got to work.  
+  
+
+[![](https://2.bp.blogspot.com/-Q7jsxmcFaZE/VyV4wA8S7_I/AAAAAAAA9So/5KkfdNtTovIl0glxTH83on3nhZhZJVLKACKgB/s640/P1010468.JPG)](https://2.bp.blogspot.com/-Q7jsxmcFaZE/VyV4wA8S7_I/AAAAAAAA9So/5KkfdNtTovIl0glxTH83on3nhZhZJVLKACKgB/s1600/P1010468.JPG)
+
+  
+
+[![](https://1.bp.blogspot.com/-kXoVNMWCfxA/VyV6Wt1paUI/AAAAAAAA9To/O5cuy8kRN-wcTN0a5ydNOt-BB6FDzkHQgCKgB/s640/P1010473.JPG)](https://1.bp.blogspot.com/-kXoVNMWCfxA/VyV6Wt1paUI/AAAAAAAA9To/O5cuy8kRN-wcTN0a5ydNOt-BB6FDzkHQgCKgB/s1600/P1010473.JPG)
+
+  
+Now I just hooked the sense wire up to an analog pin on the arduino and read the values. I found my servos typically read between 80 and 445.  
+  
+I determined an arrangement for the servos that I thought would be able to track the most satellites (more on this later): azimuth on bottom with elevation on top.  
+  
+
+[![](https://4.bp.blogspot.com/-6EhBDXLhR5I/VyWFmtmvxiI/AAAAAAAA9gg/zDFmKLxmKJYppmY8FCzXpJISRhZ4yKOzwCKgB/s640/P1010491.JPG)](https://4.bp.blogspot.com/-6EhBDXLhR5I/VyWFmtmvxiI/AAAAAAAA9gg/zDFmKLxmKJYppmY8FCzXpJISRhZ4yKOzwCKgB/s1600/P1010491.JPG)
+
+Yes, the tape on the bottom of the vice is really necessary.
+
+  
+
+  
+
+Software
+--------
+
+  
+
+### Computer Side
+
+  
+
+Now for the actual satellite tracking. For this, I looked to [SatNOGS](https://github.com/satnogs/satnogs-rotator-controller), which also uses an arduino. Their code interprets serial commands sent using the Easycomm2 protocol, and translates them to stepper or dc motor movements. 
+
+  
+
+The key here is the [Hamlib](http://www.hamlib.org/) library for linux. This library includes commands which take output from other programs and use them to control antennas or radios. My favorite satellite tracking program on linux is [Gpredict](http://gpredict.oz9aec.net/), which works great with Hamlib.
+
+  
+
+SatNOGS uses the Easycomm2 serial protocol, which Hamlib supports. Then the commands are just sent through the serial port on the arduino and interpreted there.
+
+  
+
+It's easy to set up Gpredict with Hamlib, once you understand what's going on.
+
+  
+
+First, set up a new rotator interface in Gpredict. 
+
+  
+
+[![](https://2.bp.blogspot.com/--TDNzkj7VIA/Vygn0YurdNI/AAAAAAAA9ks/LO9wwe1VmesYhDS-Enm3xskLMsw7ONUDACLcB/s640/Screenshot%2Bfrom%2B2016-05-02%2B22%25253A16%25253A04.png)](https://2.bp.blogspot.com/--TDNzkj7VIA/Vygn0YurdNI/AAAAAAAA9ks/LO9wwe1VmesYhDS-Enm3xskLMsw7ONUDACLcB/s1600/Screenshot%2Bfrom%2B2016-05-02%2B22%25253A16%25253A04.png)
+
+  
+
+Name can be whatever you want, I chose "easycomm2". Host is "localhost" unless you are doing this over a network. Port is "4533" by default, but you can change it.
+
+  
+
+Then, just set up Hamlib to interpret the command. 
+
+  
+
+[![](https://3.bp.blogspot.com/-ExFnS8qyDzw/VygoccRzNVI/AAAAAAAA9k0/MGc51F3r0K8U5R_PNYX0gw5uryGr8HTEACLcB/s1600/Screenshot%2Bfrom%2B2016-05-02%2B22%25253A25%25253A24.png)](https://3.bp.blogspot.com/-ExFnS8qyDzw/VygoccRzNVI/AAAAAAAA9k0/MGc51F3r0K8U5R_PNYX0gw5uryGr8HTEACLcB/s1600/Screenshot%2Bfrom%2B2016-05-02%2B22%25253A25%25253A24.png)
+
+  
+
+The command for this is "rotctld" (Hamlib TCP rotator control daemon). Choose the Easycomm2 mode with "\-m 202". The serial baud rate is "\-s 19200", and the serial port for me is "\-r /dev/ttyUSB0". 
+
+  
+
+The full command is "rotctld -m 202 -s 19200 -r /dev/ttyUSB0". There won't be any output afterwards unless there is an error.
+
+  
+
+Next, go to Gpredict and open up the antenna control module.
+
+  
+
+[![](https://1.bp.blogspot.com/-2ie__P9VVbU/VygpboflKBI/AAAAAAAA9lA/0EXOiwA27Uw6y6ILmXvG3RlIepWGv5W5ACLcB/s1600/antennacontrol.png)](https://1.bp.blogspot.com/-2ie__P9VVbU/VygpboflKBI/AAAAAAAA9lA/0EXOiwA27Uw6y6ILmXvG3RlIepWGv5W5ACLcB/s1600/antennacontrol.png)
+
+  
+
+  
+
+  
+
+You will get an antenna control panel.
+
+  
+
+[![](https://3.bp.blogspot.com/-RsurRqjtC2U/VygqLgwOb3I/AAAAAAAA9lI/mYzxy4FljbYbp03PDkDwStO2ku386Q4zQCLcB/s640/Screenshot%2Bfrom%2B2016-05-02%2B22%25253A31%25253A00.png)](https://3.bp.blogspot.com/-RsurRqjtC2U/VygqLgwOb3I/AAAAAAAA9lI/mYzxy4FljbYbp03PDkDwStO2ku386Q4zQCLcB/s1600/Screenshot%2Bfrom%2B2016-05-02%2B22%25253A31%25253A00.png)
+
+  
+
+From here you can click "engage" to activate the interface we set up earlier, and then control the antenna any way you want! Select a satellite and then click "track" to track it. 
+
+  
+
+### Firmware Side
+
+  
+
+Setting up the computer software is the easy part. Luckily people have done a lot of work on this before me, to make it as simple as it is. However, that's pointless if the hardware doesn't know how to interpret the commands. The SatNOGS program will interpret the commands correctly and output them so I can use them, but I still wanted to know what was actually being sent. This proved to be more difficult than I first imagined. 
+
+  
+
+I couldn't just open up the serial monitor on the arduino IDE, because the serial port was already in use. I played around with a bunch of linux serial sniffers and bridges, but couldn't find one that was extremely simple to set up. Eventually I found the best solution for me was to use a [Bus Pirate](http://dangerousprototypes.com/docs/Bus_Pirate) set to UART monitor. 
+
+  
+
+[![](https://2.bp.blogspot.com/-oR-JrMJfYAc/VygsmmKwCpI/AAAAAAAA9lY/-uHxArDNx_krhw7XFCRtBpoxBHB-cRhJgCLcB/s640/Screenshot%2Bfrom%2B2016-04-28%2B19%25253A33%25253A04.png)](https://2.bp.blogspot.com/-oR-JrMJfYAc/VygsmmKwCpI/AAAAAAAA9lY/-uHxArDNx_krhw7XFCRtBpoxBHB-cRhJgCLcB/s1600/Screenshot%2Bfrom%2B2016-04-28%2B19%25253A33%25253A04.png)
+
+  
+
+  
+
+Now that I could see what the Easycomm2 mode was actually putting out, I could better understand it. In my screenshot, I was setting the azimuth to 180 and elevation to 45. Pretty simple.
+
+  
+
+The SatNOGS [stepper\_motor\_controller.ino](https://github.com/satnogs/satnogs-rotator-controller/blob/master/firmware/stepper_motor_controller/stepper_motor_controller.ino) already interprets Easycomm2 commands and then translates them into stepper motor controls. The key is the cmd\_proc function, which eventually feeds the angles into the deg2step function to calculate the number of steps from degrees, and then feeds that into the stepper\_move function. Since the servos don't need step calculation, I just cut that out and made my own servo\_move function. Along with a few other minor changes, I now had the working [Servo\_easycomm.ino](https://github.com/paulschow/CheapSatTrack/blob/master/Servo_easycomm_E/Servo_easycomm_E.ino)! 
+
+  
+
+At this point it worked! However, I quickly discovered a major problem in my approach, The servos I have only move 180 degrees.
+
+  
+
+[![](https://1.bp.blogspot.com/-9FqNdm4rBXY/VygyQt3xszI/AAAAAAAA9ls/CH1MVcOrofId_VUmo4ry7PQ-6hHvsBzhQCLcB/s1600/512px-Windrose.png)](https://1.bp.blogspot.com/-9FqNdm4rBXY/VygyQt3xszI/AAAAAAAA9ls/CH1MVcOrofId_VUmo4ry7PQ-6hHvsBzhQCLcB/s1600/512px-Windrose.png)
+
+By Vloeck (Own work) \[GFDL ([http://www.gnu.org/copyleft/fdl.html](http://www.gnu.org/copyleft/fdl.html)) or CC-BY-SA-3.0 ([http://creativecommons.org/licenses/by-sa/3.0/](http://creativecommons.org/licenses/by-sa/3.0/))\], via Wikimedia Commons
+
+  
+
+As I figured out, there are 360 degrees in a circle. This means that my tracker can only track a satellite moving through two quadrants of the compass. For the most part it's not a big deal, just a small inconvenience. Most satellites only move through two quadrants, and a most of those only move through 2 and 3 or 1 and 4.
+
+  
+
+[![](https://2.bp.blogspot.com/-VHudDXZI7m4/VygzYjXOxaI/AAAAAAAA9l0/0ciz-tYmC5Mmc_QiPCfQhDJHKA468BP5QCLcB/s1600/Screenshot%2Bfrom%2B2016-04-30%2B14%25253A42%25253A10%2B%25282%2529.png)](https://2.bp.blogspot.com/-VHudDXZI7m4/VygzYjXOxaI/AAAAAAAA9l0/0ciz-tYmC5Mmc_QiPCfQhDJHKA468BP5QCLcB/s1600/Screenshot%2Bfrom%2B2016-04-30%2B14%25253A42%25253A10%2B%25282%2529.png)
+
+  
+
+  
+
+The solution is to create 4 different programs. One that sets 90 degrees as North and covers from W to E, one that sets 90 degrees to East and covers from North to South, etc. Then, every time I want to track a satellite I just have to load on the correct program and position the tracker so that at 90 degrees it's pointing in the correct direction. 
+
+  
+
+Of course, Gpredict doesn't know that there are 4 separate programs. To accommodate this I used the [map()](https://www.arduino.cc/en/Reference/Map) function of arduino heavily. This function takes a variable from one range of numbers to another, perfect for what I'm doing. 
+
+  
+
+For example, the program for North, [Servo\_easycomm\_N.ino](https://github.com/paulschow/CheapSatTrack/blob/master/Servo_easycomm_N/Servo_easycomm_N.ino), has to take inputs from 270 degrees to 90 degrees, and turn them into 0 to 180 degrees for the servo. 
+
+  
+
+<!\[CDATA\[ void servo\_move(int stepAz, int stepEl){ int xmape; int xmapr; // map the range of angles to the servo xmape = map(stepEl, 0, 90, 1425, 2400); elservo.writeMicroseconds(xmape); // translate azimuth angles // make 0 degrees pointing north //Serial.println(stepAz); if ((stepAz >= 270) && (stepAz <= 359)){ //quadrant 2 xmapr = map(stepAz, 270, 359, 2300, 1400); roservo.writeMicroseconds(xmapr); } else if((stepAz >= 0) && (stepAz <= 90)){ // quadrant 1 xmapr = map(stepAz, 0, 90, 1400, 500); roservo.writeMicroseconds(xmapr); } } \]\]>  
+
+Once I figured that out, it was pretty easy. 
+
+  
+
+The steps to actually tracking a satellite:
+
+1.  Open Gpredict and figure out which quadrants the satellite is going through
+2.  Load the correct program into the arduino.
+3.  Wait for the program upload to complete.
+4.  Point the antenna in the correct direction.
+5.  Run "rotctld -m 202 -s 19200 -r /dev/ttyUSB0"
+6.  Open the antenna control in Gpredict.
+7.  Engage the interface.
+8.  Select the satellite.
+9.  Click "Track"
+
+See, simple!  
+
+  
+
+At this point it can actually track satellites:
+
+  
+
+  
+
+  
+
+From a vice on my floor. Not very useful.  
+  
+I also implemented the analog feedback into the SatNOGS code. SatNOGS steppers use "step2deg(ELstepper.currentPosition())" to get the current position of their motors in degrees and then print it out where necessary in the code. Gpredict than reads those values and displays the current location of the antenna as a crosshair on the compass.  
+  
+I just made my own functions to return the elevation or azimuth degrees based on their current analog reading, and then put that in place of the stepper code.  
+<!\[CDATA\[ int degel(){ int position; int degree; // elevation feedback position = analogRead(elfeedbackPin); // my servo reads 264 at 90 degrees // which is 0 degrees of elevation degree = map(position, 264, 425, 90, 0); return degree; } \]\]>  
+Now Gpredict shows where my antenna is actually pointing!  
+  
+
+[![](https://1.bp.blogspot.com/-BWAnQCypXBg/VzEYEGjzDoI/AAAAAAAA96Y/zOpaaKyf07U6QBM-D5jThOFjdW17ZBRCACLcB/s640/Screenshot%2Bfrom%2B2016-05-07%2B17%25253A20%25253A25_c.png)](https://1.bp.blogspot.com/-BWAnQCypXBg/VzEYEGjzDoI/AAAAAAAA96Y/zOpaaKyf07U6QBM-D5jThOFjdW17ZBRCACLcB/s1600/Screenshot%2Bfrom%2B2016-05-07%2B17%25253A20%25253A25_c.png)
+
+  
+  
+The other half of the equation is the radio. I used the ever-popular (~$15) RTL-SDR with GQRX as the software. As a satellite moves towards and away from you the frequency changes slightly due to the doppler effect. Luckily, Gpredict can easily [interface with GQRX](http://www.pe0sat.vgnet.nl/decoding/unix-tlm-decoding/) to control the tuning frequency. Gpredict also comes with most satellite frequencies built-in.  
+  
+
+Hardware Again
+--------------
+
+  
+As I was writing the first part of this post, the pan and tilt setup arrived.  
+  
+
+[![](https://1.bp.blogspot.com/-_8IOMo972Gg/Vy9WlZAqA2I/AAAAAAAA9v0/BM_P5iV-bkkW93D5nJIgoSMiO31Lx7nSQCKgB/s640/P1010524.JPG)](https://1.bp.blogspot.com/-_8IOMo972Gg/Vy9WlZAqA2I/AAAAAAAA9v0/BM_P5iV-bkkW93D5nJIgoSMiO31Lx7nSQCKgB/s1600/P1010524.JPG)
+
+  
+Even though I'm pretty sure my setup would have worked, the hardware for the pan and tilt was way better than anything I could have built. The servos are exactly the same, so I switched my modified servos in for the included ones and started using that setup instead. This also required some code tweaking and the elevation control was reversed, but that's easy.  
+  
+Next I started to consider how I wanted to mount the whole setup to a tripod. The easiest way I could think of was to buy some nuts and epoxy one of them to the side of the azimuth servo. The standard tripod mount is 1/40-20, which can be found at any hardware store in the US.  
+  
+
+[![](https://4.bp.blogspot.com/-j3hGriH9m8c/VzEadA9jppI/AAAAAAAA96k/P8py1zszly4t0d8Om_ujcxKCEJdYHiv7ACKgB/s400/IMAG0939.jpg)](https://4.bp.blogspot.com/-j3hGriH9m8c/VzEadA9jppI/AAAAAAAA96k/P8py1zszly4t0d8Om_ujcxKCEJdYHiv7ACKgB/s1600/IMAG0939.jpg)
+
+  
+
+[![](https://2.bp.blogspot.com/-e7yVHbxwT9k/Vy9daKx8OHI/AAAAAAAA904/B4e7aPpnhx47tbDlLYZYKnT60yfrGUjggCKgB/s640/P1010542.JPG)](https://2.bp.blogspot.com/-e7yVHbxwT9k/Vy9daKx8OHI/AAAAAAAA904/B4e7aPpnhx47tbDlLYZYKnT60yfrGUjggCKgB/s1600/P1010542.JPG)
+
+  
+There's probably a better way to do this, but it worked well enough. I also drilled a hole in the bracket for the extra pin on the tripod mount, to keep it level.  
+  
+
+[![](https://3.bp.blogspot.com/-6hFAWt5YxeA/Vy9exgm_McI/AAAAAAAA91A/RZ5AIH118pwXzFoZcp8eyeJPnKKX-mxwACKgB/s640/P1010543.JPG)](https://3.bp.blogspot.com/-6hFAWt5YxeA/Vy9exgm_McI/AAAAAAAA91A/RZ5AIH118pwXzFoZcp8eyeJPnKKX-mxwACKgB/s1600/P1010543.JPG)
+
+(shown undrilled in this photo)
+
+  
+  
+
+[![](https://1.bp.blogspot.com/-nT_8uhTPer8/Vy9YtBFmtRI/AAAAAAAA9wc/4SM4SZ3_y4UVd0ihzdRTAs_P1JBACtRawCKgB/s640/P1010532.JPG)](https://1.bp.blogspot.com/-nT_8uhTPer8/Vy9YtBFmtRI/AAAAAAAA9wc/4SM4SZ3_y4UVd0ihzdRTAs_P1JBACtRawCKgB/s1600/P1010532.JPG)
+
+  
+Going through my junk, I found a circular bubble level which is very helpful when you want to know if something is well... level.  
+  
+
+[![](https://4.bp.blogspot.com/-nEXTJFbH2G4/VzEbhp3iwTI/AAAAAAAA96w/rq_QtakNRTg31vW5lTfePohP9cLZDieHgCKgB/s640/IMAG0941.jpg)](https://4.bp.blogspot.com/-nEXTJFbH2G4/VzEbhp3iwTI/AAAAAAAA96w/rq_QtakNRTg31vW5lTfePohP9cLZDieHgCKgB/s1600/IMAG0941.jpg)
+
+  
+After that it was time to figure out a battery solution. For a couple of days I tried to get one of those external usb power packs working, but it would always shut itself off eventually. I gave up on that for now and bought some AA battery holders. Four AA batteries is more than enough for these servos. In the future I might try a setup with 18650 batteries instead.  
+  
+
+[![](https://1.bp.blogspot.com/-7o4VApcPCiU/Vy9fPTL_iAI/AAAAAAAA91A/6voSCISsy9klXYIuMjiGxPbSV6k-Fc-ggCKgB/s640/P1010544.JPG)](https://1.bp.blogspot.com/-7o4VApcPCiU/Vy9fPTL_iAI/AAAAAAAA91A/6voSCISsy9klXYIuMjiGxPbSV6k-Fc-ggCKgB/s1600/P1010544.JPG)
+
+  
+I verified that the 4 AA setup actually works, and then got to wiring everything together. My plan was to cut off all the connectors and replace the servo ones with standard computer power supply connectors, which I have a ton of.  
+  
+
+[![](https://1.bp.blogspot.com/-vsZ_Fs9Lm_s/Vy9fgxyyfAI/AAAAAAAA91A/j2vT2z13cvIsz_HyNIYNnoHlvHTJqVFZwCKgB/s640/P1010545.JPG)](https://1.bp.blogspot.com/-vsZ_Fs9Lm_s/Vy9fgxyyfAI/AAAAAAAA91A/j2vT2z13cvIsz_HyNIYNnoHlvHTJqVFZwCKgB/s1600/P1010545.JPG)
+
+  
+This worked pretty well, and I even used some fan connectors for the arduino and battery connections.  
+  
+
+[![](https://4.bp.blogspot.com/-soI6-NgRTzY/Vy9f8bbUs2I/AAAAAAAA91A/7zvNDhKO_twnMYJI7U3TzwU_6gtgsbgdACKgB/s640/P1010546.JPG)](https://4.bp.blogspot.com/-soI6-NgRTzY/Vy9f8bbUs2I/AAAAAAAA91A/7zvNDhKO_twnMYJI7U3TzwU_6gtgsbgdACKgB/s1600/P1010546.JPG)
+
+  
+I also covered most of the wiring in wire loom to hide the mess. Then it was time for more zip ties! Simply zip tie everything to a tripod!  
+  
+
+[![](https://2.bp.blogspot.com/-gQTOXvqkLgU/Vy9iSo2i4aI/AAAAAAAA968/4kD8frlyP6Iiw4aupjxFszhtHyGkUMV2ACKgB/s640/P1010550.JPG)](https://2.bp.blogspot.com/-gQTOXvqkLgU/Vy9iSo2i4aI/AAAAAAAA968/4kD8frlyP6Iiw4aupjxFszhtHyGkUMV2ACKgB/s1600/P1010550.JPG)
+
+RTL-SDR in altoids tin, with radioshack FM radio filter.
+
+  
+
+[![](https://1.bp.blogspot.com/-fUlKgWrUbg0/Vy9gbv04NpI/AAAAAAAA97A/KsD2X4I8038TPpDBNIH6e2DH8MqZJnMXwCKgB/s640/P1010547.JPG)](https://1.bp.blogspot.com/-fUlKgWrUbg0/Vy9gbv04NpI/AAAAAAAA97A/KsD2X4I8038TPpDBNIH6e2DH8MqZJnMXwCKgB/s1600/P1010547.JPG)
+
+  
+  
+Now the setup is complete and basically portable. Time for field testing.  
+  
+
+Field Test
+----------
+
+  
+After waiting for the lightning and rain to stop, I picked a satellite that I knew was always transmitting (NOAA 18) and drove to an empty parking lot to test it out.  
+  
+
+[![](https://4.bp.blogspot.com/-BqIQtMf6mfI/VzEeu29koJI/AAAAAAAA97I/agSu27MBRnonWQaoKY--KLI76s3BfkOIACLcB/s640/P1010551.JPG)](https://4.bp.blogspot.com/-BqIQtMf6mfI/VzEeu29koJI/AAAAAAAA97I/agSu27MBRnonWQaoKY--KLI76s3BfkOIACLcB/s1600/P1010551.JPG)
+
+  
+
+[![](https://4.bp.blogspot.com/-IaTOe_uqTF8/VzEerxajOoI/AAAAAAAA97E/pJrBQYb2NBEgE_sGPQ1A6N7cJ06zQRIZQCKgB/s640/P1010552.JPG)](https://4.bp.blogspot.com/-IaTOe_uqTF8/VzEerxajOoI/AAAAAAAA97E/pJrBQYb2NBEgE_sGPQ1A6N7cJ06zQRIZQCKgB/s1600/P1010552.JPG)
+
+  
+
+[![](https://2.bp.blogspot.com/-ptoVNcbzlQQ/VzEfi_8ogwI/AAAAAAAA97Q/wP3Z17Dm9-oTcuxeapdjS6e5iXOeEBDxACLcB/s640/Screenshot%2Bfrom%2B2016-05-07%2B17%25253A20%25253A25.png)](https://2.bp.blogspot.com/-ptoVNcbzlQQ/VzEfi_8ogwI/AAAAAAAA97Q/wP3Z17Dm9-oTcuxeapdjS6e5iXOeEBDxACLcB/s1600/Screenshot%2Bfrom%2B2016-05-07%2B17%25253A20%25253A25.png)
+
+It worked! Unfortunately I didn't have GQRX set up correctly, so I didn't get an actual image from the pass, but it tracked almost perfectly.  
+  
+Here's a video I took of it, sped up 40 times:  
+  
+
+  
+One problem I had was the Gpredict rotator control was only set to update when the antenna was 5 degrees off, so it didn't update as often as I would have liked. Later, I set it to 1 degree. The wind also messes with the tape measure elements pretty badly, but I don't think it was that big of a problem.  
+  
+I tracked some of the XW-2 satellites after that, and they all showed up as well.  
+  
+
+[![](https://4.bp.blogspot.com/-iu5fz3RKgX0/VzEhL49P5yI/AAAAAAAA97c/12QtOif7tVwBA5JvIpOHFUdyULZWnzKWACLcB/s640/Screenshot%2Bfrom%2B2016-05-07%2B17%25253A33%25253A37.png)](https://4.bp.blogspot.com/-iu5fz3RKgX0/VzEhL49P5yI/AAAAAAAA97c/12QtOif7tVwBA5JvIpOHFUdyULZWnzKWACLcB/s1600/Screenshot%2Bfrom%2B2016-05-07%2B17%25253A33%25253A37.png)
+
+  
+So, is it useful at all? Probably not. It is cool and I learned a lot, but actually driving somewhere, setting it up correctly (which involves reprogramming the arduino for every satellite), and then sitting around is pretty much the opposite of useful.  
+  
+Most people want satellite trackers so that they can put them outside and then control the antenna from inside, which someone probably can't do with mine unless they live in a really nice place (or build a [radome](http://satnogs.dozuki.com/Guide/SatNOGS+Radome+v1/5)). However, it could be useful for a small number of people who have covered balconies or porches. It wouldn't receive the full effect of the weather and they wouldn't be able to get more than 180 degrees from a balcony anyways.  
+  
+ Also, if you try to transmit the interference will kill the servos while you're transmitting, so it's useless for that (although that could probably be fixed).  
+  
+Not counting things I already had (SDR, tripod, arduino, etc), the total comes for me came to around $60, which is almost $25, right? Really though, I think if someone wanted to build this project they could do it for around $25. Just buy the pre-made pan and tilt and zip tie an antenna to it.  
+  
+Where will this project go next? I'm going to try to modify the azimuth servo to be full-rotation. I'm also planning on building another antenna for the 435 MHz region. Or maybe I'll bin the whole thing and build a SatNOGS rotator.  
+  
+  
+[Complete source code](https://github.com/paulschow/CheapSatTrack)
+---
+### Comments:
+#### Hi, I'm Eleftherios from the SatNOGS team, we ...
+[elkos](https://www.blogger.com/profile/17316666722761867817 "noreply@blogger.com") - <time datetime="2016-05-19T03:28:34.939-06:00">May 4, 2016</time>
+
+Hi, I'm Eleftherios from the SatNOGS team, we are glad you found our code useful and we are looking forward to join our community and see more stuff from you. :)
+<hr />
+#### Hi, nice project. A compass module (+gyro) could b...
+[satman](https://www.blogger.com/profile/01419290676631576689 "noreply@blogger.com") - <time datetime="2016-05-19T14:35:18.393-06:00">May 4, 2016</time>
+
+Hi, nice project. A compass module (+gyro) could be an option instead for measuring the full rotation instead of a rotary encoder. Have you experienced any electromagnetic-noise because of your servos etc.? The good old aluminium foil could do a good option for shielding the servo otherewise. If your antenna has an azimut of 180 degree you could just tilt it over to the other side, that could solve your problem, but you would probably have a short signal loss.  
+How powerfull is the servo setup? Could it handle a 0.5 kg antenna?  
+Congrats on that nice project.
+<hr />
+#### Hice job, congrats ! Exactly what I\`m looking for,...
+[Vic YO4TNV](https://www.blogger.com/profile/09495312386868679551 "noreply@blogger.com") - <time datetime="2016-05-20T03:59:50.551-06:00">May 5, 2016</time>
+
+Hice job, congrats ! Exactly what I\`m looking for, linux, gpredict and arduino i will try to build it too . 73 de YO4TNV !
+<hr />
+#### Thanks! I did think of using a compass, but not t...
+[Paul Schow](https://www.blogger.com/profile/02139879554145337777 "noreply@blogger.com") - <time datetime="2016-05-23T11:37:40.746-06:00">May 1, 2016</time>
+
+Thanks!  
+  
+I did think of using a compass, but not to detect the rotation. I'll have to look into that!  
+  
+it doesn't seem like noise is a problem, but shielding would probably be a good idea anyways.  
+  
+I'm not sure exactly how much weight they can handle. I think balance is a big part of that too.
+<hr />
+#### Great Article with components that can be acquired...
+[Chief Cook and Bottle Washer](https://www.blogger.com/profile/18311227368721846511 "noreply@blogger.com") - <time datetime="2016-06-04T09:27:18.074-06:00">Jun 6, 2016</time>
+
+Great Article with components that can be acquired in more remote areas of the world.  
+  
+That said, I can't see any images as your host, Blogspot, is blocked by many authoritarian governments as former countrymen use it as a platform for political protest.  
+  
+So it's off to Cambodia where almost everything is uncensored.
+<hr />
+#### Hi again Today I came across this motor: http://ww...
+[satman](https://www.blogger.com/profile/01419290676631576689 "noreply@blogger.com") - <time datetime="2016-06-07T11:03:01.802-06:00">Jun 2, 2016</time>
+
+Hi again  
+Today I came across this motor: http://www.dx.com/p/40rpm-12v-encoder-motor-dc-turbo-worm-gear-motor-w-self-lock-434055?TC=USD&en20160526newarrivals#.V1b7eb7oSzk  
+I belive it could just fit your needs.
+<hr />
+#### Can you track the signal strength, that is given y...
+[PhilCobbin](https://www.blogger.com/profile/00752686085586715309 "noreply@blogger.com") - <time datetime="2016-08-01T12:01:35.117-06:00">Aug 1, 2016</time>
+
+Can you track the signal strength, that is given you rotate about the satellite's location can you measure the signal strength as a function of the tilt settings?
+<hr />
+#### I haven't experimented with that at all, but i...
+[Paul Schow](https://www.blogger.com/profile/02139879554145337777 "noreply@blogger.com") - <time datetime="2016-08-01T13:48:35.724-06:00">Aug 1, 2016</time>
+
+I haven't experimented with that at all, but it would probably be possible. Most of the drone antenna trackers (FPV) use a similar system.
+<hr />
+#### Nice work :-) I actually did something similar t...
+[thazlett](https://www.blogger.com/profile/18187536925372319389 "noreply@blogger.com") - <time datetime="2016-09-19T04:19:51.089-06:00">Sep 1, 2016</time>
+
+Nice work :-)  
+  
+I actually did something similar to this 3 years ago. I used the same pan tilt servo kit you appear to have used. As for code I only got as far as controlling the servos from the serial console (using WASD for control). After that I had other things going on and the project took a back seat. I have lost some of it now which is a shame.  
+  
+Here are videos of my old rig which is now probably in my boxes of junk. I was testing the limits of those servos I think:  
+  
+https://www.youtube.com/watch?v=OotKcJFz7SQ  
+https://www.youtube.com/watch?v=8Miy1syfaPk  
+  
+I have recently been looking to pick it up again. What you have done here is exactly what I was aiming to do 3 years ago. I'm happy to see I wasn't the only one who attempted it. 3 years ago I remember finding information on it quite difficult. I knew little about servos and it was also the first time I used an arduino. So it was a huge learning curve for me also. I also ran into that same issue with the panning servo.  
+  
+This has sparked my interest once again :-)
+<hr />

@@ -1,0 +1,23 @@
+1671937554066	geckodriver	INFO	Listening on 127.0.0.1:44443
+1671937554964	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "-profile" "/home/paul/snap/firefox/common/.mozilla/firefox/cujaaab5.seltest" "--remote-debugging-port" "58165" "--remote-allow-hosts" "localhost" "-no-remote"
+Gtk-Message: 20:05:55.427: Failed to load module "colorreload-gtk-module"
+Gtk-Message: 20:05:55.429: Failed to load module "window-decorations-gtk-module"
+1671937557202	Marionette	INFO	Marionette enabled
+1671937557207	Marionette	INFO	Listening on port 42869
+Read port: 42869
+WebDriver BiDi listening on ws://127.0.0.1:58165
+1671937557469	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:58165/devtools/browser/977cff2c-a5dd-48ad-b105-baf761573166
+1671937567210	Marionette	INFO	Stopped listening on port 42869
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1671937592982	geckodriver	INFO	Listening on 127.0.0.1:56085
+1671937593578	mozrunner::runner	INFO	Running command: "/snap/firefox/current/firefox.launcher" "--marionette" "-profile" "/home/paul/snap/firefox/common/.mozilla/firefox/cujaaab5.seltest" "--remote-debugging-port" "59833" "--remote-allow-hosts" "localhost" "-no-remote"
+Gtk-Message: 20:06:33.905: Failed to load module "colorreload-gtk-module"
+Gtk-Message: 20:06:33.909: Failed to load module "window-decorations-gtk-module"
+1671937594748	Marionette	INFO	Marionette enabled
+1671937594752	Marionette	INFO	Listening on port 42019
+Read port: 42019
+WebDriver BiDi listening on ws://127.0.0.1:59833
+1671937594897	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:59833/devtools/browser/67d5fb47-6e53-4bf5-9e65-c2f28ffbf47a
+1671937606461	Marionette	INFO	Stopped listening on port 42019
